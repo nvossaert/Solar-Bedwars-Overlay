@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;" />
+  <link rel="stylesheet" href="overlay.css" />
+</head>
+<body>
+  <div id="app">
+    <div id="titlebar">
+      <span id="drag" class="drag">
+        <span class="logo">☀</span>
+        <span class="brand">Solar</span>
+        <span id="count" class="count">0</span>
+        <span id="logdot" class="logdot" title="log watcher"></span>
+      </span>
+      <div class="add">
+        <input id="addInput" placeholder="add player…" spellcheck="false" />
+      </div>
+      <div class="btns">
+        <button id="btnRefresh" title="Refresh (re-fetch)">⟳</button>
+        <button id="btnClear" title="Clear list (Alt+C)">✕list</button>
+        <button id="btnClick" title="Toggle click-through (Alt+X)">☞</button>
+        <button id="btnBlacklist" title="Blacklist admin">⚑</button>
+        <button id="btnSettings" title="Settings (Alt+S)">⚙</button>
+        <button id="btnMin" title="Minimize">—</button>
+        <button id="btnClose" title="Quit">⏻</button>
+      </div>
+    </div>
+
+    <div id="tableWrap">
+      <table id="tbl">
+        <thead><tr id="headRow"></tr></thead>
+        <tbody id="body"></tbody>
+      </table>
+      <div id="empty" class="empty">Waiting for players… join a game or add a name above.</div>
+    </div>
+
+    <div id="ctx" class="ctx hidden"></div>
+    <div id="toasts"></div>
+  </div>
+  <script src="overlay.js"></script>
+</body>
+</html>

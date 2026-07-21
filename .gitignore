@@ -1,0 +1,33 @@
+# ---- SECRETS: never commit API keys ----
+src/main/secrets.js
+secrets.js
+.env
+.env.*
+*.key
+
+# ---- dependencies / build ----
+node_modules/
+dist/
+out/
+build/
+*.log
+
+# ---- runtime data written to userData (not usually in-repo, ignored just in case) ----
+config.json
+snapshots.json
+uuid-cache.json
+local-tags.json
+
+# ---- packaging artifacts ----
+*.zip
+*.exe
+*.dmg
+*.AppImage
+*.blockmap
+
+# ---- OS / editor ----
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

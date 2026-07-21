@@ -1,0 +1,5722 @@
+{
+"_meta": {
+"source": "urchin_local_import",
+"note": "info tags removed from Urchin API last update",
+"count_uuids": 657,
+"count_tags": 733
+},
+"players": {
+"f8f8bc7fa0d54ae8b161c62652926f8b": [
+{
+"tag_type": "info",
+"reason": "annoying bowspammer/fb spam",
+"added_by": "721377056629456947",
+"added_on": "2024-07-21T06:26:49.431641"
+}
+],
+"1f84cacf4e4d49e7989fa9bbb1d22a31": [
+{
+"tag_type": "info",
+"reason": "bot, if you see these then qs are probably being botted by someone",
+"added_by": "354598337325826048",
+"added_on": "2024-07-23T04:57:51.430171"
+}
+],
+"f9afb3660ecb46e3833411c817345419": [
+{
+"tag_type": "info",
+"reason": "Ass (Guild Member)",
+"added_by": "629377636082384916",
+"added_on": "2024-08-01T01:31:54.971809"
+}
+],
+"64c408baac8844a68a19a8d1693db8ea": [
+{
+"tag_type": "info",
+"reason": "toxic, obby rush, teams with others to kill you",
+"added_by": "569334038326804490",
+"added_on": "2024-08-22T12:44:20.451052"
+}
+],
+"fd7a0c1bcc2e4776b6e89be71a97612b": [
+{
+"tag_type": "info",
+"reason": "really weird in lobby1 chat",
+"added_by": "354598337325826048",
+"added_on": "2024-08-23T03:38:23.374935"
+}
+],
+"05c5e5547af840fdb7be474f1dcd64c2": [
+{
+"tag_type": "info",
+"reason": "boosting",
+"added_by": "569334038326804490",
+"added_on": "2024-08-26T09:30:13.049927"
+}
+],
+"37d44968e65b4dd1a6b94eca6fc8c087": [
+{
+"tag_type": "info",
+"reason": "aggressively spams fireballs",
+"added_by": "354598337325826048",
+"added_on": "2024-08-28T23:16:11.741677"
+}
+],
+"ef9e605c16204cd4a4baa8c016778ba2": [
+{
+"tag_type": "info",
+"reason": "bow spam",
+"added_by": "354598337325826048",
+"added_on": "2024-09-01T23:33:19.702646"
+}
+],
+"8a21437bdff24f9ea1a14522ba088e65": [
+{
+"tag_type": "info",
+"reason": "bow spam",
+"added_by": "354598337325826048",
+"added_on": "2024-09-01T23:13:21.497862"
+}
+],
+"7fd2e10845194102ba60b7682d253e6e": [
+{
+"tag_type": "info",
+"reason": "punch bow spam",
+"added_by": "354598337325826048",
+"added_on": "2024-09-02T05:32:42.626597"
+}
+],
+"36ef2d0fd96b4c9e94467d3913f63db4": [
+{
+"tag_type": "info",
+"reason": "legit",
+"added_by": "290577608645672960",
+"added_on": "2025-09-28T03:48:55.486034"
+}
+],
+"d59078faf4354306b25a6c8d74a32bed": [
+{
+"tag_type": "info",
+"reason": "Not cheating, can be annoying and was tagged before",
+"added_by": "306492837719965696",
+"added_on": "2025-03-12T22:26:03.724283"
+}
+],
+"27a28660f9e444b2bd706684830c2b24": [
+{
+"tag_type": "info",
+"reason": "bow spammer",
+"added_by": "354598337325826048",
+"added_on": "2024-10-29T03:35:20.486062"
+}
+],
+"77e3b0c40e994f8d9b695f25b4ccc7ae": [
+{
+"tag_type": "info",
+"reason": "toxic/annoying playstyle",
+"added_by": "354598337325826048",
+"added_on": "2024-11-04T03:42:24.640772"
+}
+],
+"07d75bd6a7e5427b835186ce54630362": [
+{
+"tag_type": "info",
+"reason": "being boosted",
+"added_by": "569334038326804490",
+"added_on": "2024-11-11T06:10:10.866859"
+}
+],
+"2c4a749e91d54cf8a6883c67d3a0138f": [
+{
+"tag_type": "info",
+"reason": "really annoying camping at base with stacked gear",
+"added_by": "354598337325826048",
+"added_on": "2024-11-14T06:00:14.087915"
+}
+],
+"05bf37f12532411bb093e37cece7a38b": [
+{
+"tag_type": "info",
+"reason": "really annoying camping at base with stacked gear",
+"added_by": "354598337325826048",
+"added_on": "2024-11-14T06:00:03.350306"
+}
+],
+"261068eed8e94fe99e2fb931624ae6d4": [
+{
+"tag_type": "info",
+"reason": "`Awesome Sauce`",
+"added_by": "654844736330268693",
+"added_on": "2024-12-19T03:29:52.454579"
+}
+],
+"e58bac8242d24ba39ec7f5497330a5a6": [
+{
+"tag_type": "info",
+"reason": "a solo player that isnt toxic i like him",
+"added_by": "354598337325826048",
+"added_on": "2024-11-27T04:40:35.394452"
+}
+],
+"9c1f71820cc544d39d37a1771c140d01": [
+{
+"tag_type": "info",
+"reason": "annoying fireball spam (im mad i took a fd) + fire username",
+"added_by": "654844736330268693",
+"added_on": "2024-12-01T02:10:15.912253"
+}
+],
+"3c5a0f566c0645f690cf93fb35503b81": [
+{
+"tag_type": "info",
+"reason": "my claws are sharp",
+"added_by": "1408202441857568878",
+"added_on": "2026-05-12T18:09:18.889929"
+}
+],
+"d753a2e724934b68a7bdd3870ba0ef71": [
+{
+"tag_type": "info",
+"reason": "BADDIE",
+"added_by": "1028704707390230650",
+"added_on": "2025-01-30T16:05:40.174711"
+}
+],
+"7f865a5e64244abd901b7f7c55659227": [
+{
+"tag_type": "info",
+"reason": "punch bow user",
+"added_by": "354598337325826048",
+"added_on": "2024-12-07T12:06:49.697939"
+}
+],
+"80222eabd996439a95b8a9d38ea6c2c0": [
+{
+"tag_type": "info",
+"reason": "fucking f2 spammed until i wouldn't get the final...",
+"added_by": "354598337325826048",
+"added_on": "2024-12-08T10:03:08.190612"
+}
+],
+"b6b62590b7a244cc84abfba69e4fff61": [
+{
+"tag_type": "info",
+"reason": "bow spam annoying af",
+"added_by": "721377056629456947",
+"added_on": "2024-12-08T21:04:00.414974"
+}
+],
+"0bf474b77a09479092253dc6d218f729": [
+{
+"tag_type": "info",
+"reason": "racist",
+"added_by": "569334038326804490",
+"added_on": "2024-12-10T14:02:07.057866"
+}
+],
+"b957f3c46f944bbc904d2f1428901fe2": [
+{
+"tag_type": "info",
+"reason": "may look sketchy but hes legit i traded ++ for some cosmetics from him",
+"added_by": "354598337325826048",
+"added_on": "2024-12-12T03:29:04.618221"
+}
+],
+"0773debb1f6c42ec8bcd62fdb6f437a7": [
+{
+"tag_type": "info",
+"reason": "punch bow spamming FREAK",
+"added_by": "721377056629456947",
+"added_on": "2024-12-13T03:07:31.434211"
+}
+],
+"629c2f543c5b4fb982c83323f6bb08c0": [
+{
+"tag_type": "info",
+"reason": "harmful player please dodge this individual",
+"added_by": "1430933757208166510",
+"added_on": "2025-12-10T22:56:51.854397"
+}
+],
+"ab3c6b070f3742af8111ddb742ca0bde": [
+{
+"tag_type": "info",
+"reason": "gay",
+"added_by": "1168260508479127664",
+"added_on": "2026-05-04T07:50:36.272609"
+}
+],
+"82bdfdebc3f34cadb2abff7d0fd4a94b": [
+{
+"tag_type": "info",
+"reason": "greatest of all time",
+"added_by": "354598337325826048",
+"added_on": "2024-12-21T14:08:06.940221"
+}
+],
+"c2410271201d4ce5bcf821f0965058eb": [
+{
+"tag_type": "info",
+"reason": "excessive fireball/bow spam annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2024-12-21T20:14:43.234612"
+}
+],
+"65c94c1c627645b3aa274fcb0e12a5d3": [
+{
+"tag_type": "info",
+"reason": "excessive fb spam annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2024-12-21T20:15:18.568499"
+}
+],
+"2321729a033c4977bbdca1912adb4ae8": [
+{
+"tag_type": "info",
+"reason": "rushes obby off spawn annoying playstyle",
+"added_by": "721377056629456947",
+"added_on": "2024-12-23T02:32:14.916566"
+}
+],
+"ce559a814a3d4724b148c1fe8c2a9b15": [
+{
+"tag_type": "info",
+"reason": "rushes obby off spawn annoying playstyle",
+"added_by": "721377056629456947",
+"added_on": "2024-12-23T02:31:16.940003"
+}
+],
+"95667d0937434170aa11af1b47a6ff67": [
+{
+"tag_type": "info",
+"reason": "likely account beamer",
+"added_by": "721377056629456947",
+"added_on": "2024-12-24T06:45:51.981884"
+}
+],
+"dc472798c63a481b95f1331c2880d5c5": [
+{
+"tag_type": "info",
+"reason": "catfishing for ++",
+"added_by": "721377056629456947",
+"added_on": "2025-01-01T16:36:34.968318"
+}
+],
+"98168489470b4f4390deecc0a380683f": [
+{
+"tag_type": "info",
+"reason": "plays like an absolute FREAK punch bow spam fb spam kb sticks rotation items so fucking annoying to fight",
+"added_by": "721377056629456947",
+"added_on": "2025-01-01T20:25:48.644577"
+}
+],
+"81c7a172e57a4f2a8df390755750cc91": [
+{
+"tag_type": "info",
+"reason": "annoying asf playstyle only knows how to fb pass",
+"added_by": "721377056629456947",
+"added_on": "2025-01-02T01:48:24.115646"
+}
+],
+"704cf1e244db42368888a005cc844622": [
+{
+"tag_type": "info",
+"reason": "THE most ANNOYING and TOXIC nons you will EVER face in any game of bedwars ever Abuses BOWS FIREBALLS KB STICKS POP UP TOWERS ICE BRIDGES AND MANY MANY MORE if you see these people in game please by all means bhop on them until their fkdrs drop below 1 these people are absolutly mentally damaged and remember to chat report them if they are not muted already",
+"added_by": "721377056629456947",
+"added_on": "2025-01-02T21:38:59.028960"
+}
+],
+"bbe2965974bd410d87d1f30b3c4c3244": [
+{
+"tag_type": "info",
+"reason": "THE most ANNOYING and TOXIC nons you will EVER face in any game of bedwars ever Abuses BOWS FIREBALLS KB STICKS POP UP TOWERS ICE BRIDGES AND MANY MANY MORE if you see these people in game please by all means bhop on them until their fkdrs drop below 1 these people are absolutly mentally damaged and remember to chat report them if they are not muted already",
+"added_by": "721377056629456947",
+"added_on": "2025-01-02T21:38:59.029491"
+}
+],
+"0f97d5e03c804448a28c04ae8525275c": [
+{
+"tag_type": "info",
+"reason": "THE most ANNOYING and TOXIC nons you will EVER face in any game of bedwars ever Abuses BOWS FIREBALLS KB STICKS POP UP TOWERS ICE BRIDGES AND MANY MANY MORE if you see these people in game please by all means bhop on them until their fkdrs drop below 1 these people are absolutly mentally damaged and remember to chat report them if they are not muted already",
+"added_by": "721377056629456947",
+"added_on": "2025-01-02T21:38:59.034293"
+}
+],
+"7ced8a16ce3646148cb4705f39412e4d": [
+{
+"tag_type": "info",
+"reason": "excessive punch bow spam after bedbreak",
+"added_by": "721377056629456947",
+"added_on": "2025-01-03T04:46:46.402887"
+}
+],
+"693a1e491c6d4530973215dcf799284e": [
+{
+"tag_type": "info",
+"reason": "excessive punch bow spam after bedbreak",
+"added_by": "721377056629456947",
+"added_on": "2025-01-03T04:46:46.399397"
+}
+],
+"57f3fa74897c47cf95acc5792f3366dc": [
+{
+"tag_type": "info",
+"reason": "excessive fb/bowspam",
+"added_by": "721377056629456947",
+"added_on": "2025-01-03T04:47:15.996619"
+}
+],
+"f0183d2d857a4fafac6a71f8ab849664": [
+{
+"tag_type": "info",
+"reason": "This user, as evidenced by the replay code e550c538-e0ff-4a5b-b1c2-9d0dbeb0d5d, has demonstrated behavior consistent with team trolling. Engaging in team trolling disrupts gameplay, negatively affects the experience of other players, and undermines the spirit of teamwork essential for success. Such actions show a disregard for the principles of fair play and cooperation, making this user a potentially harmful influence in team-based activities. To maintain a positive and productive environment, it is recommended to avoid engaging with this individual in future games or projects.",
+"added_by": "1057312650381504543",
+"added_on": "2025-01-03T21:57:35.321322"
+}
+],
+"b1eb522cf7e3480ea3f96564a85d8ab5": [
+{
+"tag_type": "info",
+"reason": "bot movement in lobby 1",
+"added_by": "721377056629456947",
+"added_on": "2025-01-04T08:37:17.228052"
+}
+],
+"3f0688fa0cb8415fbb77a78623076541": [
+{
+"tag_type": "info",
+"reason": "User likes to spam party invite and disband to spam chat over loosing",
+"added_by": "1057312650381504543",
+"added_on": "2025-01-04T19:48:36.626931"
+}
+],
+"534ea5f2464a449b9d1b8ee36882b536": [
+{
+"tag_type": "info",
+"reason": "toxic fucker who wall crushed me in mm",
+"added_by": "154389105432723457",
+"added_on": "2025-01-05T15:30:11.300537"
+}
+],
+"d8011c8a66844da5bfd9cafa21a0fcd7": [
+{
+"tag_type": "info",
+"reason": "trying too hard for random 1 fkdr",
+"added_by": "354598337325826048",
+"added_on": "2025-01-06T10:15:08.256318"
+}
+],
+"518c3f8edcde4cb8a0be9f732ea9d6bb": [
+{
+"tag_type": "info",
+"reason": "rushing my bed with 5 fucking chickens in solos",
+"added_by": "354598337325826048",
+"added_on": "2025-01-07T12:48:27.294463"
+}
+],
+"c59a992a5f15470ca4b5c7ff66c61ea7": [
+{
+"tag_type": "info",
+"reason": "my cute kitty",
+"added_by": "755743511550099477",
+"added_on": "2026-05-25T05:58:02.420679"
+}
+],
+"1f4118e302314fb68398271b7e11b776": [
+{
+"tag_type": "info",
+"reason": "lobby 1 bot",
+"added_by": "721377056629456947",
+"added_on": "2025-01-10T05:12:15.510694"
+}
+],
+"43206ea4cc2840ad8a29390e8e4d634e": [
+{
+"tag_type": "info",
+"reason": "handsome man",
+"added_by": "354598337325826048",
+"added_on": "2025-04-10T05:38:32.957806"
+}
+],
+"9d258c223a94418db97b1dade84cf526": [
+{
+"tag_type": "info",
+"reason": "bow spam off spawn annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-01-12T22:34:33.290703"
+}
+],
+"8d1eaa5d7b59476786f812cf8469491b": [
+{
+"tag_type": "info",
+"reason": "lowkey kinda goated for some reason he was fb jumping and ladder clutching",
+"added_by": "354598337325826048",
+"added_on": "2025-01-20T11:23:55.892191"
+}
+],
+"70438277c73d46ca94c5b6c74f55c298": [
+{
+"tag_type": "info",
+"reason": "main lobby autofishing USING AN AUTOCLICKER.",
+"added_by": "1129507464589627512",
+"added_on": "2025-01-20T15:23:35.417853"
+}
+],
+"ae0fda0d7bb34532841c903190d7fc65": [
+{
+"tag_type": "info",
+"reason": "noob, averages a .6 WLR in solos while cheating(super bad at game)",
+"added_by": "660544888974344194",
+"added_on": "2026-05-29T06:18:24.960199"
+}
+],
+"76e5afae7a274fe9968295938b6675e4": [
+{
+"tag_type": "info",
+"reason": "spamming fireball jump on first rush holy shit",
+"added_by": "354598337325826048",
+"added_on": "2025-01-22T03:00:43.715372"
+}
+],
+"fe2bf14cd84a4c2ebe2199e04efc8a52": [
+{
+"tag_type": "info",
+"reason": "Monkey",
+"added_by": "",
+"added_on": "2026-04-29T20:04:03.878713"
+},
+{
+"tag_type": "info",
+"reason": "Jqva Edition",
+"added_by": "",
+"added_on": "2026-04-29T20:04:03.878713"
+},
+{
+"tag_type": "info",
+"reason": ".nickbot.",
+"added_by": "1144157100507942912",
+"added_on": "2026-05-08T06:38:50.961682"
+}
+],
+"1aaa7493fb5b4c03b0394d5555cd8746": [
+{
+"tag_type": "info",
+"reason": "Grrrr",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-31T19:52:02.363954"
+},
+{
+"tag_type": "info",
+"reason": "Grrrr 2",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-31T19:52:02.363954"
+}
+],
+"4bd71f006a6c46c7b4cc2dbf261a93c5": [
+{
+"tag_type": "info",
+"reason": "wierd as fuck",
+"added_by": "721377056629456947",
+"added_on": "2025-01-24T22:58:00.639893"
+}
+],
+"c07116bc7737457f9cc856b9739331c9": [
+{
+"tag_type": "info",
+"reason": "wierd as fuck",
+"added_by": "721377056629456947",
+"added_on": "2025-01-24T22:58:00.641984"
+}
+],
+"038c335bd01b4cee9dffc2d2dedb753e": [
+{
+"tag_type": "info",
+"reason": "blatant rightclicker (very funny but not a threat)",
+"added_by": "354598337325826048",
+"added_on": "2025-01-26T03:51:12.296105"
+}
+],
+"0f029c4445b94f2fb7c7849a54aa225c": [
+{
+"tag_type": "info",
+"reason": "sits on bed with fbs and bow",
+"added_by": "1408202441857568878",
+"added_on": "2025-01-26T14:17:40.348455"
+}
+],
+"71cd73084a654d21b4e6ed06b736bee7": [
+{
+"tag_type": "info",
+"reason": "annoying team leaving 2 on bed the entire game",
+"added_by": "354598337325826048",
+"added_on": "2025-01-26T16:48:11.389207"
+}
+],
+"100107f715274f83bde2ffe63f4e4897": [
+{
+"tag_type": "info",
+"reason": "annoying team leaving 2 on bed the entire game",
+"added_by": "354598337325826048",
+"added_on": "2025-01-26T16:48:11.389250"
+}
+],
+"f7c77d999f154a66a87dc4a51ef30d19": [
+{
+"tag_type": "info",
+"reason": "owns hypixel (harmful)",
+"added_by": "623497242463961098",
+"added_on": "2025-10-15T22:08:11.965444"
+}
+],
+"229aa28a9c4941c1a2a3b3efeb47451d": [
+{
+"tag_type": "info",
+"reason": "MEOW",
+"added_by": "1130439581800599623",
+"added_on": "2025-11-19T13:11:29.467284"
+}
+],
+"70c29c17ffb1408b9317891bd4ae0721": [
+{
+"tag_type": "info",
+"reason": "edating a 15 year old while hes 20 (exposed by @vunrise on yt)",
+"added_by": "1408202441857568878",
+"added_on": "2025-01-28T22:34:18.738034"
+}
+],
+"74ad79d2ebea441e9b6dc259d3edc810": [
+{
+"tag_type": "info",
+"reason": "antisniped by enforcedboss",
+"added_by": "815257685662498846",
+"added_on": "2026-03-22T20:30:47.874283"
+}
+],
+"df5f766e8d6242af9f1018f95e671067": [
+{
+"tag_type": "info",
+"reason": "potentially autofishing in main lobby",
+"added_by": "1129507464589627512",
+"added_on": "2025-01-30T17:55:30.276781"
+}
+],
+"d99fdabf091542c9932d9db99b6f7f1e": [
+{
+"tag_type": "info",
+"reason": "random taking zero kb whatsoever  on bridges and all fights, not cheating though",
+"added_by": "354598337325826048",
+"added_on": "2025-01-31T09:22:37.385984"
+}
+],
+"0d78f1252bf5405d96a387fd34ba4d5d": [
+{
+"tag_type": "info",
+"reason": "faked being a bot so he could get close and kb stick me off??",
+"added_by": "354598337325826048",
+"added_on": "2025-01-31T13:38:18.189232"
+}
+],
+"2999fa6e89d841c2a750c0d02699d78c": [
+{
+"tag_type": "info",
+"reason": "#1 egirl (confirmed)",
+"added_by": "",
+"added_on": "2025-08-24T10:07:09.072348"
+}
+],
+"96c1d65da836470f80d50387ada813fa": [
+{
+"tag_type": "info",
+"reason": "[SHOUT] [YELLOW] [MVP+] iz_u: I FUCKING HATE EUROPEANS",
+"added_by": "405827469443334144",
+"added_on": "2025-02-01T09:23:18.674058"
+}
+],
+"06fb78c3b17d49fd8b9e75996b0b10ee": [
+{
+"tag_type": "info",
+"reason": "paedophile",
+"added_by": "",
+"added_on": "2025-02-01T09:47:23.389779"
+}
+],
+"2fa4e1d3a4c04a588719509d50e325ec": [
+{
+"tag_type": "info",
+"reason": "kcals owner",
+"added_by": "",
+"added_on": "2025-04-06T14:06:14.523485"
+}
+],
+"20f2c811ef334c63bcd1b0065ad9d243": [
+{
+"tag_type": "info",
+"reason": "stealing ya soul",
+"added_by": "1144157100507942912",
+"added_on": "2026-05-10T08:59:23.746532"
+}
+],
+"e8b11e4a088b4f92aa8c4a149d0dc39d": [
+{
+"tag_type": "info",
+"reason": "will give you the win if you ask them nicely",
+"added_by": "1129507464589627512",
+"added_on": "2025-02-08T16:50:59.492536"
+}
+],
+"d133720a099449fe9c0d6b3311f182ad": [
+{
+"tag_type": "info",
+"reason": "goat",
+"added_by": "",
+"added_on": "2025-02-09T04:18:48.608855"
+}
+],
+"ad7ede45a3894e5294c9361a59d95b32": [
+{
+"tag_type": "info",
+"reason": "catfishing for ranks From \"[VIP+] zau5: yo this skin for my frnd uerasaleus i aint tryna catfish ya g\"",
+"added_by": "721377056629456947",
+"added_on": "2025-02-09T18:50:03.226055"
+}
+],
+"1ea8a4f568174aebb87f4c7e3d42fb16": [
+{
+"tag_type": "info",
+"reason": "toxic i would suggest you crossmap for no reason",
+"added_by": "354598337325826048",
+"added_on": "2025-02-10T02:34:58.017722"
+}
+],
+"bf489b258d784d72a025ffc4d394c6fd": [
+{
+"tag_type": "info",
+"reason": "obby rushes, or diamond armour rushes, cant do shit without it. toxic af, cant win a 1v1, relies on his random teammate to kill me. actually fucking ass.",
+"added_by": "569334038326804490",
+"added_on": "2025-02-10T12:34:13.090597"
+}
+],
+"15016e2804e94c8f817bcb142286dc18": [
+{
+"tag_type": "info",
+"reason": "annoying crossmap obby shitter. stil awful and lost the game",
+"added_by": "749666742107635762",
+"added_on": "2025-02-10T21:32:32.369320"
+}
+],
+"62cca5cadf774f6ba27fae4fa2a53231": [
+{
+"tag_type": "info",
+"reason": "beamed bhops on alts closets and beams accounts",
+"added_by": "594615854625456140",
+"added_on": "2025-02-14T02:00:20.664895"
+}
+],
+"02c57f4779a6444c9c814bfb712fe6e9": [
+{
+"tag_type": "info",
+"reason": "beamed bhops on alts closets and beams accounts",
+"added_by": "594615854625456140",
+"added_on": "2025-02-14T02:00:58.083036"
+}
+],
+"2ec39e91e4634ee4b31f7194186c961b": [
+{
+"tag_type": "info",
+"reason": "beamed bhops on alts closets and beams accounts",
+"added_by": "594615854625456140",
+"added_on": "2025-02-14T02:00:39.476802"
+}
+],
+"53e64498a3ba4db2a3b0f0ce8183a7ef": [
+{
+"tag_type": "info",
+"reason": "bow spam",
+"added_by": "354598337325826048",
+"added_on": "2025-02-15T22:47:44.664186"
+}
+],
+"b637a688bc834d27956fa1404640654d": [
+{
+"tag_type": "info",
+"reason": "tries way too hard to average a 1.2 monthly fkdr annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-02-16T21:05:43.826977"
+}
+],
+"bb2793b10f5247ba89c126f42d69f028": [
+{
+"tag_type": "info",
+"reason": "trying extremely hard, annoying asf, terrible at the game, and toxic Dont forget to /cr!",
+"added_by": "721377056629456947",
+"added_on": "2025-02-16T23:11:49.483117"
+}
+],
+"1aadfeb9b4c543b89b49fec963677e94": [
+{
+"tag_type": "info",
+"reason": "paedophile",
+"added_by": "",
+"added_on": "2025-12-27T22:52:07.318191"
+}
+],
+"d4b5fb3c42b4411aaa91655ed2e475dc": [
+{
+"tag_type": "info",
+"reason": "bowspam",
+"added_by": "721377056629456947",
+"added_on": "2025-02-18T04:02:17.955662"
+}
+],
+"3239ce2f512543409acb6a8213122851": [
+{
+"tag_type": "info",
+"reason": "bowspam",
+"added_by": "354598337325826048",
+"added_on": "2025-02-21T09:33:09.047887"
+}
+],
+"dff066834c284f5cbeea879f79eab06a": [
+{
+"tag_type": "info",
+"reason": "bowspam off spawn annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-02-23T02:59:28.716480"
+}
+],
+"6e097a21eb0d43f0ab5dae216146a7c4": [
+{
+"tag_type": "info",
+"reason": "actually legitimate 200 fkdr i was very surprised",
+"added_by": "354598337325826048",
+"added_on": "2025-02-24T19:13:35.641784"
+}
+],
+"10b4300529d040f198e5aa8cff097d0b": [
+{
+"tag_type": "info",
+"reason": "crossmaps off spawn",
+"added_by": "721377056629456947",
+"added_on": "2025-02-25T05:23:37.420257"
+}
+],
+"38deec6d9fd94a07a83b3aff19ebfaf4": [
+{
+"tag_type": "info",
+"reason": "bow spam",
+"added_by": "721377056629456947",
+"added_on": "2025-02-25T05:45:10.844556"
+}
+],
+"a5527c96be48419e8319968ee75973d5": [
+{
+"tag_type": "info",
+"reason": "Lags more than Harry Potter under his staircase",
+"added_by": "418078815047385091",
+"added_on": "2025-02-25T23:41:29.314217"
+}
+],
+"1bffc230a77448eeb995ee275b948a7c": [
+{
+"tag_type": "info",
+"reason": "bowspam",
+"added_by": "721377056629456947",
+"added_on": "2025-03-02T23:09:14.674199"
+}
+],
+"ad587910a0b642ed8b5da510248b348d": [
+{
+"tag_type": "info",
+"reason": "sits on bed with bow",
+"added_by": "1408202441857568878",
+"added_on": "2025-03-03T00:59:52.427022"
+}
+],
+"0e74583ca78d437d9090e1e724139770": [
+{
+"tag_type": "info",
+"reason": "bowspam",
+"added_by": "721377056629456947",
+"added_on": "2025-03-03T05:28:20.515448"
+}
+],
+"da37c3432fe24fe097ed52156f3ddeee": [
+{
+"tag_type": "info",
+"reason": "will play w anyone might be q with cheater",
+"added_by": "244086457818415106",
+"added_on": "2026-04-03T08:41:32.670026"
+}
+],
+"f1eda873ba144306b9950edaa8cb62c9": [
+{
+"tag_type": "info",
+"reason": "buys bow and attempts to be good, (fails)",
+"added_by": "1408202441857568878",
+"added_on": "2025-03-04T01:28:56.053532"
+}
+],
+"37d76f5a817347599932e6e0fabda386": [
+{
+"tag_type": "info",
+"reason": "rushes mid and gets punch bow PLAY EMS",
+"added_by": "1408202441857568878",
+"added_on": "2025-03-05T02:01:46.128951"
+}
+],
+"a68a919600b5415aa6c65cff0a6a5cd8": [
+{
+"tag_type": "info",
+"reason": "targets extremely annoying only knows how to build to height limit and stall",
+"added_by": "721377056629456947",
+"added_on": "2025-03-05T05:28:07.025046"
+}
+],
+"6d52c54cb9f941759f1fb4add012e124": [
+{
+"tag_type": "info",
+"reason": "targets extremely annoying only knows how to build to height limit and stall",
+"added_by": "721377056629456947",
+"added_on": "2025-03-05T05:28:07.027760"
+}
+],
+"dad6290011774338a11c840b73862481": [
+{
+"tag_type": "info",
+"reason": "pearling and potting for 2nd rush...",
+"added_by": "354598337325826048",
+"added_on": "2025-03-06T05:09:22.209760"
+}
+],
+"56ba1dfa678845c38cfa7997218c268b": [
+{
+"tag_type": "info",
+"reason": "bowspam",
+"added_by": "721377056629456947",
+"added_on": "2025-03-08T04:12:24.987247"
+}
+],
+"8d177b02ba4f420192d40da5c307adef": [
+{
+"tag_type": "info",
+"reason": "bow spam",
+"added_by": "721377056629456947",
+"added_on": "2025-03-08T23:11:04.148419"
+}
+],
+"0655760618a24c789f01c78fc7c3a9af": [
+{
+"tag_type": "info",
+"reason": "punch bow spam annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-03-08T23:11:27.935347"
+}
+],
+"ae3ebc2b1cdf4b61b2f2d1974420361e": [
+{
+"tag_type": "info",
+"reason": "excessive bow spam",
+"added_by": "721377056629456947",
+"added_on": "2025-03-09T21:47:38.849531"
+}
+],
+"bfd8c70810dd4f1c8e6a376734962863": [
+{
+"tag_type": "info",
+"reason": "Hot Eboy",
+"added_by": "",
+"added_on": "2026-05-13T05:20:44.450625"
+}
+],
+"82953c897cbc44d4ba0f403e023ff956": [
+{
+"tag_type": "info",
+"reason": "Long before time had a name, the First Spinjitzu Master created Ninjago using four elemental weapons. But when he passed, a dark presence sought out to collect them all: Lord Garmadon. So I, Sensei Wu, his brother, sought out to find four ninja to collect them first.",
+"added_by": "1199478308300128357",
+"added_on": "2025-09-26T20:57:39.453662"
+}
+],
+"026cf46a42604d11bd4f914b6c0d41a5": [
+{
+"tag_type": "info",
+"reason": "excessive bow spam/ fb spam after bedbreak",
+"added_by": "721377056629456947",
+"added_on": "2025-03-16T05:41:08.640714"
+}
+],
+"eef19b0735314fa8aea9faf043622bec": [
+{
+"tag_type": "info",
+"reason": "hi :3",
+"added_by": "583130656532332604",
+"added_on": "2025-10-24T13:40:17.210683"
+},
+{
+"tag_type": "info",
+"reason": "mrow",
+"added_by": "1129507464589627512",
+"added_on": "2025-12-24T22:16:25.504593"
+}
+],
+"4ed5385154d842949841b21835f87a9f": [
+{
+"tag_type": "info",
+"reason": "called me bitchass (harmful)",
+"added_by": "244086457818415106",
+"added_on": "2026-05-25T22:17:51.076148"
+}
+],
+"233df45d82e042e9bbab75f8bec9fbb0": [
+{
+"tag_type": "info",
+"reason": "annoying as cluck after bedbreak always runnin, abusing kbsticks, punch bows, fb jumps with water because they are awful and unable to use a clucking sword",
+"added_by": "721377056629456947",
+"added_on": "2025-03-24T00:19:56.669571"
+}
+],
+"2b230cf5a56c4c7d8409edba58538ba3": [
+{
+"tag_type": "info",
+"reason": "self explanatory \ud83d\ude04",
+"added_by": "354598337325826048",
+"added_on": "2025-12-24T22:02:02.179439"
+}
+],
+"a3f32a51bb6b45bbbdea74a3fc957019": [
+{
+"tag_type": "info",
+"reason": "least obvious dewier viewer (fucking annoying)",
+"added_by": "354598337325826048",
+"added_on": "2025-03-24T16:58:31.826004"
+}
+],
+"10e60e33152344fc981375c8ecd5b1fc": [
+{
+"tag_type": "info",
+"reason": "always tryna bypass annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-03-25T03:21:04.862907"
+}
+],
+"5e8837de68af454ea937b5cfad23b636": [
+{
+"tag_type": "info",
+"reason": "woof",
+"added_by": "1178630749130326086",
+"added_on": "2025-08-21T10:28:15.392686"
+}
+],
+"4772c57fca43440cbe84d5a97b676792": [
+{
+"tag_type": "info",
+"reason": "2kdr that rushes mid for obby and calls herself a ghast on her bed and throws fireballs non fucking stop for like 30 minutes straight with full obby and 2 people on bed farming a dia gen and just overall being so fucking useless actually the worst player to ever touhc this game do not let this kid go mid and thank me later goodbye",
+"added_by": "1408202441857568878",
+"added_on": "2025-03-27T13:09:50.518325"
+}
+],
+"a7797c6ac3714149b445ab520c3d6489": [
+{
+"tag_type": "info",
+"reason": "so flickin cute :33",
+"added_by": "1408202441857568878",
+"added_on": "2025-03-28T01:57:35.242340"
+}
+],
+"314ecfd842234e67bcea131b44fc524f": [
+{
+"tag_type": "info",
+"reason": "just target this shitter for me and give him some bad games it'd make me feel good",
+"added_by": "354598337325826048",
+"added_on": "2025-03-28T19:27:43.216907"
+}
+],
+"bd1d88d3e0b54c46a6eef6ae755f4ab9": [
+{
+"tag_type": "info",
+"reason": "permanently banned \ud83e\udd7a",
+"added_by": "695179682114699266",
+"added_on": "2025-12-24T16:25:42.855557"
+}
+],
+"8ff3ddaa28a04042adb63574cf5befcd": [
+{
+"tag_type": "info",
+"reason": "crossmapping in 2s as a non sui pearling on bed (awful at the game)",
+"added_by": "721377056629456947",
+"added_on": "2025-03-30T21:25:54.592771"
+}
+],
+"4c7faf9b31ab400585bb67fd847a77ca": [
+{
+"tag_type": "info",
+"reason": "bowspam",
+"added_by": "721377056629456947",
+"added_on": "2025-03-31T00:30:28.470328"
+}
+],
+"9bbb6d80fe2f4398ac8888ccbee33162": [
+{
+"tag_type": "info",
+"reason": "extremely annoying and will not take kb",
+"added_by": "721377056629456947",
+"added_on": "2025-03-31T00:58:10.646419"
+}
+],
+"fb80e13a902d4661b240596994f82f06": [
+{
+"tag_type": "info",
+"reason": "uses arch btw",
+"added_by": "660544888974344194",
+"added_on": "2025-12-11T00:43:26.609809"
+}
+],
+"0281f00271614fb6b057214f81356b19": [
+{
+"tag_type": "info",
+"reason": "base camp with obby fireballs and proximity mines, overall the gayest playstyle ever",
+"added_by": "1408202441857568878",
+"added_on": "2025-04-03T08:54:33.622008"
+}
+],
+"fdb9fc0e840147a6a3405b52745e1a6e": [
+{
+"tag_type": "info",
+"reason": "base camp with obby fireballs and proximity mines, overall the gayest playstyle ever",
+"added_by": "1408202441857568878",
+"added_on": "2025-04-03T08:54:33.624653"
+}
+],
+"d74bdf10ad124c329e60a6e92a944fb6": [
+{
+"tag_type": "info",
+"reason": "Obby camper (2 layers) + punch bow spam, won\u2019t push, won\u2019t trade, just hides.",
+"added_by": "1408202441857568878",
+"added_on": "2025-04-03T03:49:51.640479"
+}
+],
+"c55c46801d5d4f6c95357876c5537a75": [
+{
+"tag_type": "info",
+"reason": "always builds straight up and camps high ground to either stall or pass because they are unable to use a clucking sword annoying as cluck",
+"added_by": "721377056629456947",
+"added_on": "2025-04-04T02:22:07.934009"
+}
+],
+"14213bdc62114aab8d26950cbfb91ece": [
+{
+"tag_type": "info",
+"reason": "always builds straight up and camps high ground to either stall or pass because they are unable to use a clucking sword annoying as cluck",
+"added_by": "721377056629456947",
+"added_on": "2025-04-04T02:22:07.936184"
+}
+],
+"8471344f98784fb2aefd18694e2f5a26": [
+{
+"tag_type": "info",
+"reason": "test",
+"added_by": "995803381287362591",
+"added_on": "2026-04-22T05:10:42.355757"
+}
+],
+"33bd0d705df744fba41e82f68123b0e0": [
+{
+"tag_type": "info",
+"reason": "will randomly pearl on ur bed",
+"added_by": "721377056629456947",
+"added_on": "2025-04-05T21:11:13.838702"
+}
+],
+"7ee81d71c633487bb43de19b09ee64dc": [
+{
+"tag_type": "info",
+"reason": "rushes punch bow",
+"added_by": "680546602217242631",
+"added_on": "2025-04-06T07:01:00.295692"
+}
+],
+"b876ec32e396476ba1158438d83c67d4": [
+{
+"tag_type": "info",
+"reason": "technoblade never dies \ud83d\udc37\ud83d\udc51",
+"added_by": "615814015603441674",
+"added_on": "2025-05-12T07:23:12.094640"
+}
+],
+"f1f75b719cfb4d458403115ed18ed37d": [
+{
+"tag_type": "info",
+"reason": "Greatest Player OAT",
+"added_by": "1008925594748190832",
+"added_on": "2025-09-01T01:07:11.565498"
+}
+],
+"62d4d221d6b94a84bf58a6a8dc9425cf": [
+{
+"tag_type": "info",
+"reason": "accidentally toggled nuker mid blockin and got dogged",
+"added_by": "672361997047693353",
+"added_on": "2025-10-24T07:39:30.405860"
+}
+],
+"18696a4f1941474e869994947e2c29b9": [
+{
+"tag_type": "info",
+"reason": "insant got obi,bowspammed all game, bad at PVP at all",
+"added_by": "954359128833261598",
+"added_on": "2025-04-17T07:16:35.784589"
+}
+],
+"4b268b5121d0451e856a1f04ba089e0d": [
+{
+"tag_type": "info",
+"reason": "allergic to melee combat (crossmap fbs and bow spam, 500 direct bow kills..)",
+"added_by": "354598337325826048",
+"added_on": "2025-04-16T22:31:03.910276"
+}
+],
+"c0bad2d9752341f4bd4aca980fc66f18": [
+{
+"tag_type": "info",
+"reason": "excessive bowspam piss off",
+"added_by": "721377056629456947",
+"added_on": "2025-04-19T02:09:48.033983"
+}
+],
+"89058f78d0864990be4b229cb11e0fb1": [
+{
+"tag_type": "info",
+"reason": "EXCESSIVE punch bow spammer degenerate fuck runs around mid with speed pots and never uses a sword please spawn kill him over and over again if you queue him spintowns biggest fan omg",
+"added_by": "721377056629456947",
+"added_on": "2025-04-21T01:23:52.382812"
+}
+],
+"b51f5dc8fdd44bf19fc7bb67338be77e": [
+{
+"tag_type": "info",
+"reason": "toxic punch bow spammer degenerate please bhop on this kid until he quits the game",
+"added_by": "721377056629456947",
+"added_on": "2025-04-21T04:36:51.447035"
+}
+],
+"c6827083a79f4d19beb7d6fb3ec698a4": [
+{
+"tag_type": "info",
+"reason": "toxic degenerate non who thinks he is crazy at the game because he has 3fkdr while having a spintown stan punch bow spam for him please bhop on this kid until he quits",
+"added_by": "721377056629456947",
+"added_on": "2025-04-21T04:38:30.893300"
+}
+],
+"62dc18257867439dbe322fbf6c26c73c": [
+{
+"tag_type": "info",
+"reason": "saying weird stuff in a gc and aura farming idk",
+"added_by": "990510905898967060",
+"added_on": "2025-04-24T04:18:38.454458"
+}
+],
+"24e69320cae44492963174eadcab4d7f": [
+{
+"tag_type": "info",
+"reason": "horizontal rotierender tung tung tung sahur",
+"added_by": "",
+"added_on": "2026-05-06T11:46:20.745039"
+}
+],
+"4d5db670f0974e0495194ebc8f49330b": [
+{
+"tag_type": "info",
+"reason": "Mr. Ladyman",
+"added_by": "",
+"added_on": "2026-06-09T09:11:05.355285"
+}
+],
+"5858a5b4c6f54f98a518fecfbb0efab2": [
+{
+"tag_type": "info",
+"reason": "WILL TELLYBRIDGE TO UR BASE IN 0.00001 SECOND",
+"added_by": "615814015603441674",
+"added_on": "2025-05-01T11:40:11.932689"
+}
+],
+"beed1fb3c2b14cc5b3b207c315da791f": [
+{
+"tag_type": "info",
+"reason": "main character or some shit idfk luckiest mf ever",
+"added_by": "354598337325826048",
+"added_on": "2025-05-03T20:48:40.057946"
+}
+],
+"0ba2968477e74660803a8e9b12d04e76": [
+{
+"tag_type": "info",
+"reason": "bot in bedwars, walks straight and jumps, probably final death farming",
+"added_by": "680546602217242631",
+"added_on": "2025-05-05T00:47:41.311428"
+}
+],
+"ea86c88450bb4624a08d0e47b961d808": [
+{
+"tag_type": "info",
+"reason": "Seifig",
+"added_by": "710394832195026997",
+"added_on": "2025-08-31T16:18:29.741147"
+}
+],
+"c811f97eab7547fe93b0c28ccfc1152c": [
+{
+"tag_type": "info",
+"reason": "annoying with p4, pearls & bowspam (potentially cheating aswell)",
+"added_by": "1189833435733307424",
+"added_on": "2025-05-07T06:03:13.619130"
+}
+],
+"5ef22dd7c10941ca9ea8a99b10ba9cd5": [
+{
+"tag_type": "info",
+"reason": "not cheating, legit player with handcam",
+"added_by": "859934300774727701",
+"added_on": "2025-05-09T18:45:51.732251"
+}
+],
+"549ff03f8cb04f96ba6e20a0cf32a63c": [
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.427144"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.428245"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.429332"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.430246"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.430999"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.431976"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.433356"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.434111"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.434901"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.435672"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.436411"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.437200"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.438056"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.438799"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.439555"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.440312"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.441098"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.441889"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.442645"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.443400"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.444188"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.444911"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.445689"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.446456"
+},
+{
+"tag_type": "info",
+"reason": "pacifist",
+"added_by": "354598337325826048",
+"added_on": "2025-05-25T11:47:46.447231"
+}
+],
+"d0bfc815542d4c23977196c5d8b8a36e": [
+{
+"tag_type": "info",
+"reason": "everything spammer",
+"added_by": "",
+"added_on": "2025-05-14T13:26:52.475980"
+}
+],
+"61bf13cdbad04b6ea3a28300fe30dc52": [
+{
+"tag_type": "info",
+"reason": "best bedwars player alive, this random non managed to break oldfashioned's bed with a wood pickaxe while he was their first rush and while oldfashioned's party was violently cheating, literally the only reason we won that game",
+"added_by": "1199478308300128357",
+"added_on": "2025-05-14T16:51:22.177151"
+}
+],
+"01c500777b8d4c8c9df093547fc55007": [
+{
+"tag_type": "info",
+"reason": "runs the comm (tince alt)",
+"added_by": "990510905898967060",
+"added_on": "2025-05-19T02:18:36.216004"
+}
+],
+"fdbe443d0bad4edb9b6e78da11baf89d": [
+{
+"tag_type": "info",
+"reason": "beamimg",
+"added_by": "859934300774727701",
+"added_on": "2025-05-19T17:33:07.699895"
+}
+],
+"dfe0a121f55b41a082f08b7c5c754fd1": [
+{
+"tag_type": "info",
+"reason": "super annoying radiates dewier aura like theres no tomorrow bought 160 iron worth of fireballs just to throw them right into my face like actually buzz off bro",
+"added_by": "990510905898967060",
+"added_on": "2025-05-20T23:28:56.273330"
+}
+],
+"8e2f527eec684ce29bd7f98da8f9b4e6": [
+{
+"tag_type": "info",
+"reason": "[VIP] Syrup_Waffles: AAAH fries gray team",
+"added_by": "990510905898967060",
+"added_on": "2025-05-20T23:48:51.945779"
+}
+],
+"52b7d074fec94a36a9ab91766fa45857": [
+{
+"tag_type": "info",
+"reason": "my friends told me in a gc to blacklist this guy so im going to hit opti blacklisting. apparently he was EXTREMELY annoying in a game, making it to #2 on the kill leaderboard with a whopping 28 kills. He was also playing with a 3 fkdr 100 star dewier disciple. Please target these players at all costs, even a pug api annoying blacklist couldnt represent just how annoying this player is",
+"added_by": "",
+"added_on": "2026-04-29T22:39:07.989842"
+}
+],
+"c4d8ea0ee6f94ebfa58cf9902c7ecba6": [
+{
+"tag_type": "info",
+"reason": "beaming in lobby 1 (potentially beamed asw)",
+"added_by": "755743511550099477",
+"added_on": "2025-05-25T13:51:57.455595"
+}
+],
+"7005440c4ff84100abda695a3d94ed75": [
+{
+"tag_type": "info",
+"reason": "beaming (admitted)",
+"added_by": "755743511550099477",
+"added_on": "2025-05-28T13:14:34.840984"
+}
+],
+"57751fd9e7d24d9c9e48ffe4cec9d016": [
+{
+"tag_type": "info",
+"reason": "excessive teamgriefing do not party them",
+"added_by": "721377056629456947",
+"added_on": "2025-06-01T23:49:13.991353"
+}
+],
+"3c21057d322443bfabcc22ebdf550dc7": [
+{
+"tag_type": "info",
+"reason": "excessive teamgriefing do not party them",
+"added_by": "721377056629456947",
+"added_on": "2025-06-01T23:49:14.002931"
+}
+],
+"aced8421056d4fd395d09077fbeffdab": [
+{
+"tag_type": "info",
+"reason": "wants girl with \"big and pink things\"",
+"added_by": "859934300774727701",
+"added_on": "2025-06-06T19:50:46.293417"
+}
+],
+"24ae96b7922046cbbe35e14c7c7ba893": [
+{
+"tag_type": "info",
+"reason": "catfishes girls by pretending to be a girl and trying to be friends with them",
+"added_by": "680546602217242631",
+"added_on": "2025-06-08T04:31:54.559779"
+}
+],
+"e9573e2a6760452181215251a43190fa": [
+{
+"tag_type": "info",
+"reason": "tried to sui our bed as a final with tnt (failed horribly tnt was caught and bed was not lost)",
+"added_by": "594615854625456140",
+"added_on": "2025-06-08T05:14:52.651201"
+}
+],
+"0be30665f30840bfbcd7caf08464688f": [
+{
+"tag_type": "info",
+"reason": "chronic bowspammer wannabe spintown",
+"added_by": "721377056629456947",
+"added_on": "2025-06-08T22:03:47.881978"
+}
+],
+"412d27346a5243c98f4cc1fa999e83a7": [
+{
+"tag_type": "info",
+"reason": "insane levels of dewier stan behaviour doesnt know how to click a sword be careful",
+"added_by": "721377056629456947",
+"added_on": "2025-06-09T01:37:40.219608"
+}
+],
+"a25b489d45c94a71af3af8d02e310548": [
+{
+"tag_type": "info",
+"reason": "[GAME] [VIP] AceJhy: how to download frome googel any game in nintendo switch",
+"added_by": "755743511550099477",
+"added_on": "2025-06-10T12:59:51.493969"
+}
+],
+"50e49f61685d4a7b815738d93b879beb": [
+{
+"tag_type": "info",
+"reason": "ILY firedmountain the greatest player of all time",
+"added_by": "749666742107635762",
+"added_on": "2025-07-04T18:42:20.774959"
+}
+],
+"c7cb977788074b66a777b452cec84462": [
+{
+"tag_type": "info",
+"reason": "posseses the most insane rizz on hypixel",
+"added_by": "721377056629456947",
+"added_on": "2025-06-14T01:04:07.978702"
+}
+],
+"162f6d8ee97f47548347dccd2abaaa4a": [
+{
+"tag_type": "info",
+"reason": "mum's good boy",
+"added_by": "",
+"added_on": "2025-12-26T19:55:51.470110"
+}
+],
+"b9fca78648154a6fb7f14893a4959261": [
+{
+"tag_type": "info",
+"reason": "has strong feelings for instigo",
+"added_by": "757284149793914900",
+"added_on": "2025-12-22T17:29:39.704121"
+}
+],
+"6e32d12a6a26407c820a93f7035076d2": [
+{
+"tag_type": "info",
+"reason": "cutie",
+"added_by": "1173308935659339831",
+"added_on": "2025-07-10T20:32:54.289897"
+}
+],
+"6d7109b080ae4f8bb5b59eaee0b3520c": [
+{
+"tag_type": "info",
+"reason": "please stop throwing silverfish at me",
+"added_by": "354598337325826048",
+"added_on": "2025-06-19T10:06:46.244270"
+}
+],
+"c0b355f0725946e9b5deaeb3521f447e": [
+{
+"tag_type": "info",
+"reason": "greatest of all time (goat) - best to touch this game ever",
+"added_by": "394336841203187714",
+"added_on": "2025-06-19T12:23:10.945866"
+}
+],
+"6d4ed4781be44d5f95041ad20b5cc14b": [
+{
+"tag_type": "info",
+"reason": "chronic bowpsammer spintown stan",
+"added_by": "721377056629456947",
+"added_on": "2025-06-21T02:09:25.451271"
+}
+],
+"9d0c76f2bcb249df9b921d23f2654793": [
+{
+"tag_type": "info",
+"reason": "From [MVP+] UppieQueen: what i do have however is a boyfriend, you will never feel the imbrace of another :3",
+"added_by": "990510905898967060",
+"added_on": "2025-06-22T00:19:51.894513"
+}
+],
+"19f9582ab64e4e29b7933c69d7513fcb": [
+{
+"tag_type": "info",
+"reason": "annoying asf dewier stan that runs for 3 hours fb spams takes 0 kb",
+"added_by": "721377056629456947",
+"added_on": "2025-06-21T21:05:36.770606"
+}
+],
+"501e152819ec415393e703a4e44b7ca0": [
+{
+"tag_type": "info",
+"reason": "spent 24 emeralds in a game on machine gun bows and still lost \ud83d\udc80",
+"added_by": "990510905898967060",
+"added_on": "2025-06-22T00:21:23.195118"
+}
+],
+"3b79ca60581a4993943b350e615912ad": [
+{
+"tag_type": "info",
+"reason": "Will wait til end game and bowspam (changed to info)",
+"added_by": "1408202441857568878",
+"added_on": "2025-06-28T06:43:13.526013"
+}
+],
+"73f443f859c04da48092666780c52fe8": [
+{
+"tag_type": "info",
+"reason": "bob basketball 44",
+"added_by": "1129507464589627512",
+"added_on": "2025-06-30T19:01:42.952715"
+}
+],
+"11bf8d9e38964b3289a709d1590704ab": [
+{
+"tag_type": "info",
+"reason": "[VIP] Yaocha: im a groomer",
+"added_by": "755743511550099477",
+"added_on": "2025-07-02T11:48:38.541388"
+}
+],
+"1b38db50336349b8ba90dd1a07bf6393": [
+{
+"tag_type": "info",
+"reason": "violently beaming. smh. not falling for ts for the 4th time",
+"added_by": "1173308935659339831",
+"added_on": "2025-07-02T16:58:37.671529"
+}
+],
+"373f4f6e6729470aa8e03aaebef4cffa": [
+{
+"tag_type": "info",
+"reason": "DONT LET HIM GET A BOW",
+"added_by": "244086457818415106",
+"added_on": "2026-06-28T13:47:54.729662"
+}
+],
+"37698bcccd8040b68b1b1c394250cd58": [
+{
+"tag_type": "info",
+"reason": "somehow managed to drain an account by 3500 fkdr",
+"added_by": "990510905898967060",
+"added_on": "2025-07-03T20:35:53.591395"
+}
+],
+"3b76b69ae5134296a730ed49171ad6f8": [
+{
+"tag_type": "info",
+"reason": "nolife raaah",
+"added_by": "1008018260253478982",
+"added_on": "2025-10-31T17:21:32.219077"
+}
+],
+"ce2048b970d44feab493f2df88162704": [
+{
+"tag_type": "info",
+"reason": "toxic asf non trashtalking over losing",
+"added_by": "721377056629456947",
+"added_on": "2025-07-19T07:12:24.100700"
+}
+],
+"60dd5f99961a4456814930d1e234279a": [
+{
+"tag_type": "info",
+"reason": "beaming sped",
+"added_by": "1366888361695907840",
+"added_on": "2025-07-05T16:34:36.818909"
+}
+],
+"6cdbd74b0ae14b178ba9132b1280591e": [
+{
+"tag_type": "info",
+"reason": "Crossteamer",
+"added_by": "954359128833261598",
+"added_on": "2025-07-06T11:36:22.731823"
+}
+],
+"813a59e823164cad8088170278774982": [
+{
+"tag_type": "info",
+"reason": "bot mm",
+"added_by": "1405310227850592396",
+"added_on": "2025-07-08T18:44:36.227255"
+}
+],
+"d0183a5a11ac4f83aa8b700e29eaf44d": [
+{
+"tag_type": "info",
+"reason": "bot",
+"added_by": "615814015603441674",
+"added_on": "2025-07-30T12:55:25.699861"
+}
+],
+"b3e42c4db70949cda1ad46941e359850": [
+{
+"tag_type": "info",
+"reason": "BBT BIG BOOSTA TERMI BBT",
+"added_by": "749666742107635762",
+"added_on": "2025-07-10T14:31:38.298046"
+}
+],
+"0ca18909aec64cbe952fa60d47ebb2d1": [
+{
+"tag_type": "info",
+"reason": "From [MVP++] Exwited: quit being a fragile monkey by asking other people to carry you - hes just a weirdo who got mad he lost",
+"added_by": "1425999031569612862",
+"added_on": "2025-12-27T12:31:58.398320"
+}
+],
+"83cfdecfe95347268f8d24f72e4887fb": [
+{
+"tag_type": "info",
+"reason": "falling (this person posts brainrot youtube shorts, plz be cautious of them, is very a harmingful",
+"added_by": "1436432915595530400",
+"added_on": "2025-12-23T23:26:03.289556"
+}
+],
+"c32fc3971e514048b99ac7335cf04b4f": [
+{
+"tag_type": "info",
+"reason": "annoying dewier kid",
+"added_by": "939229156158369892",
+"added_on": "2025-10-25T10:51:53.184956"
+}
+],
+"96d850f337df4dbe8fceb89ab619fe71": [
+{
+"tag_type": "info",
+"reason": "has inhuman reaction speed but still walks into teammtes breaking misplaced blocks every time they try to fix the defense she placed",
+"added_by": "710394832195026997",
+"added_on": "2025-10-10T02:16:42.042145"
+}
+],
+"70a4cdde65f844b2b0340208986af6f5": [
+{
+"tag_type": "info",
+"reason": "laggy asf, prolly not cheating",
+"added_by": "749666742107635762",
+"added_on": "2025-07-17T18:50:39.654905"
+}
+],
+"75fa3f240ca04c48b7c33770083baba5": [
+{
+"tag_type": "info",
+"reason": "professional bridge faller since 2023!!",
+"added_by": "",
+"added_on": "2026-04-14T21:10:09.274918"
+}
+],
+"122d3002a7cb4c748cda612fb4554365": [
+{
+"tag_type": "info",
+"reason": "begged to be tagged, seeks attention and is a transformer femboy needs to be removed irl",
+"added_by": "422001501913743362",
+"added_on": "2025-07-31T19:35:22.300347"
+}
+],
+"7caa643dbe1b40659ce4bf49650ceed2": [
+{
+"tag_type": "info",
+"reason": "random toxic non crossmapped us with invis tnt and t3 for no fucking reason please spawnkill if spotted lowkey pmo",
+"added_by": "721377056629456947",
+"added_on": "2025-07-21T01:34:26.660199"
+}
+],
+"ed1ea5f0212b4b338ec6e625cd409ca1": [
+{
+"tag_type": "info",
+"reason": "Powered By Great Bedwars API .gg/urchin :mwah:",
+"added_by": "1242767293071495179",
+"added_on": "2025-08-17T07:27:31.068195"
+}
+],
+"deeddc30b83c466981659c4d048017a7": [
+{
+"tag_type": "info",
+"reason": "poor larping 7 figures",
+"added_by": "680546602217242631",
+"added_on": "2025-07-22T01:41:37.344946"
+}
+],
+"8c01b75d699d4272987a345e00f9982d": [
+{
+"tag_type": "info",
+"reason": "my fucking goat i love this guy",
+"added_by": "1405310227850592396",
+"added_on": "2025-07-23T08:15:39.168175"
+}
+],
+"a2fa73dee2dd4e3abcdd75d901f898d8": [
+{
+"tag_type": "info",
+"reason": "sub opti",
+"added_by": "594615854625456140",
+"added_on": "2025-07-23T15:09:13.410893"
+}
+],
+"09390a917b7e48f8bbb7b46688d7b461": [
+{
+"tag_type": "info",
+"reason": "sub opti",
+"added_by": "594615854625456140",
+"added_on": "2025-07-24T02:57:35.488860"
+}
+],
+"1680b8590e9f4f54906d259f6227da07": [
+{
+"tag_type": "info",
+"reason": "XFuel - pedophile",
+"added_by": "",
+"added_on": "2025-07-24T18:44:39.927734"
+}
+],
+"9ca7bd32ebd242e180362a52f35275eb": [
+{
+"tag_type": "info",
+"reason": "this player will false flag autoblock",
+"added_by": "507294051087679499",
+"added_on": "2025-07-26T13:46:04.976906"
+}
+],
+"09dccb13d83548b9ae15feef36339305": [
+{
+"tag_type": "info",
+"reason": "Yeah... back to cheating \ud83e\udd23 Use caution when queuing!",
+"added_by": "422001501913743362",
+"added_on": "2025-07-27T06:05:33.116821"
+}
+],
+"9e75b0ecf0d74e4880063b68f53e95a5": [
+{
+"tag_type": "info",
+"reason": "Loses one game and immediately turns into that little red emoji from the movie Inside Out. Will crash out over the smallest inconviences ever. Might want to check for psych eval...",
+"added_by": "422001501913743362",
+"added_on": "2025-07-27T06:28:29.100041"
+}
+],
+"51a5ea0fee5f4d8685290d2a851a7f81": [
+{
+"tag_type": "info",
+"reason": "will pearl on you 40 seconds into the game (not my tag)",
+"added_by": "721377056629456947",
+"added_on": "2025-07-27T18:22:47.486457"
+}
+],
+"cef8bc211b264d54b07da2995d587098": [
+{
+"tag_type": "info",
+"reason": "hard punch bow spam annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-07-30T05:45:34.618476"
+}
+],
+"aa757172c85e490cb0b913cb2cdd850b": [
+{
+"tag_type": "info",
+"reason": "bot",
+"added_by": "615814015603441674",
+"added_on": "2025-07-30T12:15:36.980477"
+}
+],
+"de287466a89e4a79b3e09cf25523d054": [
+{
+"tag_type": "info",
+"reason": "bot",
+"added_by": "615814015603441674",
+"added_on": "2025-07-30T12:15:41.191501"
+}
+],
+"053575cccc05427282accdcdf21c7957": [
+{
+"tag_type": "info",
+"reason": "bot",
+"added_by": "615814015603441674",
+"added_on": "2025-07-30T12:15:05.269965"
+}
+],
+"e9920e157451487db0cd40ee9a6f3fc3": [
+{
+"tag_type": "info",
+"reason": "bot",
+"added_by": "507294051087679499",
+"added_on": "2025-07-30T12:43:00.080895"
+}
+],
+"a47192630ceb41e0a0af4666437b867d": [
+{
+"tag_type": "info",
+"reason": "bot",
+"added_by": "507294051087679499",
+"added_on": "2025-07-30T12:43:00.081004"
+}
+],
+"376b8fa0f0d241feb8ff32a77ac99dfe": [
+{
+"tag_type": "info",
+"reason": "bot",
+"added_by": "615814015603441674",
+"added_on": "2025-07-30T12:55:33.753595"
+}
+],
+"b71f863085304667a6ead9c0050aff7f": [
+{
+"tag_type": "info",
+"reason": "Loves to nuke",
+"added_by": "1232083091531628585",
+"added_on": "2026-01-18T00:09:49.710987"
+}
+],
+"95a2740587864bf09c6d000aaaf5bc46": [
+{
+"tag_type": "info",
+"reason": "praying for you if they live past 1st rush",
+"added_by": "354598337325826048",
+"added_on": "2025-07-31T03:30:47.736408"
+}
+],
+"c55e7ced5a2a4048886eb4ab92cd1120": [
+{
+"tag_type": "info",
+"reason": "praying for you if they live past 1st rush",
+"added_by": "354598337325826048",
+"added_on": "2025-07-31T03:31:12.152907"
+}
+],
+"31d75c5f5e204014bdb3ea8f811523f8": [
+{
+"tag_type": "info",
+"reason": "cutest catboy on the craft :3 (older women hmu im a good boy i swear)",
+"added_by": "1405310227850592396",
+"added_on": "2025-10-30T18:22:44.882979"
+}
+],
+"a2e3ead691ce44b3b24e1d14f7292970": [
+{
+"tag_type": "info",
+"reason": "Bro thinks i was weirdo,You are absolute clown\ud83e\udd21 Why are u fucking place full obi on my bed.This is bedwars,Just break my bed instead place obi on my bed\ud83d\udd95 \"weirdo play style\"??? i was just collecting dias and ems for clutch bro just quit game if you don't know how to play this block game,Please Quit. I hate you so much You are not good boy <:bruh_wtf:1161152070590668810>",
+"added_by": "1242767293071495179",
+"added_on": "2025-08-01T08:19:47.585428"
+}
+],
+"463abd16d2e646b8a959619503ac9732": [
+{
+"tag_type": "info",
+"reason": "will confuse public bedwars lobbies with BWCS Grand Finals  (they lost first rush)",
+"added_by": "721377056629456947",
+"added_on": "2025-08-02T05:45:28.011953"
+}
+],
+"9095e356c41a447cb25ea78a3e80276d": [
+{
+"tag_type": "info",
+"reason": "will confuse public bedwars lobbies with BWCS Grand Finals  (they lost first rush)",
+"added_by": "721377056629456947",
+"added_on": "2025-08-02T05:45:28.013379"
+}
+],
+"37c46886657e487f954328c1d0aa3086": [
+{
+"tag_type": "info",
+"reason": "punch bow spammer",
+"added_by": "1366888361695907840",
+"added_on": "2025-08-04T12:41:18.364010"
+}
+],
+"ea63453914ee4fecbae7339994b3018f": [
+{
+"tag_type": "info",
+"reason": "looking at this player while on lunar client makes your fps 2500% worse",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-02T15:07:30.494894"
+}
+],
+"8a427a6346fb4bfaaf3abfd067573649": [
+{
+"tag_type": "info",
+"reason": "bro really said \u201cwho\u2019s the goat of bedwars\u201d like it\u2019s even a debate \ud83d\ude2d  it\u2019s that one dude called vossis who logs on at 3:17 AM, queues solo against 4-stacks, wins every game, speedbridges faster than your internet loads the map, breaks your bed before you even leave gen, flawlesses your entire team with a wooden sword, types \u201cgg\u201d once, then disappears for another 6 months like some kind of bedwars cryptid. that\u2019s the goat. \ud83d\udc10",
+"added_by": "244086457818415106",
+"added_on": "2026-04-11T23:00:32.940299"
+}
+],
+"b98405bc83664b33bb1f173ca4ee2966": [
+{
+"tag_type": "info",
+"reason": "best non oat killed nerdys hopper",
+"added_by": "947201883129389088",
+"added_on": "2025-08-05T19:47:55.687754"
+}
+],
+"9d5013a6fbe04b9c97b2220b98737c0f": [
+{
+"tag_type": "info",
+"reason": "punch bow spam lagger (<@680546602217242631> tag)",
+"added_by": "",
+"added_on": "2025-08-06T13:16:38.297520"
+}
+],
+"dc1d831d4a304f3a86363e6665d330ea": [
+{
+"tag_type": "info",
+"reason": "Crayon in 1 hand  glue stick in the other",
+"added_by": "594615854625456140",
+"added_on": "2025-08-06T22:40:50.238589"
+}
+],
+"26959460086e4c919d91e6fc54701db5": [
+{
+"tag_type": "info",
+"reason": "Claims to be a notorious Myau and Vape v4 user... Does have slightly funny bridging technique",
+"added_by": "422001501913743362",
+"added_on": "2025-08-07T05:08:11.123722"
+}
+],
+"ea5d0d9569ee4ef09c39a7a8eec592cc": [
+{
+"tag_type": "info",
+"reason": "upcoming dewier, flawlessed several hoppers as a non",
+"added_by": "749666742107635762",
+"added_on": "2025-08-07T19:03:06.951962"
+}
+],
+"d09510e6936841e1bfd7567e4f86c227": [
+{
+"tag_type": "info",
+"reason": "\ud83d\udea8 EXPOSING THE TRUTH: ISLAMICBEAN'S BOT STREAK \ud83e\udd16\ud83d\udca3  Let\u2019s talk about what's really going on. Player IslamicBean is currently \"grinding\" their way to a 1,000 winstreak in Bedwars... but not by playing fair. \ud83d\udc40 Instead, they\u2019re botting\u2014using alts, scripts, and shady tactics to inflate their streak while avoiding any real PvP. \ud83d\ude24  Every day, they queue low-level accounts, dodge good players, and abuse matchmaking. \ud83e\udde0\u2699\ufe0f This isn\u2019t skill. This isn\u2019t dedication. This is manipulation of the system for clout. \ud83d\udcc8\ud83d\udc80  Not only does this damage the competitive integrity of Bedwars, but it also sets a terrible precedent. New players think this is normal. Real grinders are overshadowed. \ud83d\ude21\ud83d\udc94  Hypixel is built on fairness, fun, and competition\u2014not cheating your way to the top. \ud83d\udcaf\ud83c\udfc6 The community deserves better than this blatant abuse. \u270b  To those defending this? You're enabling a problem. It\u2019s time we speak up. \ud83d\udde3\ufe0f\ud83d\udce2  IslamicBean, your streak means nothing if you didn\u2019t earn it. \ud83c\udfaf\ud83d\udeab",
+"added_by": "990510905898967060",
+"added_on": "2025-08-07T18:34:47.390288"
+}
+],
+"b9b98a50fad14c8894c6d90f858e9ba7": [
+{
+"tag_type": "info",
+"reason": "teamed with chinese cheaters and crossmapped then dced after our bed got destroyed",
+"added_by": "721377056629456947",
+"added_on": "2025-08-08T03:40:20.576146"
+}
+],
+"9417b4d97f2a4003ab7c51e2c9b45f5a": [
+{
+"tag_type": "info",
+"reason": "teamed with chinese cheaters and crossmapped then dced after our bed got destroyed",
+"added_by": "721377056629456947",
+"added_on": "2025-08-08T03:40:20.576253"
+}
+],
+"846b7971ec10454a882c5b923b967fa5": [
+{
+"tag_type": "info",
+"reason": "teamed with chinese cheaters and crossmapped then dced after our bed got destroyed",
+"added_by": "721377056629456947",
+"added_on": "2025-08-08T03:40:20.578638"
+}
+],
+"32e45f1511694e3387add68960c8b1bf": [
+{
+"tag_type": "info",
+"reason": "This user, despite being 1K Star+, hasn't matured yet and plays the bedwars in a way that will accuse randoms of cheating, be toxic to people that build bed defenses more than 1 layer of wool, and at the end will try to rage bait you on your private messages, because despite having so many stars, he couldn't learn how to PvP yet, and all he can do is hackusate.",
+"added_by": "530760437525119006",
+"added_on": "2025-08-08T17:09:27.761557"
+}
+],
+"e58367fa199f494ea2efabe8338d7755": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.673445"
+}
+],
+"6f81086bdfbc41108ee2ac808d5c9f0b": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.673557"
+}
+],
+"b16cf7e9b5bc417c98d43db1246bb360": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.673602"
+}
+],
+"bab2e0caf5a6426f969b7ea1398b6e64": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.673638"
+}
+],
+"0070be0c0f994a5d8472a76d74c5ae01": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.676302"
+}
+],
+"8f60e50a4ff648699a1cf01f5bbb3d91": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.676421"
+}
+],
+"1aa80464d7094e82a17f114d86e2401f": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.676383"
+}
+],
+"bdaff93da62b4f448f075184833389c1": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.676454"
+}
+],
+"6de8f26d543340f784118fa1290b3c74": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.676485"
+}
+],
+"444762ea120e4fb296c20ab437d97ecd": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.678599"
+}
+],
+"3468a1217c2843a1b2e5c148dc1959af": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.678720"
+}
+],
+"7aedccba46904a82aee5f1660e45e8b4": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.678754"
+}
+],
+"e0f75dd4f88e435d8d4b120f0e35583a": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.678787"
+}
+],
+"edfe6d399a8b4f8992b15f7c6ead7304": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.678681"
+}
+],
+"9be31b86db804bf895b7c6467a92b094": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.678816"
+}
+],
+"fd8e8f2dda50479bb757babf77dc2cd1": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.680391"
+}
+],
+"4efef46a34cb4fa896ab560358821d4c": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.680463"
+}
+],
+"fb837efc85424f4da38023ee363d2894": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.682584"
+}
+],
+"ca95c15349534796a02d4be2c4ef79ec": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.682505"
+}
+],
+"527091f6369e491698614a206c3b6056": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.682621"
+}
+],
+"dfff778b5ef54c468be1550c9e1f2aa2": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.682654"
+}
+],
+"5d99e5e0547446e8827b84ca8971d993": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.682684"
+}
+],
+"571bd6d67ffe400d82b5e0899136cfa9": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.682712"
+}
+],
+"99c682f03b78461f861673f8c67a2f21": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.682741"
+}
+],
+"54928294de744a5d829300226d9ac2a0": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.682769"
+}
+],
+"37094f4e90c443e98fc7bf02acb9268f": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687056"
+}
+],
+"910c42de2aea472eb5071d63d71ba818": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687138"
+}
+],
+"415062849ca94aabb698515e3dc346d2": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687209"
+}
+],
+"8e8dd6d722054d0f8e83b61e4e62379c": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687239"
+}
+],
+"fc86b9b48c344f5b91d2f9b5c1b0c42b": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687269"
+}
+],
+"00abc9dc7aef43bc9bbcc3284ff4809f": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687298"
+}
+],
+"47807e4a5ee040d4b878d4fc56538e54": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687327"
+}
+],
+"32a102544bcd49418ba6300a9043c364": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687356"
+}
+],
+"f0161f8471ac4cf8a72b7037209c1dcb": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.690631"
+}
+],
+"4fad258086ce467bb56b2090b9c18ab0": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.690701"
+}
+],
+"16d0ac7bb14f4b76a1d8b724c341af50": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.690736"
+}
+],
+"5eb505cb71594a1888a3a6bcbdfdacce": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.687177"
+}
+],
+"8f7ae4d93d4d458691037da0db361228": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.690796"
+}
+],
+"460d2ee22dc64cd7a4d0c2fdb945c1d1": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.690896"
+}
+],
+"364243294e194b8095af6c23a89af609": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.690842"
+}
+],
+"76df729f4afa46b49e6da1ff8e9fefe6": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.690937"
+}
+],
+"6ae19e823ead4f4e8c559e54335ddeab": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.690976"
+}
+],
+"a47014125a4f445b9ea6527d16eaa32e": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691009"
+}
+],
+"dad95ccdc7ab4dada697f407d7112c70": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691041"
+}
+],
+"5fb7931da2fc4ddabad99e06b0d592bc": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691073"
+}
+],
+"67e327d829bb434ca678a1779b506f6e": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691103"
+}
+],
+"a660701853f24e48a74a8fabdffe40ad": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691133"
+}
+],
+"0465544a271d4532afc6e36d9b5486bf": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691162"
+}
+],
+"f9ed8b7d664a4c3a9bd8bfe124af26b8": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691223"
+}
+],
+"9d14217c663f402aab042449d18969a8": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691253"
+}
+],
+"5dad89d3a0a24fd0a9ddd1eaa3468d5a": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691283"
+}
+],
+"baa71c5b877c4609954d43184ea03114": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691193"
+}
+],
+"3abc1c340a1449028df016bfa9852801": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691313"
+}
+],
+"df1032b70d634b4cb969f7b4323b5175": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691343"
+}
+],
+"bae0cceba0b44b08abd2801011a2be7a": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.691373"
+}
+],
+"dcff9af7682c492d9c319ef0556a11a6": [
+{
+"tag_type": "info",
+"reason": "bots",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-08T23:35:11.702898"
+}
+],
+"e131957929854e47852e9f9c5a957c7d": [
+{
+"tag_type": "info",
+"reason": "Spintown deciples UNHOLY amounts of bowspam/fireball spam praying for those who queue these nons",
+"added_by": "721377056629456947",
+"added_on": "2025-08-09T03:51:22.126095"
+}
+],
+"2f531c709bcb42c89fcd9eecad1b470c": [
+{
+"tag_type": "info",
+"reason": "Spintown deciples UNHOLY amounts of bowspam/fireball spam praying for those who queue these nons",
+"added_by": "721377056629456947",
+"added_on": "2025-08-09T03:51:22.126190"
+}
+],
+"25945746989d402ea68f759b9efe7ab6": [
+{
+"tag_type": "info",
+"reason": "Spintown deciples UNHOLY amounts of bowspam/fireball spam praying for those who queue these nons",
+"added_by": "721377056629456947",
+"added_on": "2025-08-09T03:51:22.127934"
+}
+],
+"8763e9466f9b46d8a2714e5759fa805d": [
+{
+"tag_type": "info",
+"reason": "will crossteam if they fail 2 times tryna kill you",
+"added_by": "530760437525119006",
+"added_on": "2025-08-09T17:16:08.338314"
+}
+],
+"2299b1a71cff41f795a2c9c5c8245bf1": [
+{
+"tag_type": "info",
+"reason": "bowcamper",
+"added_by": "1041006742668066816",
+"added_on": "2025-08-11T03:28:10.874194"
+}
+],
+"c092ce8493384488a2ed8f2e2cf122cf": [
+{
+"tag_type": "info",
+"reason": "https://winstreak.ws/",
+"added_by": "",
+"added_on": "2025-08-11T23:40:29.158415"
+}
+],
+"06c7c131f5fb4fb798b2a16dd4ef7a98": [
+{
+"tag_type": "info",
+"reason": "g*ybridged to us immediately after their first rush trying extremely hard being annoying built very bad symbol after getting our bed then lost",
+"added_by": "721377056629456947",
+"added_on": "2025-08-12T03:53:56.572469"
+}
+],
+"7f532f1e3a5841cc8195dbdff30efe4f": [
+{
+"tag_type": "info",
+"reason": "punch bow spam after bb pmo",
+"added_by": "721377056629456947",
+"added_on": "2025-08-12T04:47:39.792299"
+}
+],
+"e052ede449dd4e2b82d3e63714a188f5": [
+{
+"tag_type": "info",
+"reason": "Legit",
+"added_by": "1470794475172270235",
+"added_on": "2026-03-01T04:52:40.590549"
+}
+],
+"d6a957b4c418413da9ef24c1044f3d3c": [
+{
+"tag_type": "info",
+"reason": "willing to sell soul to trade beds pmo",
+"added_by": "721377056629456947",
+"added_on": "2025-08-14T00:50:59.510035"
+}
+],
+"390cae50ff4f456c80f9e29e1767b567": [
+{
+"tag_type": "info",
+"reason": "annoying toxic dewier stans please spawnkill if you queue",
+"added_by": "721377056629456947",
+"added_on": "2025-08-14T01:45:02.208813"
+}
+],
+"a74cbd59079e45209583bb83678efa4c": [
+{
+"tag_type": "info",
+"reason": "annoying toxic dewier stans please spawnkill if you queue",
+"added_by": "721377056629456947",
+"added_on": "2025-08-14T01:45:02.210821"
+}
+],
+"ea2bfa023b7548729064f7c71e4cba42": [
+{
+"tag_type": "info",
+"reason": "Insane at 0 cps bridging will look like scaff",
+"added_by": "507294051087679499",
+"added_on": "2025-12-16T00:53:52.671453"
+}
+],
+"e5d489d2ebd24169a62a24cf0f0d99d9": [
+{
+"tag_type": "info",
+"reason": "groomer / predator",
+"added_by": "1408202441857568878",
+"added_on": "2026-03-20T23:46:14.082511"
+}
+],
+"ee386307670b4af0b747da46ec03ffc5": [
+{
+"tag_type": "info",
+"reason": "not fakelagging, just rly laggy",
+"added_by": "615814015603441674",
+"added_on": "2025-08-15T09:35:14.580577"
+}
+],
+"aeb4b58e1c3d4655abc43e8b54565c4e": [
+{
+"tag_type": "info",
+"reason": "extremely annoying obby rushing dewier stans constantly fb passing annoying playstyle bridging to height limit genuinely terrible at the game willing to sell souls to trade bed",
+"added_by": "721377056629456947",
+"added_on": "2025-08-16T03:09:47.111942"
+}
+],
+"3dd0477114524ad1959215c321b0ebe7": [
+{
+"tag_type": "info",
+"reason": "extremely annoying obby rushing dewier stans constantly fb passing annoying playstyle bridging to height limit genuinely terrible at the game willing to sell souls to trade bed",
+"added_by": "721377056629456947",
+"added_on": "2025-08-16T03:09:47.113122"
+}
+],
+"e3e9b16456f9490fbe1765b164f3d9c4": [
+{
+"tag_type": "info",
+"reason": "will bowspam immediately, very annoying",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-16T22:50:26.980804"
+}
+],
+"de9370aea7b94e61aeba847007cefaf4": [
+{
+"tag_type": "info",
+"reason": "Ducky",
+"added_by": "1242767293071495179",
+"added_on": "2025-08-17T15:04:43.284173"
+}
+],
+"57cdb7a678f9471c9a86baa7d4a3eb35": [
+{
+"tag_type": "info",
+"reason": "polo",
+"added_by": "1242767293071495179",
+"added_on": "2025-08-17T15:06:02.981175"
+}
+],
+"587a1dc94384447094b33c40351e0482": [
+{
+"tag_type": "info",
+"reason": "owns a dumb cat",
+"added_by": "1129507464589627512",
+"added_on": "9999-12-24T20:34:57.008340"
+}
+],
+"bfd4185b6bdc45cfb63c020902409323": [
+{
+"tag_type": "info",
+"reason": "beyond annoying nons obby rushing constantly passing constantly tnting pmo",
+"added_by": "721377056629456947",
+"added_on": "2025-08-19T00:52:06.421971"
+}
+],
+"d8f3b3a0e4ba412ab9df57cbd80e3a19": [
+{
+"tag_type": "info",
+"reason": "beyond annoying nons obby rushing constantly passing constantly tnting pmo",
+"added_by": "721377056629456947",
+"added_on": "2025-08-19T00:52:06.422846"
+}
+],
+"7ae8546542bc499d8adcad9c6d7b81ea": [
+{
+"tag_type": "info",
+"reason": "lobby bot",
+"added_by": "749666742107635762",
+"added_on": "2025-08-19T19:29:44.290998"
+}
+],
+"8d27cecded804985a2a66e360147b7a5": [
+{
+"tag_type": "info",
+"reason": "accurate name",
+"added_by": "1129507464589627512",
+"added_on": "2025-08-19T23:58:13.178291"
+}
+],
+"b97f0963af0c48a5979388d323385372": [
+{
+"tag_type": "info",
+"reason": "bridge 2s DEMON!",
+"added_by": "1179470296378511471",
+"added_on": "2025-08-23T19:01:11.865690"
+}
+],
+"3522202000274600b8bd783a727204fe": [
+{
+"tag_type": "info",
+"reason": "crossmapping off spawn",
+"added_by": "721377056629456947",
+"added_on": "2025-08-22T04:10:03.870078"
+}
+],
+"0e70be913c04483a88a9ad035361b5aa": [
+{
+"tag_type": "info",
+"reason": "boys love my fluffy tail and soft paws",
+"added_by": "1408202441857568878",
+"added_on": "2025-08-23T00:26:15.825293"
+}
+],
+"976dbbb3d9a84257abb16b88a8833ea7": [
+{
+"tag_type": "info",
+"reason": "Olympic Runner in BW. Super Cringe(running 30 mins and died)",
+"added_by": "1242767293071495179",
+"added_on": "2025-08-24T12:08:24.571102"
+}
+],
+"4e159e77a242487da073191b1b2258d6": [
+{
+"tag_type": "info",
+"reason": "been in limbo for 3 years (also owned by pest the GOAT)",
+"added_by": "1179470296378511471",
+"added_on": "2025-08-25T17:50:45.632036"
+}
+],
+"e7ea1c5bf1b143ba8646cbe1594f05cf": [
+{
+"tag_type": "info",
+"reason": "D1 punch bow spammer, dies and buys another one, actually has good aim",
+"added_by": "1031776928849477633",
+"added_on": "2025-08-27T01:30:14.432111"
+}
+],
+"a6c70e65917646f58eae53b63df1eb92": [
+{
+"tag_type": "info",
+"reason": "former cheater converted to being legit",
+"added_by": "721377056629456947",
+"added_on": "2025-10-19T22:10:47.297985"
+}
+],
+"4060e9a0f1234c66bbfda6bdc75240bd": [
+{
+"tag_type": "info",
+"reason": "goes for obby, proceeds to invis pearl on your bed until he gets it - makes ur game a 30 minute one",
+"added_by": "1315675915925323808",
+"added_on": "2025-08-28T14:44:24.619675"
+}
+],
+"7f83998b8beb4510a00e7a6eda036d56": [
+{
+"tag_type": "info",
+"reason": "Tried Inject Slinky Crack",
+"added_by": "1242767293071495179",
+"added_on": "2025-08-28T15:38:13.078685"
+}
+],
+"b099573b823c4df898607e13448631d7": [
+{
+"tag_type": "info",
+"reason": "oHappi isn\u2019t just another player \u2014 they\u2019re the name that gets whispered in the BedWars lobby when things start heating up. Cool under pressure, sharp with every move, and tougher than obsidian, oHappi has a style that\u2019s all confidence and precision. Whether it\u2019s clutching a 1v4, speed\u2011bridging across the map like it\u2019s nothing, or defending the bed with diamond\u2011level strategy, oHappi makes it look effortless.",
+"added_by": "1163557124106899467",
+"added_on": "2026-04-29T17:29:54.995468"
+}
+],
+"564509c43db8490a92b1836f483f06c2": [
+{
+"tag_type": "info",
+"reason": "boosting rambo tiered ap (blitz sg) with ign hakab lol and another nick",
+"added_by": "613760976835313665",
+"added_on": "2025-08-29T00:39:56.571301"
+}
+],
+"3642efc54a704ac3a0c5a46fec2412b3": [
+{
+"tag_type": "info",
+"reason": "boosting ign hosnlegacy21 in blitz sg (boosting tiered rambo ap) and another nick",
+"added_by": "613760976835313665",
+"added_on": "2025-08-29T00:41:16.512385"
+}
+],
+"29e338abb3bf489f9ad7fd82a84533c6": [
+{
+"tag_type": "info",
+"reason": "Most annoying prick ever. This kid will run around the entire map with a punch bow and spam jump boost whenever you get near. Please spawn kill this kid if you q him",
+"added_by": "1349048205077123133",
+"added_on": "2025-10-08T21:42:47.232004"
+}
+],
+"a389657064c34f6aa3d67c478faa7289": [
+{
+"tag_type": "info",
+"reason": "annoying 0.5fkdr 400 star bow spamming in 3s",
+"added_by": "1405310227850592396",
+"added_on": "2025-08-29T14:27:39.843950"
+}
+],
+"06e4bc447bfb4fd597ef64bf1f079b92": [
+{
+"tag_type": "info",
+"reason": "called me loser after killing me(so annoying and pointless talk) either he lost to me(He had dia arm iron sword both upgraded with dia. and I was no upgraded iron arm and stone sword???) How u Feel after losing a player who this kid called loser. never talk please. you are so annoying as hell 10 y/o roblox guy",
+"added_by": "1242767293071495179",
+"added_on": "2025-09-02T10:14:01.095946"
+}
+],
+"861740cf1cb54f59bb3c771e41947a01": [
+{
+"tag_type": "info",
+"reason": "annoying, runs for the whole game",
+"added_by": "1315675915925323808",
+"added_on": "2025-09-02T18:41:16.279365"
+}
+],
+"ad25d8c197e34507be9d4adc160c2f3a": [
+{
+"tag_type": "info",
+"reason": "legit; plays with cheaters",
+"added_by": "354598337325826048",
+"added_on": "2025-09-05T04:57:51.205891"
+}
+],
+"081bce927309436c8970ad495cc7bc93": [
+{
+"tag_type": "info",
+"reason": "[SHOUT] [GREEN] [MVP+] soopermannhaha37: Botw158 honestly dude u need rto do something with ur life bro ur so annoying nobody would care if u",
+"added_by": "1159505709814259774",
+"added_on": "2025-09-07T05:41:36.872305"
+}
+],
+"06bc8387a9c8470b8723129a6017ea3e": [
+{
+"tag_type": "info",
+"reason": "excessive bow spam",
+"added_by": "721377056629456947",
+"added_on": "2025-09-07T23:09:18.470523"
+}
+],
+"d3cec0d8ca2c4e3ca1e3092d67954160": [
+{
+"tag_type": "info",
+"reason": "certified cat girl",
+"added_by": "1070956259534188665",
+"added_on": "2025-09-29T06:31:45.935811"
+}
+],
+"fc5e596eded44287a085dbeb7daa7530": [
+{
+"tag_type": "info",
+"reason": "You are not dewier annoying as hell",
+"added_by": "1242767293071495179",
+"added_on": "2025-09-11T02:46:03.054185"
+}
+],
+"c291ff9ad0404ecb9c113e813b5ce974": [
+{
+"tag_type": "info",
+"reason": "tryhard non with an autoclicker that loves to godbridge everywhere",
+"added_by": "749666742107635762",
+"added_on": "2025-09-11T19:12:30.731733"
+}
+],
+"f7460c4afcc9427bbe94311004e721be": [
+{
+"tag_type": "info",
+"reason": "will get obby, do nothing but camp for 30 minutes or so, when they get run over by you, theyll magically queue you again because theyre salty and think theyre Dewier, so theyll turn around and crossmap you while crossteaming with others, and act as if theyre the queens of bedwars in chat. please target them and spawn kill them or smth, annoying asf randoms",
+"added_by": "583130656532332604",
+"added_on": "2025-09-12T06:11:07.813587"
+}
+],
+"4e231a156f824f118fd193dcaff66f7c": [
+{
+"tag_type": "info",
+"reason": "will get obby, do nothing but camp for 30 minutes or so, when they get run over by you, theyll magically queue you again because theyre salty and think theyre Dewier, so theyll turn around and crossmap you while crossteaming with others, and act as if theyre the queens of bedwars in chat. please target them and spawn kill them or smth, annoying asf randoms",
+"added_by": "583130656532332604",
+"added_on": "2025-09-12T06:10:48.315161"
+}
+],
+"5b525fa9eda54944a81189088d75ae74": [
+{
+"tag_type": "info",
+"reason": "treats losing a bed like its BWCS grand finals be aware excessive dewier stannery claims to not know who dewier is",
+"added_by": "721377056629456947",
+"added_on": "2025-09-13T02:19:01.251988"
+}
+],
+"b08a49c35bc44d54851733feae7c80d2": [
+{
+"tag_type": "info",
+"reason": "spintown desciple constant punchbow spam annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-09-14T02:23:01.737484"
+}
+],
+"cba86f3b53c44b3c98a24d26029ed86c": [
+{
+"tag_type": "info",
+"reason": "desperate for emo girls",
+"added_by": "721377056629456947",
+"added_on": "2025-09-14T06:23:11.883799"
+}
+],
+"72919568d9264a88bd8ca5645142e12c": [
+{
+"tag_type": "info",
+"reason": "weird little blitz troglodyte",
+"added_by": "1405310227850592396",
+"added_on": "2025-09-14T21:17:43.521677"
+}
+],
+"0ea680686eb545d18040015acba4d418": [
+{
+"tag_type": "info",
+"reason": "really annoying - marathon runner",
+"added_by": "1315675915925323808",
+"added_on": "2025-09-16T19:28:12.989181"
+}
+],
+"03215a3ef40a44cdb225bc469514f185": [
+{
+"tag_type": "info",
+"reason": "Greatest bedwars player of all time please send lots of love if you see him \u2764\ufe0f",
+"added_by": "1179470296378511471",
+"added_on": "2025-09-17T00:39:27.278390"
+}
+],
+"b48720f5d84048b4bcf27ec455c82faf": [
+{
+"tag_type": "info",
+"reason": "crossmaps you consistently and also loses consistently",
+"added_by": "1179470296378511471",
+"added_on": "2025-09-17T20:49:07.650086"
+}
+],
+"4c4d2f5822c34d73afd87c78d98a7ce8": [
+{
+"tag_type": "info",
+"reason": "crossmaps you consistently and also loses consistently",
+"added_by": "1179470296378511471",
+"added_on": "2025-09-17T20:49:07.704374"
+}
+],
+"6393199b22d84348bdc9c6ef3eaf03d1": [
+{
+"tag_type": "info",
+"reason": "crossmaps you consistently and also loses consistently",
+"added_by": "1179470296378511471",
+"added_on": "2025-09-17T20:49:08.042075"
+}
+],
+"a44c9512a5164a478e6cc777ab0ab6dd": [
+{
+"tag_type": "info",
+"reason": "4v2 crossteaming in 2s all dogshit very beatable annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-09-20T04:30:25.751125"
+}
+],
+"9362c290e01d498c9b71eeb9600d2c56": [
+{
+"tag_type": "info",
+"reason": "4v2 crossteaming in 2s all dogshit very beatable annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-09-20T04:30:25.786470"
+}
+],
+"6503b2d6902f4c23a6cd3091225fd8a7": [
+{
+"tag_type": "info",
+"reason": "4v2 crossteaming in 2s all dogshit very beatable annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-09-20T04:30:26.088699"
+}
+],
+"85b1bc75d49a4045aac67e42e11acd94": [
+{
+"tag_type": "info",
+"reason": "4v2 crossteaming in 2s all dogshit very beatable annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-09-20T04:30:27.275319"
+}
+],
+"b3a2e58750a54496b4979f7a3ad797e1": [
+{
+"tag_type": "info",
+"reason": "transphobe that seems to lack cognitive thinking ability",
+"added_by": "758398867157811200",
+"added_on": "2025-11-07T17:28:39.027260"
+}
+],
+"3ebfd15a451c43a48fd6eb72a0aac37b": [
+{
+"tag_type": "info",
+"reason": "lowk chillest guy u can meet (hands in pocket and smiling)",
+"added_by": "244086457818415106",
+"added_on": "2026-05-08T23:19:04.347733"
+}
+],
+"32e39944d96f4498a967cf2e5a87a51f": [
+{
+"tag_type": "info",
+"reason": "annoying asf spintown desciple punch bow spammer DO NOT let him get ems",
+"added_by": "721377056629456947",
+"added_on": "2025-09-21T21:07:41.389866"
+}
+],
+"c21268a3dae74968a0f15e507778a710": [
+{
+"tag_type": "info",
+"reason": "annoying: imagine Dewier and Spintown having a child. Low ping, moves literally to the front when hit, has a 100% bow accuracy.",
+"added_by": "710394832195026997",
+"added_on": "2025-09-23T21:36:48.445557"
+}
+],
+"30cc144259474ec5880e983b45f73b0a": [
+{
+"tag_type": "info",
+"reason": "crossmapping and then calling me a looser",
+"added_by": "954359128833261598",
+"added_on": "2025-09-24T14:18:35.365046"
+}
+],
+"16751f79c0b14e53a0b590d31fc1d80d": [
+{
+"tag_type": "info",
+"reason": "cool admin",
+"added_by": "1242767293071495179",
+"added_on": "2025-11-29T08:07:00.654349"
+}
+],
+"b72392fccf3a412599f4015977882f89": [
+{
+"tag_type": "info",
+"reason": "450 ms and somehow deflected my fireball",
+"added_by": "1179470296378511471",
+"added_on": "2025-09-26T01:48:13.224840"
+}
+],
+"fb3d96498a5b4d5b91b763db14b195ad": [
+{
+"tag_type": "info",
+"reason": "yt rank pedophile",
+"added_by": "721377056629456947",
+"added_on": "2025-09-26T01:59:22.228948"
+}
+],
+"2837fd1dbe7d47978f47d4c52f42e352": [
+{
+"tag_type": "info",
+"reason": "annoying non with punch bow",
+"added_by": "1242767293071495179",
+"added_on": "2025-09-27T08:49:43.393548"
+}
+],
+"e2b7277f6c324147b188e84a33ad8f07": [
+{
+"tag_type": "info",
+"reason": "yapping shit(bro thought i was teaming but i didn't??\ud83d\ude2d) after fd he party spam me. very harmful 100star",
+"added_by": "1242767293071495179",
+"added_on": "2025-09-27T11:06:49.191800"
+}
+],
+"997264ceac734bb897c051c589dbd4c6": [
+{
+"tag_type": "info",
+"reason": "shabbat shalom winning the snipe was promised to him 3000 years ago",
+"added_by": "837012286438244392",
+"added_on": "2025-09-28T18:14:59.482348"
+}
+],
+"9374de1d2226459f893945b7edc47213": [
+{
+"tag_type": "info",
+"reason": "Developer of the Myau cheat.",
+"added_by": "107580727322759168",
+"added_on": "2025-09-28T20:43:05.383781"
+}
+],
+"d80c4c404b3d40859f2c8e40e1678f04": [
+{
+"tag_type": "info",
+"reason": "holding back luqas42O",
+"added_by": "1031776928849477633",
+"added_on": "2025-10-01T16:47:25.341519"
+}
+],
+"030b97c6a25b43d0bc6cfa349059cac4": [
+{
+"tag_type": "info",
+"reason": "greatest non of all time",
+"added_by": "1031776928849477633",
+"added_on": "2025-10-01T16:47:09.603642"
+}
+],
+"d9d8591ec16c4aeea79ab69918a2fef6": [
+{
+"tag_type": "info",
+"reason": "spintown desciple (hard bow spam)",
+"added_by": "721377056629456947",
+"added_on": "2025-10-05T20:53:28.656163"
+}
+],
+"e6c9c9c79a014e08a084511678230d67": [
+{
+"tag_type": "info",
+"reason": "annoying 500star non with bow",
+"added_by": "1242767293071495179",
+"added_on": "2025-10-07T07:22:25.429077"
+}
+],
+"ad5e9e94fa704b3588300a1acc3daeed": [
+{
+"tag_type": "info",
+"reason": "Cute Is JustIce",
+"added_by": "467127201104396289",
+"added_on": "2025-10-07T07:32:14.498767"
+}
+],
+"e3f1c8d557c34423875f523767e73ada": [
+{
+"tag_type": "info",
+"reason": "a non who ruined my 20 solo ws (stop gay bridge like that shitter)",
+"added_by": "",
+"added_on": "2025-10-09T11:43:07.247550"
+}
+],
+"38f5b34a5f084aef8a8a1a61a2d842f9": [
+{
+"tag_type": "info",
+"reason": "a non who ruined my 20 solo ws pt. 2 never q me again",
+"added_by": "",
+"added_on": "2025-10-09T11:44:14.933178"
+}
+],
+"ced1b516c26840e7a661decb796b9e97": [
+{
+"tag_type": "info",
+"reason": "bowspamming",
+"added_by": "721377056629456947",
+"added_on": "2025-10-12T21:05:04.011845"
+}
+],
+"f407380001f54333a445d996c59558f0": [
+{
+"tag_type": "info",
+"reason": "farming random nons and bowing them with p3 dia armor and not breaking their bed untill they leave",
+"added_by": "1141424732575641601",
+"added_on": "2025-10-15T15:32:32.536554"
+}
+],
+"27a0d3a52e254b00b2433a295fd588cf": [
+{
+"tag_type": "info",
+"reason": "edate in mm,please sign no runs contract",
+"added_by": "",
+"added_on": "2025-10-16T06:32:46.739281"
+}
+],
+"93b3d670e84e4f66b39495d4dee223c7": [
+{
+"tag_type": "info",
+"reason": "edate in mm,weird loves cy7n",
+"added_by": "",
+"added_on": "2025-10-16T06:36:15.934810"
+}
+],
+"bd1f0bd4f3e44bbf916ded8d38074705": [
+{
+"tag_type": "info",
+"reason": "cringe af, bow spam after bg, lost against nons, no fucking gamesense, had firstrushs still fighting and could collect everything but lost lmfao, hella ass and my tm8 couldnt even differentiate any block cuz he fucked up his tp",
+"added_by": "1141424732575641601",
+"added_on": "2025-10-17T23:13:35.201429"
+}
+],
+"2f16a5af1d324fda88648b7467c018a1": [
+{
+"tag_type": "info",
+"reason": "oily swedish guy",
+"added_by": "1288072869384945756",
+"added_on": "2026-01-31T16:23:12.310100"
+}
+],
+"93bb4d86059b400aace7495cbf8f34b7": [
+{
+"tag_type": "info",
+"reason": "loser.",
+"added_by": "1405310227850592396",
+"added_on": "2025-10-18T03:52:21.758438"
+}
+],
+"242562b430d14d5db622b98cb76f244d": [
+{
+"tag_type": "info",
+"reason": "bowspam",
+"added_by": "721377056629456947",
+"added_on": "2025-10-18T18:16:43.956094"
+}
+],
+"30d6aed8a50d47d197a809c6e09b1d4e": [
+{
+"tag_type": "info",
+"reason": "haha L ur tagged",
+"added_by": "721377056629456947",
+"added_on": "2025-10-19T20:53:54.047742"
+}
+],
+"8ff9a92b2c97447895cb986d658968e2": [
+{
+"tag_type": "info",
+"reason": "will cheat on his girlfriend for you if he thinks youre an egirl",
+"added_by": "",
+"added_on": "2025-10-23T14:32:45.727180"
+}
+],
+"24dda543223b4f608c29f9eb04ec0202": [
+{
+"tag_type": "info",
+"reason": "The one called the Seer fought differently. His gift was not speed or strength, but vision \u2014 an uncanny sense for the unseen, tracing the shape of enemies through walls and shadows. Some called it Xray, others called it instinct sharpened by countless battles. Whatever it was, it kept their team alive.",
+"added_by": "",
+"added_on": "2025-10-24T21:21:03.886663"
+}
+],
+"b011ce845f624f33875afe1c0205fc53": [
+{
+"tag_type": "info",
+"reason": "dumbest non to ever exist targets knowing enemy team is viuolently cheating",
+"added_by": "721377056629456947",
+"added_on": "2025-10-26T05:28:06.045444"
+}
+],
+"49166c9c24694394a6dc88d7f76c5b59": [
+{
+"tag_type": "info",
+"reason": "Recently, I  feel very good, so I plan to form a team to get 3 winstreaks. There will be no cheating on the stream, and team teammates are not allowed to cheating either.\nrequirements are as follows\n1. let me steal finals\n2. let me steal beds\n3. must to win\n4. You must have enough time to play games and be on call\n5. You need to have a certain level of pvp , just a level like Dewier or Jamezs.\n6. I have to communicate with VC, only I can not speak\nPosition 1:\nPosition 2:\nPosition 3: I\nPosition 4:",
+"added_by": "1235948046039253092",
+"added_on": "2025-11-18T11:41:26.681164"
+}
+],
+"d83fd9920e604e3182f7c5ea4fcee4c2": [
+{
+"tag_type": "info",
+"reason": "A brutal civil war has been raging in Sudan since April 2023 between two rival military factions: the Sudanese Armed Forces (SAF), led by General Abdel Fattah al-Burhan, and the paramilitary Rapid Support Forces (RSF), commanded by General Mohamed Hamdan \"Hemedti\" Dagalo. The conflict has resulted in the world's largest humanitarian crisis, with widespread displacement, famine conditions, and accusations of ethnic cleansing and war crimes. \nCauses of the Conflict\nThe current war stems from a power struggle that followed the 2019 ousting of long-time dictator Omar al-Bashir. A transitional government was established with a plan to move towards civilian, democratic rule, led jointly by al-Burhan (head of the army) and Hemedti (head of the powerful RSF paramilitary). Tensions escalated over plans to integrate the 100,000-strong RSF into the regular army and determine who would lead the unified force, with both generals vying for ultimate power and control over lucrative economic resources like gold mines. Fighting erupted on April 15, 2023, when the RSF was redeployed around the country in a move the army viewed as a threat.",
+"added_by": "1008018260253478982",
+"added_on": "2025-11-04T09:27:42.202114"
+}
+],
+"219dc80a1ae844c8ada27685256f7846": [
+{
+"tag_type": "info",
+"reason": "ragebaiter, asks for edating at random",
+"added_by": "758398867157811200",
+"added_on": "2025-10-29T00:46:40.154986"
+}
+],
+"7120f3c4c18a4753baf3d90af928f860": [
+{
+"tag_type": "info",
+"reason": "claims to be 23 (obviously like 15 at max) and says he likes 13 year olds",
+"added_by": "",
+"added_on": "2026-02-16T17:32:29.576549"
+}
+],
+"8c3692fc6a0d4d489b62ea562e5e2455": [
+{
+"tag_type": "info",
+"reason": "stop i have wood \ud83d\udc10",
+"added_by": "507294051087679499",
+"added_on": "2025-10-30T22:26:15.310203"
+}
+],
+"9302cea144c74f1b9b61ee7a3b939e2c": [
+{
+"tag_type": "info",
+"reason": "Ran in mine man block fight for 9 minutes while the score was 47-17 (this is bad \ud83d\udc4e). This guy is a harmful dude please WATCH OUT if you find him.",
+"added_by": "1179470296378511471",
+"added_on": "2025-10-31T00:34:32.798143"
+}
+],
+"4df34d19811b43e486cac5e7e7136d7e": [
+{
+"tag_type": "info",
+"reason": "player has a ludicrous fkdr of 4000 and wlr 1000. probably hasn't seen the sun in weeks",
+"added_by": "757284149793914900",
+"added_on": "2025-10-31T02:47:40.750574"
+}
+],
+"4d2c7c366b6442349d437c6403b97903": [
+{
+"tag_type": "info",
+"reason": "Rule Britannia!",
+"added_by": "",
+"added_on": "2025-11-16T22:08:22.759812"
+}
+],
+"d4ff3ffa1338477b80398dd8cf90cc94": [
+{
+"tag_type": "info",
+"reason": "stupid non who obsesses and targets legit players while ignoring the blatants",
+"added_by": "721377056629456947",
+"added_on": "2025-11-01T19:38:49.040138"
+}
+],
+"51e981749012491ea7f0c570d07598ed": [
+{
+"tag_type": "info",
+"reason": "dude has like legit lagrange or something but he's legit",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-06T21:04:32.420710"
+}
+],
+"a2702c4d98ad4e6bb2b6181c74061b2a": [
+{
+"tag_type": "info",
+"reason": "spam partied me for 3 minutes straight after losing 5-0 in bridge",
+"added_by": "1179470296378511471",
+"added_on": "2025-11-02T16:41:37.543084"
+}
+],
+"428e19d1af65419d81a1a871ecfc8d99": [
+{
+"tag_type": "info",
+"reason": "obsessive non willing to sell his soul to trade beds inhuman hits and has main character type protection annoying asf",
+"added_by": "721377056629456947",
+"added_on": "2025-11-02T22:03:58.778990"
+}
+],
+"a83a366cac5d45e18b283482b0417a12": [
+{
+"tag_type": "info",
+"reason": "crossmap off spawn",
+"added_by": "721377056629456947",
+"added_on": "2025-11-03T04:06:08.830792"
+}
+],
+"26707a32b55f4efda35e2cb1af90d148": [
+{
+"tag_type": "info",
+"reason": "ragebait final boss",
+"added_by": "758398867157811200",
+"added_on": "2025-11-03T14:57:47.547244"
+}
+],
+"d9268592c38e445494f11a45b6387299": [
+{
+"tag_type": "info",
+"reason": "sits in the top of trees 100 blocks high and bow spams you in sw. needs help",
+"added_by": "757284149793914900",
+"added_on": "2025-11-03T21:15:48.342270"
+}
+],
+"d58c8b6e655246d4ba8d2fcdef8d0f0d": [
+{
+"tag_type": "info",
+"reason": "pretty much a pedophile and a creep + uses ac",
+"added_by": "685116886215688192",
+"added_on": "2025-11-04T23:57:39.457814"
+}
+],
+"7d23f4d650a94662be4286516bd4d4a7": [
+{
+"tag_type": "info",
+"reason": "pls timer i watered",
+"added_by": "1129507464589627512",
+"added_on": "2025-11-06T21:48:31.253920"
+}
+],
+"572e5c0cf221400f901dd7edd4766d39": [
+{
+"tag_type": "info",
+"reason": "VERY true",
+"added_by": "",
+"added_on": "2025-11-08T08:58:44.892524"
+}
+],
+"1e2dd8ec665f4d37a1f50495e9553a46": [
+{
+"tag_type": "info",
+"reason": "silly seal",
+"added_by": "809978754679570443",
+"added_on": "2025-11-08T09:02:06.330921"
+}
+],
+"71aacd75647c45c59065f063c8025bd0": [
+{
+"tag_type": "info",
+"reason": "maid udeath, submissive femboy to trans catgirl arc, likely to :3 at you, very freaky",
+"added_by": "",
+"added_on": "2026-04-30T19:41:11.894869"
+},
+{
+"tag_type": "info",
+"reason": "a cat girl",
+"added_by": "660544888974344194",
+"added_on": "2026-01-08T22:46:05.193496"
+},
+{
+"tag_type": "info",
+"reason": "^w^",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-16T15:33:37.572913"
+},
+{
+"tag_type": "info",
+"reason": "5th info tag for literally no reason",
+"added_by": "",
+"added_on": "2026-01-18T20:57:40.936858"
+},
+{
+"tag_type": "info",
+"reason": "meowowowo",
+"added_by": "",
+"added_on": "2026-01-20T07:23:57.056635"
+},
+{
+"tag_type": "info",
+"reason": "scary",
+"added_by": "",
+"added_on": "2026-01-31T16:26:03.765666"
+},
+{
+"tag_type": "info",
+"reason": "freaky",
+"added_by": "",
+"added_on": "2026-02-03T21:16:38.887287"
+},
+{
+"tag_type": "info",
+"reason": "mommy",
+"added_by": "474878147779887105",
+"added_on": "2026-02-21T23:26:36.536179"
+},
+{
+"tag_type": "info",
+"reason": "hacing",
+"added_by": "",
+"added_on": "2026-03-20T20:01:28.986840"
+},
+{
+"tag_type": "info",
+"reason": "freakazoid",
+"added_by": "",
+"added_on": "2026-04-22T14:56:02.615572"
+},
+{
+"tag_type": "info",
+"reason": "jr velo https://youtu.be/AVlY_dkAkeA",
+"added_by": "",
+"added_on": "2026-04-27T01:04:36.100260"
+},
+{
+"tag_type": "info",
+"reason": "mraow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-02T00:14:32.094748"
+},
+{
+"tag_type": "info",
+"reason": "What if instead of urchin, it was freakchin, and instead of tagging cheaters we tagged freaks",
+"added_by": "749666742107635762",
+"added_on": "2026-05-09T08:48:37.674287"
+},
+{
+"tag_type": "info",
+"reason": "https://urchin.ws/baddragon.gif",
+"added_by": "",
+"added_on": "2026-05-24T20:50:30.356435"
+},
+{
+"tag_type": "info",
+"reason": "https://urchin.ws/rosedragon.gif",
+"added_by": "",
+"added_on": "2026-05-24T20:54:35.639122"
+}
+],
+"51c144150c904b11b3c02c8e6f451911": [
+{
+"tag_type": "info",
+"reason": "terminally ill dewier stan",
+"added_by": "1179470296378511471",
+"added_on": "2025-11-08T17:11:18.778724"
+}
+],
+"e44682708ef14e708183a26d4005e304": [
+{
+"tag_type": "info",
+"reason": "may or may not full rank your team first rush wrong way when you are fighting cheaters",
+"added_by": "721377056629456947",
+"added_on": "2025-11-09T00:04:54.014258"
+}
+],
+"d6d1d44faaaa4c26b6155dd368f62065": [
+{
+"tag_type": "info",
+"reason": "may or may not full rank your team first rush wrong way when you are fighting cheaters",
+"added_by": "721377056629456947",
+"added_on": "2025-11-09T00:04:54.046524"
+}
+],
+"8f0b692650ac4b2cb4e187d40a8085e6": [
+{
+"tag_type": "info",
+"reason": "threatening to beam and calling out for low fkdr (bro you have a 1.16 SIT)",
+"added_by": "758398867157811200",
+"added_on": "2025-11-09T13:44:55.618055"
+}
+],
+"631f1abf5e7946519fbdcd4d0866b8f8": [
+{
+"tag_type": "info",
+"reason": "stage 4 dewier watching",
+"added_by": "1179470296378511471",
+"added_on": "2025-11-09T02:10:26.699998"
+}
+],
+"87acbe50a87f462c961a200f9468faa1": [
+{
+"tag_type": "info",
+"reason": "[VIP] gameboi4784: paid 180 for rank and cp",
+"added_by": "",
+"added_on": "2025-11-09T09:24:18.033504"
+}
+],
+"88688334ebf4484a8e483e0d8e94e949": [
+{
+"tag_type": "info",
+"reason": "toxic fireball spammer",
+"added_by": "758398867157811200",
+"added_on": "2025-11-10T00:33:58.788679"
+}
+],
+"f780af2dc8fd453385c82acf11686085": [
+{
+"tag_type": "info",
+"reason": "bestest femboy in bedwars :3",
+"added_by": "809978754679570443",
+"added_on": "2025-11-10T09:24:22.154672"
+}
+],
+"a8dfcc3a388d4b6a92ee18c0b756992b": [
+{
+"tag_type": "info",
+"reason": "^_^",
+"added_by": "613760976835313665",
+"added_on": "2025-11-13T07:25:52.841860"
+}
+],
+"fb30dcd978db435d9fa5573d7319fdf1": [
+{
+"tag_type": "info",
+"reason": "RUNS PRIVs COMM",
+"added_by": "486537370423001114",
+"added_on": "2025-11-13T15:32:24.613003"
+}
+],
+"cb6367db3579439a8a797b771b613365": [
+{
+"tag_type": "info",
+"reason": "says they have cerebral palsy but faking really hard",
+"added_by": "758398867157811200",
+"added_on": "2025-11-15T00:08:27.631386"
+}
+],
+"dc8aa32c52cc43ba944e80d6f5d38e6e": [
+{
+"tag_type": "info",
+"reason": "bow & fb spammer",
+"added_by": "810632538359070730",
+"added_on": "2025-11-15T19:57:12.866987"
+}
+],
+"e00001599fab41f7b181b6b98ab3fe97": [
+{
+"tag_type": "info",
+"reason": "more wannabe comrunner than any ucpd member",
+"added_by": "721377056629456947",
+"added_on": "2025-11-15T23:07:16.563999"
+}
+],
+"4bdb19d77d09448bb1ac936f9fd97541": [
+{
+"tag_type": "info",
+"reason": "excessive dewier stannery be careful",
+"added_by": "721377056629456947",
+"added_on": "2025-11-18T04:50:53.625589"
+}
+],
+"70c8be0b3caa4a9ba93becefd150c1ff": [
+{
+"tag_type": "info",
+"reason": "plays with blatant cheaters",
+"added_by": "443962843327365120",
+"added_on": "2025-11-21T08:26:00.098787"
+}
+],
+"4b66b4d7e32d477e8efb22732a47348f": [
+{
+"tag_type": "info",
+"reason": "MAXIMUM. PASSION. SO. MUCH. PASSION.",
+"added_by": "1179470296378511471",
+"added_on": "2025-11-22T03:30:52.735704"
+}
+],
+"c7cae1ad30b642f4aa5397bfb816a346": [
+{
+"tag_type": "info",
+"reason": "[72\u272b] [MVP+] poqy: is it okay to goon to labubus",
+"added_by": "1129507464589627512",
+"added_on": "2025-11-22T20:57:57.217315"
+}
+],
+"51db3edbd97f4619a1aa2a57a4cf9857": [
+{
+"tag_type": "info",
+"reason": "thinking hes the goat just bc of his insane 3 fkdr (dogshit btw)",
+"added_by": "954359128833261598",
+"added_on": "2025-11-23T18:53:36.768795"
+}
+],
+"057420fcb8d6408ca49cbbf676a310d7": [
+{
+"tag_type": "info",
+"reason": "verified dinosaur - rawr",
+"added_by": "815257685662498846",
+"added_on": "2026-01-19T06:58:50.017670"
+}
+],
+"02edcef3bd0b45eb93cc5a2b4df13ec3": [
+{
+"tag_type": "info",
+"reason": "is a sandwich",
+"added_by": "1129507464589627512",
+"added_on": "2025-11-24T18:08:20.296054"
+}
+],
+"73c621962af7463d8be1a7a2270f4696": [
+{
+"tag_type": "info",
+"reason": "pawsome staff member",
+"added_by": "",
+"added_on": "2025-11-24T19:41:24.547065"
+}
+],
+"627dc0c3d71044cc85e3e4b8368e5051": [
+{
+"tag_type": "info",
+"reason": "Everyones favorite Quakecrafter",
+"added_by": "660544888974344194",
+"added_on": "2025-11-24T20:34:43.292350"
+}
+],
+"6b5067aa05684a3799cf9dd13748b6ff": [
+{
+"tag_type": "info",
+"reason": "very smart ragebaiter that thinks they can sue microsoft for being unable to recover accounts (read their terms under third party services dude)",
+"added_by": "758398867157811200",
+"added_on": "2025-11-25T23:56:19.513679"
+}
+],
+"b4dc7ec5fa5c46318afd205f342b39f6": [
+{
+"tag_type": "info",
+"reason": "dont let him get ems or an ego hes severely ego boosted every time he gets obby",
+"added_by": "758398867157811200",
+"added_on": "2025-11-26T01:36:57.290504"
+}
+],
+"e4aca4e340e546d0885c7433ed110248": [
+{
+"tag_type": "info",
+"reason": "will lose, rage, challenge you to a duel and expect you to fold, and then when you dont fold, they will",
+"added_by": "809978754679570443",
+"added_on": "2025-11-26T23:50:39.123659"
+}
+],
+"26d1139744024c6d9b71d586ea9f6f9b": [
+{
+"tag_type": "info",
+"reason": "mid game made a pact in mandarin to crossteam with another team",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T14:43:10.095743"
+}
+],
+"a7ef23bf3c6b4104b32ed931f421e4a1": [
+{
+"tag_type": "info",
+"reason": "mid game made a pact in mandarin to crossteam with another team",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T14:43:10.097017"
+}
+],
+"4e87ae86469a4671b64eebfa0b2c3500": [
+{
+"tag_type": "info",
+"reason": "mid game made a pact in mandarin to crossteam with another team",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T14:43:10.328966"
+}
+],
+"bc53333a789546c49e000f221b8578c3": [
+{
+"tag_type": "info",
+"reason": "mid game made a pact in mandarin to crossteam with another team",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T14:43:10.423816"
+}
+],
+"1c21a21c86d24171851952425dcf9f0f": [
+{
+"tag_type": "info",
+"reason": "mid game made a pact in mandarin to crossteam with another team",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T14:43:10.524003"
+}
+],
+"8f1b0049aa0241ecb48e848533543607": [
+{
+"tag_type": "info",
+"reason": "mid game made a pact in mandarin to crossteam with another team",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T14:43:10.157524"
+}
+],
+"d134ddde68eb458c9f3aeb5c15f5c404": [
+{
+"tag_type": "info",
+"reason": "mid game made a pact in mandarin to crossteam with another team",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T14:43:10.556575"
+}
+],
+"21440a37465d4073b6bce0ca5c4afa7e": [
+{
+"tag_type": "info",
+"reason": "mid game made a pact in mandarin to crossteam with another team",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T14:43:10.575788"
+}
+],
+"4998ed1a37c44384b9603c1dacdf282b": [
+{
+"tag_type": "info",
+"reason": "punch bow spam",
+"added_by": "1408202441857568878",
+"added_on": "2025-11-28T17:14:14.516180"
+}
+],
+"ad256a0a06af4059aa3647126e1e3a99": [
+{
+"tag_type": "info",
+"reason": "extremely harmless. 2-0, ([SHOUT] [RED] [MVP] ultimatelion: go k1ll your self)",
+"added_by": "695179682114699266",
+"added_on": "2025-11-28T19:52:32.177394"
+}
+],
+"17f68c9735c54e21af5502a2e95905b0": [
+{
+"tag_type": "info",
+"reason": "VERY ANNOYING TEAMGRIEFER",
+"added_by": "316607354898743300",
+"added_on": "2025-11-29T20:04:40.933249"
+}
+],
+"92497beca5c74d00b5f5ea91e23c8766": [
+{
+"tag_type": "info",
+"reason": "please ragebait this guy as hard as you can hes a gem \u2764\ufe0f",
+"added_by": "1179470296378511471",
+"added_on": "2025-11-29T23:01:15.100954"
+}
+],
+"f336ee04331042fb9edb27f6731c4c34": [
+{
+"tag_type": "info",
+"reason": "broke through the door in my ctw house and killed me (watch out)",
+"added_by": "695179682114699266",
+"added_on": "2025-11-29T23:20:23.067939"
+}
+],
+"fb1c5d51b7dc476a80f1679af1e37530": [
+{
+"tag_type": "info",
+"reason": "dogshit rando egoing in dewier housing LOL??",
+"added_by": "755743511550099477",
+"added_on": "2025-11-30T03:53:58.745891"
+}
+],
+"ec8c162f103a4ccbaad9784036ac4459": [
+{
+"tag_type": "info",
+"reason": "sumo bot",
+"added_by": "1141424732575641601",
+"added_on": "2025-11-30T11:24:28.882015"
+}
+],
+"bfb8a4ca442b428da03076e21731961b": [
+{
+"tag_type": "info",
+"reason": "Best computer nerd ever",
+"added_by": "1008018260253478982",
+"added_on": "2025-11-30T18:40:11.477802"
+}
+],
+"04062cc12bf54bdf869fb0292bb5476f": [
+{
+"tag_type": "info",
+"reason": "annoying solo queue non wastes 20 minutes, big ego can't win 1v1. buys 8 silverfish to win",
+"added_by": "1288072869384945756",
+"added_on": "2025-12-01T21:59:41.767800"
+}
+],
+"7d4462a3aed44799a25441d85c3658b2": [
+{
+"tag_type": "info",
+"reason": "The name had too much aura & after 4 years minecraft multiplayer banned it till name change (never happening, unless forced), so yeah you wont ever be seeing this again.",
+"added_by": "1118679123603230851",
+"added_on": "2025-12-02T13:43:43.825943"
+}
+],
+"75a04ddceb674db2ad9dbbf7d61b2f03": [
+{
+"tag_type": "info",
+"reason": "not fakelagging, just awful internet",
+"added_by": "757284149793914900",
+"added_on": "2025-12-02T20:54:42.180154"
+}
+],
+"7910a84bf0e4414e87009c9cac6e6ada": [
+{
+"tag_type": "info",
+"reason": "will buiy 2 fbs and a t3 and try to skip and will fail every time",
+"added_by": "1179470296378511471",
+"added_on": "2025-12-03T02:32:31.907710"
+}
+],
+"0fd33282442f4e13aaa5a86656c84581": [
+{
+"tag_type": "info",
+"reason": "excessive bowspam off spawn",
+"added_by": "721377056629456947",
+"added_on": "2025-12-03T22:10:58.137216"
+}
+],
+"798157f92a3c43d79487cd7533af56ab": [
+{
+"tag_type": "info",
+"reason": "crossmapping off spawn",
+"added_by": "721377056629456947",
+"added_on": "2025-12-03T23:35:41.887189"
+}
+],
+"b61160b1d693485db50bcea822a9b60b": [
+{
+"tag_type": "info",
+"reason": "will meow for ++",
+"added_by": "1232083091531628585",
+"added_on": "2025-12-04T03:22:41.387011"
+}
+],
+"54477d94ece8446ebd536747d3e7b932": [
+{
+"tag_type": "info",
+"reason": "#1 Escapist",
+"added_by": "1232083091531628585",
+"added_on": "2025-12-04T04:38:50.851555"
+}
+],
+"76cdf038192c40b69bda1ebd2cf2b76e": [
+{
+"tag_type": "info",
+"reason": "the void calls and he answers",
+"added_by": "510674726885261322",
+"added_on": "2025-12-04T08:28:30.277541"
+}
+],
+"918b0b27cb37415eaf7fab5d1f6578eb": [
+{
+"tag_type": "info",
+"reason": "stage 5 dewier stanning syndrome - genuinely thinks hes dewier as in 1. always has a fireball to fb jump when you get within 10 blocks of him 2. willing to sell his soul to pass for bed 3. spams kb stick 4. builds up more than any fortnite player 5. takes and deals kb like hes the main  character. Luckily this person and his teammates have 0 gamesense so easily beatable however most insuffereable person i have fought in a month DO NOT let this person get ems and if you spawnkill him tell him I said hi",
+"added_by": "721377056629456947",
+"added_on": "2025-12-05T02:01:55.431732"
+}
+],
+"40f8d72ed6bb40828550a8869439dd54": [
+{
+"tag_type": "info",
+"reason": "annoying gameplay, my mental health is not doing good fighting against ts guy",
+"added_by": "1433235816380895265",
+"added_on": "2025-12-05T20:27:17.541335"
+}
+],
+"c0c7a166a08647a3844b3dc4574926dd": [
+{
+"tag_type": "info",
+"reason": "bow & silverfish & fb spam",
+"added_by": "810632538359070730",
+"added_on": "2025-12-07T00:45:37.469077"
+}
+],
+"8604cf81cff04380937b888a4f30486b": [
+{
+"tag_type": "info",
+"reason": "deranged punch bow spammer (neutralised)",
+"added_by": "757284149793914900",
+"added_on": "2025-12-07T18:37:48.931780"
+}
+],
+"154060351c1b4cf0bf3edf8b377394df": [
+{
+"tag_type": "info",
+"reason": "very consistent at godbridging, highly likely legit",
+"added_by": "507294051087679499",
+"added_on": "2026-04-27T22:03:09.315684"
+}
+],
+"0228ea6848ee4d3391fc137e38027805": [
+{
+"tag_type": "info",
+"reason": "Legit, the GOAT, and #1 PvP",
+"added_by": "869783386653351936",
+"added_on": "2025-12-08T22:48:28.375537"
+}
+],
+"16da4ff34ee4434f931c0f3979a67926": [
+{
+"tag_type": "info",
+"reason": "radiating with cuteness",
+"added_by": "",
+"added_on": "2026-04-26T19:38:47.396867"
+}
+],
+"da873a65f8ba47ae98673012263d39f1": [
+{
+"tag_type": "info",
+"reason": "punch bow spamming non, challenged me to bridge duel after bridge duel unable to win any, while none of my hits are registering",
+"added_by": "809978754679570443",
+"added_on": "2025-12-09T05:14:51.855487"
+}
+],
+"d17ecfaea1f34374a7f4587af5314cb5": [
+{
+"tag_type": "info",
+"reason": "\ud83c\udf48 \ud83c\udfe1",
+"added_by": "1070669263729344565",
+"added_on": "2025-12-09T22:31:15.286266"
+}
+],
+"82739f072451475db3276389d4dfc329": [
+{
+"tag_type": "info",
+"reason": "owned kazakshstan socium",
+"added_by": "1173276588335448234",
+"added_on": "2025-12-10T11:17:30.061792"
+}
+],
+"d05e6c3a7bbe45889ec5adaa5588dc7e": [
+{
+"tag_type": "info",
+"reason": "hes actually a kind dude :D",
+"added_by": "954359128833261598",
+"added_on": "2025-12-11T16:05:11.196341"
+}
+],
+"8db58e09dac7469485b17315c8d46ecf": [
+{
+"tag_type": "info",
+"reason": "alleged ex-cheater",
+"added_by": "757284149793914900",
+"added_on": "2026-02-01T20:51:30.830588"
+}
+],
+"d5f5851b8d964a3b8edc117dc1758e22": [
+{
+"tag_type": "info",
+"reason": "will attempt to spawncamp you with a bow off spawn and will obsess over you the entire game cancerous non",
+"added_by": "721377056629456947",
+"added_on": "2025-12-14T20:07:41.344104"
+}
+],
+"144b27879cf94afa9a9be3273286d157": [
+{
+"tag_type": "info",
+"reason": "really toxic but sucks LOL",
+"added_by": "758398867157811200",
+"added_on": "2025-12-15T17:56:53.580847"
+}
+],
+"596eb20f49c34d97983bce9490dff130": [
+{
+"tag_type": "info",
+"reason": "Really desperate to be tagged",
+"added_by": "939229156158369892",
+"added_on": "2025-12-15T22:49:25.727116"
+}
+],
+"6c986f65f59b41f38660ad7455bad236": [
+{
+"tag_type": "info",
+"reason": "will do everything to get you annoyed literally has 0 gamesense not even trying to snipe well only trying to get the bed and just push you for no reason to get you under pressure the worst sniper I've ever seen also im not saying worst because he's good or something he's literally THE",
+"added_by": "816255328504119308",
+"added_on": "2025-12-16T17:57:44.852342"
+}
+],
+"a4021b33f8394b56b7bcd8b35fcc9ea1": [
+{
+"tag_type": "info",
+"reason": "LOSER WITH 0 TSHIRTS \ud83d\udc55",
+"added_by": "1408202441857568878",
+"added_on": "2025-12-17T11:41:08.118930"
+}
+],
+"c2cae689594c452a9d79c93ed26b87cb": [
+{
+"tag_type": "info",
+"reason": "potentially a lobby 1 bot, 2 star with an alt asking for 10+ fkdr 4s parties with ++'s",
+"added_by": "758398867157811200",
+"added_on": "2025-12-17T14:02:34.210969"
+}
+],
+"8f91c1bc9d5442af93aaa6aa534bea79": [
+{
+"tag_type": "info",
+"reason": "desperately wants to be hypixel banned",
+"added_by": "757284149793914900",
+"added_on": "2025-12-20T19:41:20.062420"
+}
+],
+"2a2d281a74914033a9c5f85ae4744cea": [
+{
+"tag_type": "info",
+"reason": "xray texture pack in MY SMP?!? I DONT THINK SO",
+"added_by": "749666742107635762",
+"added_on": "2025-12-23T20:28:43.308858"
+}
+],
+"61dced434fb04b0994c89195de32b5e1": [
+{
+"tag_type": "info",
+"reason": "Beware of this type 2 diabetic, he will not hesitate to fat shame others after losing in a casual game of Sheep Wars, yes, you heard me. Sheep wars. Why these type of players haven't been extinct yet baffles me, however lets ignore the fact that he is talking all this snobbery whilst being 644 stars in SHEEP WARS himself. Please do not engage in any formal conversation with such fatsos.",
+"added_by": "837012286438244392",
+"added_on": "2025-12-23T23:43:17.920302"
+}
+],
+"c950be6290c44ed1a329f8eba5e43c5f": [
+{
+"tag_type": "info",
+"reason": "goat of bedwars",
+"added_by": "244086457818415106",
+"added_on": "2025-12-24T14:39:08.043195"
+}
+],
+"32994e9955884d669de8961b8c2d93cf": [
+{
+"tag_type": "info",
+"reason": "Cheat in past but claims legit now cause High Ban Status. This bxnny is lonely Please feed her if u found...",
+"added_by": "",
+"added_on": "2026-01-20T07:08:10.061581"
+}
+],
+"38b6a72b01d144999d016ba59354727b": [
+{
+"tag_type": "info",
+"reason": "do NOT stand near or look at this guy your pc will crash",
+"added_by": "1179470296378511471",
+"added_on": "2025-12-24T14:22:48.097094"
+}
+],
+"db929ad778d5472a828af635e81c723f": [
+{
+"tag_type": "info",
+"reason": "fireballing diamonds, trying very hard, their stats are not a reflection of how they actually play",
+"added_by": "995803381287362591",
+"added_on": "2025-12-24T23:48:35.816104"
+}
+],
+"9c7dfe4993b74fc18624511846fee37f": [
+{
+"tag_type": "info",
+"reason": "might be the biggest LOSER to ever exist, DO NOT, I RPEAT, DO NOT let him get mid. DONT DO IT. He has HEAD TRAPS on his bridge. hes WEIRD",
+"added_by": "639961475187998720",
+"added_on": "2026-05-21T23:12:05.753099"
+}
+],
+"806c44d589344cc28e47409c4b985fd5": [
+{
+"tag_type": "info",
+"reason": "BLATANTLY teaming with others on sweaty teams, [SHOUT] [YELLOW] [VIP] Reespawned: w teamwork blues",
+"added_by": "316607354898743300",
+"added_on": "2025-12-25T18:43:38.953058"
+}
+],
+"125362e2bc344202b067942fb61e7744": [
+{
+"tag_type": "info",
+"reason": "loser minehut mod, banned 5 of my accounts on minehut just to unban 4 of them minutes later.",
+"added_by": "1405017463774773278",
+"added_on": "2025-12-26T04:12:42.781865"
+}
+],
+"310ea7ee827440aa87c107dbe6ec46c5": [
+{
+"tag_type": "info",
+"reason": "\"just a little guy\"",
+"added_by": "",
+"added_on": "2026-02-23T18:22:57.325254"
+}
+],
+"c738583b9a2541e2861b1e8b77000401": [
+{
+"tag_type": "info",
+"reason": "will falsely hackusate anyone he loses to",
+"added_by": "",
+"added_on": "2025-12-26T23:45:22.641402"
+}
+],
+"9deb66b2a1bc47a589279f86aeab92fa": [
+{
+"tag_type": "info",
+"reason": "SNOWYGIRLHXRMCNY",
+"added_by": "1144157100507942912",
+"added_on": "2026-06-29T06:07:46.997314"
+},
+{
+"tag_type": "info",
+"reason": "look at kittyism tag for more info",
+"added_by": "1144157100507942912",
+"added_on": "2026-06-29T06:15:56.515584"
+},
+{
+"tag_type": "info",
+"reason": "cheating in urchin minigame",
+"added_by": "1144157100507942912",
+"added_on": "2026-07-19T09:36:05.966689"
+}
+],
+"2f68c9ada50b4037b02393615487bf82": [
+{
+"tag_type": "info",
+"reason": "crossteamming with cheater for 4 fkdr and can't even win a 1v1 for a whole game",
+"added_by": "1235948046039253092",
+"added_on": "2025-12-27T08:44:19.008541"
+}
+],
+"d848cec443304207b2f4c2ad5fd2e369": [
+{
+"tag_type": "info",
+"reason": "bridging like a cheater but hes just a legit sweat ;)",
+"added_by": "954359128833261598",
+"added_on": "2025-12-28T16:40:39.200905"
+}
+],
+"0e9071d991994e8d850c833959ddc988": [
+{
+"tag_type": "info",
+"reason": "meow :3",
+"added_by": "1129507464589627512",
+"added_on": "2025-12-30T19:04:03.143097"
+}
+],
+"24c6a4ad771b4328a49b9c6f9196ace3": [
+{
+"tag_type": "info",
+"reason": "foxy :3",
+"added_by": "583130656532332604",
+"added_on": "2026-01-03T19:14:03.962069"
+}
+],
+"40f412e9a21748b5939b4cf723a0eb00": [
+{
+"tag_type": "info",
+"reason": "Cat Girl",
+"added_by": "1232083091531628585",
+"added_on": "2026-01-08T22:55:20.919159"
+}
+],
+"20289feef4cc4a29be6025775338cf79": [
+{
+"tag_type": "info",
+"reason": "don't underestimate him",
+"added_by": "755743511550099477",
+"added_on": "2026-01-04T14:05:27.275883"
+}
+],
+"36d746857ac84752bb8fd6143a207acd": [
+{
+"tag_type": "info",
+"reason": "replaysneeded",
+"added_by": "308927248621371394",
+"added_on": "2026-05-16T01:09:36.088535"
+}
+],
+"d7ec7bf428b9462fbc4330046cc2ad63": [
+{
+"tag_type": "info",
+"reason": "meow :3",
+"added_by": "",
+"added_on": "2026-04-02T20:28:41.880771"
+}
+],
+"069a79f444e94726a5befca90e38aaf5": [
+{
+"tag_type": "info",
+"reason": "racist, homophobic, transphobic, embracing far-right conspiracy theories",
+"added_by": "",
+"added_on": "2026-01-07T22:40:55.714405"
+}
+],
+"bba3f71f1269450a9796cc4962a35d54": [
+{
+"tag_type": "info",
+"reason": "pro killer",
+"added_by": "755743511550099477",
+"added_on": "2026-01-08T17:31:04.046443"
+}
+],
+"4838a36256fa416fab60608b5ec16ef4": [
+{
+"tag_type": "info",
+"reason": "\"I swear I'm not hacking right shift doesn't even work\" - iFamished",
+"added_by": "1232083091531628585",
+"added_on": "2026-01-08T22:41:53.328266"
+},
+{
+"tag_type": "info",
+"reason": "Legit Godbridger",
+"added_by": "1232083091531628585",
+"added_on": "2026-01-08T22:42:54.491655"
+}
+],
+"1baaf460779a47f49c054168407e6a09": [
+{
+"tag_type": "info",
+"reason": "skips first rush against sweats and is generally just an evil and damaged soul",
+"added_by": "",
+"added_on": "2026-04-19T21:36:07.590318"
+}
+],
+"1589244f9f924adba62fd9c50964b947": [
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-09T22:09:47.888684"
+}
+],
+"e1905f1cf8b24f258f0f98a1755bdef3": [
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-09T22:09:53.654015"
+}
+],
+"3574159dba2e485cbb40856d2c3c5507": [
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-09T22:10:02.661727"
+}
+],
+"72157176667b4f8ba46477532481269d": [
+{
+"tag_type": "info",
+"reason": "D1 Hexze hater",
+"added_by": "",
+"added_on": "2026-03-18T02:12:33.883315"
+}
+],
+"b949f15395634acaa066665c75ee7518": [
+{
+"tag_type": "info",
+"reason": "cute catgirl ^w^",
+"added_by": "660544888974344194",
+"added_on": "2026-01-31T15:46:41.285499"
+},
+{
+"tag_type": "info",
+"reason": "so freaky",
+"added_by": "",
+"added_on": "2026-02-22T00:09:30.656824"
+},
+{
+"tag_type": "info",
+"reason": "glorp",
+"added_by": "",
+"added_on": "2026-04-18T16:03:29.547996"
+},
+{
+"tag_type": "info",
+"reason": "submissive defenceless catgirl",
+"added_by": "",
+"added_on": "2026-05-10T10:24:10.709329"
+},
+{
+"tag_type": "info",
+"reason": "https://urchin.ws/66.gif",
+"added_by": "",
+"added_on": "2026-05-10T12:42:03.268626"
+}
+],
+"feddeff1075645c0a0afde79e86ac0e9": [
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-09T22:36:20.492107"
+}
+],
+"56d0bb59b943465b8fcf6e842213914c": [
+{
+"tag_type": "info",
+"reason": "Very passionate about the game",
+"added_by": "",
+"added_on": "2026-03-09T18:56:00.493320"
+}
+],
+"c23ab07cf96642cfb1489501ceb7dce4": [
+{
+"tag_type": "info",
+"reason": "Blatantly amazing top bridge (legit)",
+"added_by": "1232083091531628585",
+"added_on": "2026-01-11T19:37:08.277907"
+},
+{
+"tag_type": "info",
+"reason": "qArii\u2019s number 1 fan",
+"added_by": "1232083091531628585",
+"added_on": "2026-01-11T19:39:33.132343"
+}
+],
+"faa634a693e14514b6436727b7b4c4da": [
+{
+"tag_type": "info",
+"reason": "genuinely want to thank this guy for showing me there are still bw players with an iq above 5",
+"added_by": "1405017463774773278",
+"added_on": "2026-01-12T10:04:21.544100"
+}
+],
+"0791d67b2637444494b444b0db824d50": [
+{
+"tag_type": "info",
+"reason": "I got nervous...",
+"added_by": "755743511550099477",
+"added_on": "2026-01-12T17:49:09.864941"
+}
+],
+"6573f7d5e8e14407b0163d9440aad3f1": [
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:28:52.061Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:28:52.061Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+},
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-19T21:29:17.205Z"
+}
+],
+"35187aa4db3b4a3496cbdcd270205215": [
+{
+"tag_type": "info",
+"reason": "#1 Remmius hater",
+"added_by": "",
+"added_on": "2026-05-16T18:23:54.031524"
+}
+],
+"9e1f4da57c6c4f3da37258df84c5752d": [
+{
+"tag_type": "info",
+"reason": "frog",
+"added_by": "1405017463774773278",
+"added_on": "2026-01-19T18:34:51.620516"
+}
+],
+"6c667e94ace24075b4c25c794d15cec9": [
+{
+"tag_type": "info",
+"reason": "auraful cheater",
+"added_by": "809978754679570443",
+"added_on": "2026-01-25T06:59:15.854915"
+}
+],
+"1ee43f8ec35242c79a4071f99e632c78": [
+{
+"tag_type": "info",
+"reason": "Cat",
+"added_by": "",
+"added_on": "2026-01-23T23:01:39.315054"
+},
+{
+"tag_type": "info",
+"reason": "meow :3",
+"added_by": "",
+"added_on": "2026-03-13T19:43:29.404130"
+}
+],
+"cbea3a599351443590b6e506d53c867b": [
+{
+"tag_type": "info",
+"reason": "subdivision",
+"added_by": "",
+"added_on": "2026-01-23T22:24:24.432406"
+}
+],
+"c80fb03440854544a4ea95f3247b1fce": [
+{
+"tag_type": "info",
+"reason": "plays with lobby 1's a lot, might accidentally queue with cheaters",
+"added_by": "995803381287362591",
+"added_on": "2026-02-15T19:54:47.462970"
+}
+],
+"a98fe44a9fb542d681cd427fb2a48554": [
+{
+"tag_type": "info",
+"reason": "Insane at low cps telly bridging will look like scaff",
+"added_by": "995803381287362591",
+"added_on": "2026-01-24T03:09:11.810630"
+}
+],
+"70309116f2074252978217d69ac9d416": [
+{
+"tag_type": "info",
+"reason": "insert thinking cat gif here using all 1 braincells to come up with a funny urchin info tag",
+"added_by": "",
+"added_on": "2026-01-24T18:19:13.299738"
+}
+],
+"04189b436e6b4b6aa44ba925efce5abd": [
+{
+"tag_type": "info",
+"reason": "will double fireball skip",
+"added_by": "1022725927123308545",
+"added_on": "2026-01-25T14:15:24.840895"
+}
+],
+"2be90632201d4f0a9de3e693797e4695": [
+{
+"tag_type": "info",
+"reason": "#1 men hater",
+"added_by": "",
+"added_on": "2026-04-24T21:11:31.009046"
+}
+],
+"156be41d46a947bbbb1ebf1d6299d4c9": [
+{
+"tag_type": "info",
+"reason": "goat fbed off 350 fkdr teamate LOL",
+"added_by": "749666742107635762",
+"added_on": "2026-01-27T08:53:01.668150"
+}
+],
+"4b8c4c474e0f482d8adfa66c594058f8": [
+{
+"tag_type": "info",
+"reason": "appealed his cheating tag while driving (provided proof)",
+"added_by": "1129507464589627512",
+"added_on": "2026-01-30T14:45:24.655376"
+}
+],
+"b5b674ad6b684f329f465351b802ed12": [
+{
+"tag_type": "info",
+"reason": "shifting 5 times per block",
+"added_by": "809978754679570443",
+"added_on": "2026-01-29T07:18:49.506755"
+}
+],
+"b6b26a874ca1424fa6481ec2e2fd374d": [
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "",
+"added_on": "2026-01-29T18:37:21.938164"
+}
+],
+"1b759b50e9c44d2ab1e5e93c76d33b25": [
+{
+"tag_type": "info",
+"reason": "non with goated diag bridge. not cheating.",
+"added_by": "749666742107635762",
+"added_on": "2026-01-30T05:08:07.185116"
+}
+],
+"4bb687985daf4a36bd26bfd2a5e4816e": [
+{
+"tag_type": "info",
+"reason": "\"mechanically gifted\"",
+"added_by": "1405017463774773278",
+"added_on": "2026-01-30T12:51:32.393772"
+}
+],
+"03ffef8f51b946efa5fd3eee851b8356": [
+{
+"tag_type": "info",
+"reason": "bridges in a way that looks like legitscaff, but is legit :)",
+"added_by": "995803381287362591",
+"added_on": "2026-02-01T00:15:25.390296"
+}
+],
+"cbdc85f4d97e44ed9459717e9a71a852": [
+{
+"tag_type": "info",
+"reason": "legit goat",
+"added_by": "",
+"added_on": "2026-03-02T22:28:28.407399"
+}
+],
+"ac53866b0b5847508f2a657453f50cc5": [
+{
+"tag_type": "info",
+"reason": "\"wakey wakey~\"",
+"added_by": "995803381287362591",
+"added_on": "2026-05-26T14:30:33.377179"
+}
+],
+"748d02a775904e6e942cb4db7d6d15b3": [
+{
+"tag_type": "info",
+"reason": "good at bridging not scaffold",
+"added_by": "995803381287362591",
+"added_on": "2026-02-01T03:21:52.241804"
+}
+],
+"2b8e7101cf394582a13ee6d72d7b7ad5": [
+{
+"tag_type": "info",
+"reason": "Insane at 0 cps bridging, will look like scaffold",
+"added_by": "995803381287362591",
+"added_on": "2026-02-01T03:22:27.682678"
+}
+],
+"420bf61a6c7f4ed187f2ac0347d96e2d": [
+{
+"tag_type": "info",
+"reason": "info",
+"added_by": "749666742107635762",
+"added_on": "2026-02-23T05:57:57.043578"
+}
+],
+"d33f044783054ab498a5c1de5793bc6a": [
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "",
+"added_on": "2026-02-06T22:47:34.523223"
+}
+],
+"8b45139275d848288e9ac839927946e4": [
+{
+"tag_type": "info",
+"reason": "9-5 nolife unemployed bwd chatter, king of bwd general",
+"added_by": "",
+"added_on": "2026-02-15T11:40:22.229218"
+}
+],
+"0ab614f840f14b8e95e625f75b74c8b3": [
+{
+"tag_type": "info",
+"reason": "skybasing and bowing in skywars",
+"added_by": "757284149793914900",
+"added_on": "2026-02-08T19:31:46.324866"
+}
+],
+"2f65b970eeef4ddeac1e08be52c3f0b1": [
+{
+"tag_type": "info",
+"reason": "very nice g (admitted)",
+"added_by": "815257685662498846",
+"added_on": "2026-02-10T20:35:46.848395"
+}
+],
+"27041b3c9db04849bba45853f619c99a": [
+{
+"tag_type": "info",
+"reason": "interesting username O_o",
+"added_by": "815257685662498846",
+"added_on": "2026-02-10T20:48:40.827780"
+}
+],
+"2f0e63af5f7f4c5198e9dae9066aad86": [
+{
+"tag_type": "info",
+"reason": "cheats in cobble paper shears (AI opponent choice prediction)",
+"added_by": "354598337325826048",
+"added_on": "2026-03-03T08:36:55.417356"
+}
+],
+"f47a24d95979455ea381714a98982537": [
+{
+"tag_type": "info",
+"reason": "certified raccoon(admitted)",
+"added_by": "815257685662498846",
+"added_on": "2026-02-11T19:51:53.359202"
+}
+],
+"f34256b49f3a40aeb9a4891cbe77c61e": [
+{
+"tag_type": "info",
+"reason": "queued with cheater",
+"added_by": "",
+"added_on": "2026-03-19T06:34:44.776200"
+},
+{
+"tag_type": "info",
+"reason": "0 0 velo in skyblock",
+"added_by": "",
+"added_on": "2026-05-03T11:24:41.479086"
+},
+{
+"tag_type": "info",
+"reason": "https://urchin.ws/monkey.gif",
+"added_by": "",
+"added_on": "2026-05-12T07:25:57.897415"
+}
+],
+"2b31f7fd9cf54992abbaca6a18498d84": [
+{
+"tag_type": "info",
+"reason": "shameless.",
+"added_by": "1405017463774773278",
+"added_on": "2026-02-12T13:43:13.724028"
+}
+],
+"cf8b2bc61fec40fb8c7554a99fed8baa": [
+{
+"tag_type": "info",
+"reason": "andorite ? more like ando-sike !",
+"added_by": "1144157100507942912",
+"added_on": "2026-05-13T21:14:39.936389"
+},
+{
+"tag_type": "info",
+"reason": "owns XL client",
+"added_by": "1144157100507942912",
+"added_on": "2026-06-27T04:17:25.513820"
+}
+],
+"0daefaa98468408ba38568221d628659": [
+{
+"tag_type": "info",
+"reason": "Hot Egirl",
+"added_by": "",
+"added_on": "2026-05-13T05:20:32.063183"
+}
+],
+"e0081fd834e546a2b9f85dcf3dd3295c": [
+{
+"tag_type": "info",
+"reason": "plays like al oser in uhc duels",
+"added_by": "1405017463774773278",
+"added_on": "2026-02-13T13:36:33.619123"
+}
+],
+"1bf6e06c65bf446c9e60f733559c9d70": [
+{
+"tag_type": "info",
+"reason": "best feeder",
+"added_by": "",
+"added_on": "2026-06-13T06:37:11.834232"
+}
+],
+"bc5d8a7ca9d2405598a1ed0ac1b29d29": [
+{
+"tag_type": "info",
+"reason": "``BlaBit```\n**BlaBit was here**\n- Added by `@lando` <t:1244365440:R>`,",
+"added_by": "1141424732575641601",
+"added_on": "2026-02-14T21:35:50.271356"
+}
+],
+"e820874a27e54daa98e8f46efeaf68de": [
+{
+"tag_type": "info",
+"reason": "https://urchin.ws/scetchy.gif",
+"added_by": "",
+"added_on": "2026-05-24T21:16:00.000000"
+}
+],
+"4d654fa08da349c3b5bc70e1d3c692ef": [
+{
+"tag_type": "info",
+"reason": "meow :3",
+"added_by": "815257685662498846",
+"added_on": "2026-05-06T14:14:46.710256"
+}
+],
+"d1b5d546397344b9a3bfd3729ab74cc3": [
+{
+"tag_type": "info",
+"reason": "what",
+"added_by": "1129507464589627512",
+"added_on": "2026-02-18T11:47:21.275872"
+}
+],
+"4bbf911baff34a4ba8ef32be03c2f322": [
+{
+"tag_type": "info",
+"reason": "Explosion.",
+"added_by": "",
+"added_on": "2026-02-18T11:50:53.767522"
+}
+],
+"50bac443616c4640a69bf2ef09a2df32": [
+{
+"tag_type": "info",
+"reason": "skip firstrush crossmap ig he felt like it",
+"added_by": "1408202441857568878",
+"added_on": "2026-02-19T16:00:46.262730"
+}
+],
+"183584d426d245ec9977df74be829820": [
+{
+"tag_type": "info",
+"reason": "trying freakishly hard for 0 stats",
+"added_by": "749666742107635762",
+"added_on": "2026-02-20T20:08:48.627144"
+}
+],
+"117d90153c3e4282a84a942ac0275201": [
+{
+"tag_type": "info",
+"reason": "meow :3",
+"added_by": "660544888974344194",
+"added_on": "2026-02-24T18:13:05.008260"
+}
+],
+"5719c127ffa64fe3a17c16247c836662": [
+{
+"tag_type": "info",
+"reason": "meow",
+"added_by": "316607354898743300",
+"added_on": "2026-02-24T22:27:03.118080"
+}
+],
+"ce9ef547249942d095e3ad077e5a3f13": [
+{
+"tag_type": "info",
+"reason": "aquaman of bedwars.",
+"added_by": "995803381287362591",
+"added_on": "2026-02-24T23:38:05.274742"
+}
+],
+"994a9737382342c6a7c2fc51b036fc94": [
+{
+"tag_type": "info",
+"reason": "Requiem loaded",
+"added_by": "",
+"added_on": "2026-02-27T20:06:40.716237"
+}
+],
+"344e6bde9c314c55b95f0860b10d25e8": [
+{
+"tag_type": "info",
+"reason": "triple fireball t3 skip as a final",
+"added_by": "594615854625456140",
+"added_on": "2026-02-27T21:57:52.801719"
+}
+],
+"800fdbba08af4df5b437c95adb37675d": [
+{
+"tag_type": "info",
+"reason": "target this guy PLEASE, insta rushes obby, doesnt fold to nicks or cheater tags pregame; genuine specemin. thinks he has any form of skill after winning a 2v1 in a heal pool with obby.",
+"added_by": "",
+"added_on": "2026-03-01T07:02:54.039199"
+}
+],
+"52975da5dfae490f8928cfdf2ce7aa48": [
+{
+"tag_type": "info",
+"reason": "got on for one game, beat a 340ws and logged off",
+"added_by": "",
+"added_on": "2026-03-02T01:16:16.489220"
+}
+],
+"cafa4ca02abf42bc8000747f1cc6f8f3": [
+{
+"tag_type": "info",
+"reason": "guy obsessed w 2v2s ask this guy for 2v2's he will be down 90% of the time i promise he needs 2v2s.",
+"added_by": "1460157002557689888",
+"added_on": "2026-03-16T19:55:56.246775"
+}
+],
+"2937528d89d1410ea1e3084ff32b4a39": [
+{
+"tag_type": "info",
+"reason": "\"You should give me a funny urchin tag even though I don\u2019t actually play the game regularly anymore\"",
+"added_by": "749666742107635762",
+"added_on": "2026-03-02T02:11:25.948113"
+}
+],
+"8eb18a9227fb4b36947177babab261cd": [
+{
+"tag_type": "info",
+"reason": "WHY ARE WE BOW AIMBOTTING?!!!!!!",
+"added_by": "244086457818415106",
+"added_on": "2026-03-03T23:25:21.372777"
+}
+],
+"f616296d82c14c059130160f1a097d70": [
+{
+"tag_type": "info",
+"reason": "not real hexze",
+"added_by": "354598337325826048",
+"added_on": "2026-03-06T01:26:27.406719"
+}
+],
+"3119218938294fe0b474c972c21632e0": [
+{
+"tag_type": "info",
+"reason": "Melon is the awesome Watermelon \ud83c\udf49  who Streams  on Twitch",
+"added_by": "747893632475857016",
+"added_on": "2026-04-13T20:40:05.847101"
+}
+],
+"aef9808fbb494fd0a29264e76df6cccf": [
+{
+"tag_type": "info",
+"reason": "the greatest bedwars player of all time",
+"added_by": "995803381287362591",
+"added_on": "2026-03-08T03:03:00.715603"
+}
+],
+"dd089cd289c8475ebe53673913e9232d": [
+{
+"tag_type": "info",
+"reason": "shifting 20 times per block",
+"added_by": "809978754679570443",
+"added_on": "2026-03-18T19:33:26.298459"
+}
+],
+"20f6ceded8c948388109bae6d4db0ef6": [
+{
+"tag_type": "info",
+"reason": "This user got a 7-day ban in Guess the Build for building a tower resembling male genitalia. Truly a dangerous criminal.",
+"added_by": "876288239072313377",
+"added_on": "2026-03-10T15:11:18.718068"
+},
+{
+"tag_type": "info",
+"reason": "This user recieved a 30-day ban for having an \"inapropriete\" discord profile picture in the official Hypixel discord server.",
+"added_by": "781326760402485268",
+"added_on": "2026-03-25T03:14:27.536044"
+}
+],
+"b8a811f2fe544273868758c39ac8fc17": [
+{
+"tag_type": "info",
+"reason": "https://open.spotify.com/album/5wYCR4cyy7F4B9V9GGHbud?si=4oPLvNpxQMedtTSqJ001xw",
+"added_by": "244086457818415106",
+"added_on": "2026-03-23T23:09:33.859635"
+}
+],
+"d2253fd0564045428f02e2dbdc14c9e2": [
+{
+"tag_type": "info",
+"reason": "if you kill them in solos they will try to warp you out",
+"added_by": "1408202441857568878",
+"added_on": "2026-03-11T09:28:35.845243"
+}
+],
+"64427708dbe24b3d956acae0777408d9": [
+{
+"tag_type": "info",
+"reason": "Pretty self explanatory ign ^w^",
+"added_by": "244086457818415106",
+"added_on": "2026-03-13T00:15:12.900790"
+}
+],
+"f05f79372fba48fca49d3f2ae9e93921": [
+{
+"tag_type": "info",
+"reason": "trying annoyingly hard",
+"added_by": "749666742107635762",
+"added_on": "2026-03-13T01:00:59.171845"
+}
+],
+"5af41dd8750e4ad98fc7741beac29c3b": [
+{
+"tag_type": "info",
+"reason": "Cat Girl",
+"added_by": "244086457818415106",
+"added_on": "2026-03-13T03:04:10.025394"
+}
+],
+"341c1cae79dd4a5aa2d7e93adc02fe31": [
+{
+"tag_type": "info",
+"reason": "test",
+"added_by": "995803381287362591",
+"added_on": "2026-05-03T22:46:34.380313"
+}
+],
+"892a7cfa0da947df96c034528f47b657": [
+{
+"tag_type": "info",
+"reason": "teamgriefing in castle",
+"added_by": "",
+"added_on": "2026-03-15T06:26:29.628973"
+}
+],
+"0ed0e3d8c0254c1cacedabba2efbfbfc": [
+{
+"tag_type": "info",
+"reason": "Legit player but likes to think he's in a cold edit doing crazy shift one stack",
+"added_by": "",
+"added_on": "2026-03-14T08:34:06.395305"
+}
+],
+"be49c26970ae43609f88f1559b630091": [
+{
+"tag_type": "info",
+"reason": "random non",
+"added_by": "",
+"added_on": "2026-03-17T18:50:19.745898"
+}
+],
+"523b48f89f6440cc8e5edd4c9005d2b9": [
+{
+"tag_type": "info",
+"reason": "got a gf !",
+"added_by": "1144157100507942912",
+"added_on": "2026-05-24T20:48:20.866099"
+}
+],
+"f0613f04861f494a97d215fbae8ebe29": [
+{
+"tag_type": "info",
+"reason": "voids a lot <3",
+"added_by": "",
+"added_on": "2026-03-16T18:41:15.377172"
+}
+],
+"b7d3ffb321c4459b9b6c478c1c3d99eb": [
+{
+"tag_type": "info",
+"reason": "[MVP++] Vaqza: kittyism; [MVP++] Vaqza: its my bday :D; [MVP++] Vaqza: I'm 13; [MVP++] Vaqza: wanna be my gf ?",
+"added_by": "1129507464589627512",
+"added_on": "2026-03-17T18:20:33.457225"
+}
+],
+"3de669c374f74a2da9108a13bf603089": [
+{
+"tag_type": "info",
+"reason": "[SPECTATOR] [MVP+] kamaehu: these stars are botted i have like 400 stars playtime",
+"added_by": "781326760402485268",
+"added_on": "2026-06-13T06:18:52.968836"
+}
+],
+"24c182c6716b47c68f60a1be9045c449": [
+{
+"tag_type": "info",
+"reason": "please come back \ud83d\udc94",
+"added_by": "",
+"added_on": "2026-03-21T17:43:38.926421"
+}
+],
+"b0327d4b51dc487885abd7367cec616c": [
+{
+"tag_type": "info",
+"reason": "tries to get ppl to /bedwars stats and get them out of game",
+"added_by": "327612105148727297",
+"added_on": "2026-03-24T20:40:19.016911"
+}
+],
+"a97ef65b666f412ea5c28415d54e5c89": [
+{
+"tag_type": "info",
+"reason": "meow :3",
+"added_by": "316607354898743300",
+"added_on": "2026-05-16T16:45:15.076606"
+}
+],
+"e3dbc68fffc445ecbd91e1f76f4ca9dd": [
+{
+"tag_type": "info",
+"reason": "will run mid and get punch bow",
+"added_by": "486537370423001114",
+"added_on": "2026-03-25T13:23:07.193561"
+}
+],
+"b702a592f884462599f6e317dbf6e4de": [
+{
+"tag_type": "info",
+"reason": "slug",
+"added_by": "",
+"added_on": "2026-03-27T20:24:39.158422"
+}
+],
+"d03cf293c1384ef48aad60f626468042": [
+{
+"tag_type": "info",
+"reason": "harmful bhop(all cap btw)",
+"added_by": "815257685662498846",
+"added_on": "2026-05-12T18:48:57.706140"
+}
+],
+"2a2c9e81daab4580a0a2c3457c7d64b8": [
+{
+"tag_type": "info",
+"reason": "geometry dash hacker",
+"added_by": "",
+"added_on": "2026-04-01T02:51:00.458094"
+}
+],
+"89f05da63f5a419db58a4398cf615168": [
+{
+"tag_type": "info",
+"reason": "RBW player who owns Known Cheater Draggns",
+"added_by": "",
+"added_on": "2026-05-10T07:54:57.799698"
+}
+],
+"82f1fb18737a40c0bb2fee9f24f7a089": [
+{
+"tag_type": "info",
+"reason": "webfishing hacker",
+"added_by": "",
+"added_on": "2026-04-01T18:20:30.927811"
+}
+],
+"dfa37f4983c04fb7b0421f3699a9dc28": [
+{
+"tag_type": "info",
+"reason": "\u201cActually I haven\u2019t figured out if times a girl or a femboy\u201d",
+"added_by": "",
+"added_on": "2026-04-05T01:54:27.907089"
+}
+],
+"3419ec3fe4574f3d8eb78e92d0bef3ac": [
+{
+"tag_type": "info",
+"reason": "low ping abuse, psychological trauma donor through mog, master of ragebait (self admitted)",
+"added_by": "781326760402485268",
+"added_on": "2026-04-06T00:21:53.416905"
+}
+],
+"a297567625974ebea8263afac9dc774a": [
+{
+"tag_type": "info",
+"reason": "spawnkilling as a 1300 star..?",
+"added_by": "",
+"added_on": "2026-04-06T11:04:53.817269"
+}
+],
+"5630ea1e1f8346a0b47e668423435a47": [
+{
+"tag_type": "info",
+"reason": "mexican hohohoho \ud83c\uddf2\ud83c\uddfd",
+"added_by": "757284149793914900",
+"added_on": "2026-04-08T21:14:16.977251"
+}
+],
+"6cc316bc88044684a8d14181e282f974": [
+{
+"tag_type": "info",
+"reason": "\"Okay, here we go. Focus. Speed. I am speed. One winner, forty-two losers. I eat losers for breakfast.\"",
+"added_by": "995803381287362591",
+"added_on": "2026-04-09T02:08:16.161013"
+}
+],
+"96e952d251a04b3cb4dd9090db711ef6": [
+{
+"tag_type": "info",
+"reason": "Femboy",
+"added_by": "308927248621371394",
+"added_on": "2026-04-09T19:58:54.116819"
+}
+],
+"84d8faf3040b4a3689b4bbd8d3037d85": [
+{
+"tag_type": "info",
+"reason": "often playing with lobby 1; likely not wantedly playing with cheaters",
+"added_by": "507294051087679499",
+"added_on": "2026-04-12T13:21:57.713431"
+}
+],
+"cc949e4820d243ab8d09ba42ba9041a4": [
+{
+"tag_type": "info",
+"reason": "never party this person they are act horrid and useless",
+"added_by": "749666742107635762",
+"added_on": "2026-04-12T01:09:13.694571"
+}
+],
+"4080287cde034c67830f69a66968de57": [
+{
+"tag_type": "info",
+"reason": "#2 water based vacuum cleaner fan",
+"added_by": "",
+"added_on": "2026-05-24T21:14:18.393808"
+}
+],
+"419e26b0c0b140ceaf660d0b2da501c7": [
+{
+"tag_type": "info",
+"reason": "not cheating just the laggiest person on the planet \ud83d\udc80",
+"added_by": "749666742107635762",
+"added_on": "2026-04-16T17:55:04.261446"
+}
+],
+"eafa207d01c54d0f8c8c72c09239565d": [
+{
+"tag_type": "info",
+"reason": "super's favourite son",
+"added_by": "757284149793914900",
+"added_on": "2026-04-17T20:34:05.475202"
+}
+],
+"58b18087afb347f8acbe8689fea19c34": [
+{
+"tag_type": "info",
+"reason": "1312 kills, over SIX HUNDRED games, and 14 beds to their name.",
+"added_by": "749666742107635762",
+"added_on": "2026-04-18T07:34:40.130225"
+}
+],
+"e59243fc6080441bb4f9adacd592824a": [
+{
+"tag_type": "info",
+"reason": "valorant Hacker",
+"added_by": "",
+"added_on": "2026-04-21T01:29:32.011601"
+}
+],
+"b18ba270aa5c4bc0bdc7d67378d7ef38": [
+{
+"tag_type": "info",
+"reason": "trying REALLY hard for 3 monthly holy",
+"added_by": "749666742107635762",
+"added_on": "2026-04-23T23:36:35.749243"
+}
+],
+"74876db2d2144b3a8045698b012bac44": [
+{
+"tag_type": "info",
+"reason": "big fat forehead",
+"added_by": "755743511550099477",
+"added_on": "2026-06-11T09:34:20.678625"
+},
+{
+"tag_type": "info",
+"reason": "big forehead?",
+"added_by": "1268786948601024522",
+"added_on": "2026-06-11T09:35:46.643787"
+}
+],
+"6ac02c6bacd248f4b47fc3b485d9fbe2": [
+{
+"tag_type": "info",
+"reason": "I thought you are a bot in the server \ud83d\ude2d",
+"added_by": "1129507464589627512",
+"added_on": "2026-04-24T18:22:17.341209"
+}
+],
+"c5340edf66dc4879af3d94e93a04c108": [
+{
+"tag_type": "info",
+"reason": "goated nons",
+"added_by": "721377056629456947",
+"added_on": "2026-04-25T06:20:58.127360"
+}
+],
+"8f8ba24c12704e668628c69adfa7e2d2": [
+{
+"tag_type": "info",
+"reason": "goated nons",
+"added_by": "721377056629456947",
+"added_on": "2026-04-25T06:20:58.214108"
+}
+],
+"fbecda021cbc4e0ea4316d33ba0de0dc": [
+{
+"tag_type": "info",
+"reason": "goat",
+"added_by": "",
+"added_on": "2026-04-28T20:24:40.852486"
+}
+],
+"0f770428203141689f8494427593887f": [
+{
+"tag_type": "info",
+"reason": "aka, to monitor, bot to check queues i assume",
+"added_by": "749666742107635762",
+"added_on": "2026-07-09T14:24:43.679429"
+}
+],
+"f6f9566f34014b68a78729a4cbf85fd9": [
+{
+"tag_type": "info",
+"reason": "known for being Scutes' egirl, their existence on this server is defined by joining a lobby and being asked by 3 different people \"are you scutes?\"",
+"added_by": "",
+"added_on": "2026-05-02T05:42:07.319677"
+}
+],
+"67faf9a1601148c7b550dda226e3d6c1": [
+{
+"tag_type": "info",
+"reason": "forums nolife (veteran) that spleefs raccoon",
+"added_by": "218356871524777984",
+"added_on": "2026-05-03T13:02:19.361741"
+}
+],
+"fb5c58786a104d9a9711c3f38b00b315": [
+{
+"tag_type": "info",
+"reason": "KB Stick Warrior",
+"added_by": "",
+"added_on": "2026-05-03T17:44:55.149215"
+}
+],
+"227a4dbd4b944cb3a7d83af52a15465e": [
+{
+"tag_type": "info",
+"reason": "will think youre lagranging + boosting if they lose",
+"added_by": "",
+"added_on": "2026-05-06T17:59:43.835990"
+}
+],
+"626283cdfc9a41489a65116d841f5379": [
+{
+"tag_type": "info",
+"reason": "furry",
+"added_by": "781326760402485268",
+"added_on": "2026-05-07T01:27:11.159998"
+}
+],
+"60720a88faaf4d53885da5399c9981a7": [
+{
+"tag_type": "info",
+"reason": "chronic bow spammer",
+"added_by": "749666742107635762",
+"added_on": "2026-05-08T19:13:36.204921"
+}
+],
+"abd976ed15dc44c0bcc5db9dc5a66754": [
+{
+"tag_type": "info",
+"reason": "quack :3",
+"added_by": "316607354898743300",
+"added_on": "2026-05-31T22:25:18.445767"
+}
+],
+"df03bfbcc3ba40169c19e061a1170e3b": [
+{
+"tag_type": "info",
+"reason": "ad haaming ur games !",
+"added_by": "1144157100507942912",
+"added_on": "2026-05-10T09:11:02.639122"
+}
+],
+"e37e67efe03b4eb58341e8e5846cbd16": [
+{
+"tag_type": "info",
+"reason": "l1 predator, if you're female DNI, at least one 15yo victim",
+"added_by": "1408202441857568878",
+"added_on": "2026-05-11T04:13:51.653573"
+}
+],
+"8584923f2bd54e429e6e8e6fa1575798": [
+{
+"tag_type": "info",
+"reason": "[805\u272b] [MVP+] narennwil: any baddies want me? 5.9 14 years bench press 80 kgs, 2.27 fkdr and wavy hairs",
+"added_by": "486537370423001114",
+"added_on": "2026-05-14T18:45:01.059126"
+}
+],
+"2831693026254119bb87fb52c78f211d": [
+{
+"tag_type": "info",
+"reason": "allegedly super cool person",
+"added_by": "1465370290967023798",
+"added_on": "2026-05-15T22:05:21.295036"
+}
+],
+"70e40ea0dc1840cd9c8338e0e2460c4b": [
+{
+"tag_type": "info",
+"reason": "mini",
+"added_by": "",
+"added_on": "2026-05-16T21:21:47.375516"
+}
+],
+"c547a9b39b014bcea6af8f73e4cd1021": [
+{
+"tag_type": "info",
+"reason": "scything wins !",
+"added_by": "1144157100507942912",
+"added_on": "2026-05-16T21:28:21.924050"
+}
+],
+"87fbfebcc4834737a0630e0d45b93a3f": [
+{
+"tag_type": "info",
+"reason": "meow :3",
+"added_by": "316607354898743300",
+"added_on": "2026-07-10T21:47:36.854917"
+}
+],
+"f6182716b3a94d2ea98986e8b9456f40": [
+{
+"tag_type": "info",
+"reason": "[VIP+] hnk987: with that aim im surprised you even hit install.... proceeds to get absolutetly steamrolled",
+"added_by": "781326760402485268",
+"added_on": "2026-05-22T01:33:23.353950"
+}
+],
+"3472981528e64a9f9d393b8480fefa6d": [
+{
+"tag_type": "info",
+"reason": "griefs beddefense in 4v4 for some reason",
+"added_by": "1272819701734576152",
+"added_on": "2026-05-22T11:26:51.379531"
+}
+],
+"e73cf0ffe9b84da88ad0bddc506df0c0": [
+{
+"tag_type": "info",
+"reason": "its me bednukerzero, I bed nuke by nuking the bed",
+"added_by": "308927248621371394",
+"added_on": "2026-05-25T00:03:02.122907"
+}
+],
+"5578b20f10644b70a075b6db45fb36f2": [
+{
+"tag_type": "info",
+"reason": "autotool in party games </3",
+"added_by": "721377056629456947",
+"added_on": "2026-05-25T07:08:11.705699"
+}
+],
+"610d3163e4344412966df8480e13440f": [
+{
+"tag_type": "info",
+"reason": "[MVP++] Hxkr: \"lmao fucking shit loser carried by the bow genuine dogshit learn how to pearl clutch\" after being absolutetly touched for 30 minutes while screaming slurs and calling a legit hyperblatant",
+"added_by": "",
+"added_on": "2026-05-26T05:40:30.787618"
+}
+],
+"71c1cf924fd9422fa5ac20a88edd4264": [
+{
+"tag_type": "info",
+"reason": "not a rat",
+"added_by": "",
+"added_on": "2026-06-06T17:30:56.858650"
+}
+],
+"9e167b00f5dc4c3fb22def4db1081d51": [
+{
+"tag_type": "info",
+"reason": "The Dewier of Football",
+"added_by": "757284149793914900",
+"added_on": "2026-05-29T06:57:26.962103"
+}
+],
+"db6e7281ce7b4c5bb91ed2df3256fc9a": [
+{
+"tag_type": "info",
+"reason": "True",
+"added_by": "",
+"added_on": "2026-06-02T16:47:40.586342"
+}
+],
+"e5124dbf87b54c83beceed8a44098a37": [
+{
+"tag_type": "info",
+"reason": "looking for egirls in lobby 1 24/7",
+"added_by": "",
+"added_on": "2026-07-20T01:38:04.727143"
+}
+],
+"53ffbb0bacd045d5867fdebfb5bc6754": [
+{
+"tag_type": "info",
+"reason": "submissive defenceless catgirl",
+"added_by": "809978754679570443",
+"added_on": "0123-06-08T19:16:02.503090"
+}
+],
+"f3a45beadbde479181550988b644ac3b": [
+{
+"tag_type": "info",
+"reason": "AHHHHHH ITS IMAN",
+"added_by": "1144157100507942912",
+"added_on": "2026-06-05T23:49:59.103867"
+}
+],
+"9f458532c7654d2393d284c4b119b3d7": [
+{
+"tag_type": "info",
+"reason": "cha cha bridge expert",
+"added_by": "",
+"added_on": "2026-06-07T03:26:19.369991"
+}
+],
+"aa7547516c8943c7817c127fc763006d": [
+{
+"tag_type": "info",
+"reason": "sparky",
+"added_by": "",
+"added_on": "2026-06-07T03:42:32.967541"
+}
+],
+"215d0994438b474a9ba6ca77e66ac682": [
+{
+"tag_type": "info",
+"reason": "double hit demon",
+"added_by": "749666742107635762",
+"added_on": "2026-06-09T02:26:07.496239"
+}
+],
+"1375777455b44b98b226cb098147ff0e": [
+{
+"tag_type": "info",
+"reason": "called me a discord mod :(",
+"added_by": "721377056629456947",
+"added_on": "2026-06-11T00:58:17.329006"
+}
+],
+"6dfbdce264a245919879f9837c36ea86": [
+{
+"tag_type": "info",
+"reason": "shoutout umky the goat",
+"added_by": "749666742107635762",
+"added_on": "2026-06-11T06:01:29.588636"
+}
+],
+"6fca4a216a9e48148b6ff85111810ed4": [
+{
+"tag_type": "info",
+"reason": "slowest cheetah worldwide",
+"added_by": "",
+"added_on": "2026-06-12T00:36:47.476016"
+}
+],
+"9233588092d943d5930fdf491a18c110": [
+{
+"tag_type": "info",
+"reason": "goated bridger speed tellying also diag gb",
+"added_by": "749666742107635762",
+"added_on": "2026-06-17T19:03:10.038541"
+}
+],
+"fe15273ac6604a6f95daee3f9458eeba": [
+{
+"tag_type": "info",
+"reason": "[4144\u2725] [YOUTUBE] Manhal_IQ_: can i get tagged for being the most sigma bedwars player",
+"added_by": "710394832195026997",
+"added_on": "2026-06-21T11:56:05.751860"
+}
+],
+"cf89bbef752b4c4295bbf8f343119c51": [
+{
+"tag_type": "info",
+"reason": "running for 3 minutes from someone in leather armor while in full iron just to get 1 tapped off and miss a pearl. (in skywars)",
+"added_by": "",
+"added_on": "2026-06-22T18:58:40.993408"
+}
+],
+"337482fe8a1547f6bea5a84918a86393": [
+{
+"tag_type": "info",
+"reason": "test",
+"added_by": "",
+"added_on": "2026-06-22T20:38:56.134146"
+}
+],
+"90aaa2c31e6741eeadd261b16a25eb02": [
+{
+"tag_type": "info",
+"reason": "test",
+"added_by": "",
+"added_on": "2026-06-22T20:38:56.137170"
+}
+],
+"4c6b10690533478fb19074e20b92d296": [
+{
+"tag_type": "info",
+"reason": "really toxic while running and fireball spamming. VERY bad at the game",
+"added_by": "",
+"added_on": "2026-06-23T18:19:18.845503"
+}
+],
+"3e26023ea77741b3b5cfb47c115f7a86": [
+{
+"tag_type": "info",
+"reason": "horse",
+"added_by": "710394832195026997",
+"added_on": "2026-06-24T00:33:32.556553"
+}
+],
+"2d37d35cd2d94f32aaeef9cb32854d4f": [
+{
+"tag_type": "info",
+"reason": "might be the most ragebaitable player",
+"added_by": "749666742107635762",
+"added_on": "2026-06-25T03:43:42.504289"
+}
+],
+"ffbeec9e800240b5a12f87a6df06a040": [
+{
+"tag_type": "info",
+"reason": "King of femboys. Loves them and wants to be one.",
+"added_by": "781326760402485268",
+"added_on": "2026-06-28T03:40:53.740711"
+}
+],
+"585faafcebf14fa2952649d354080c56": [
+{
+"tag_type": "info",
+"reason": "From capewithcat: lifeless idiot, get a life pathetic loser",
+"added_by": "",
+"added_on": "2026-07-05T20:25:25.625062"
+}
+],
+"f883016268a04eb5b741c9591b6cf871": [
+{
+"tag_type": "info",
+"reason": "freak",
+"added_by": "660544888974344194",
+"added_on": "2026-07-14T15:11:40.708306"
+}
+]
+}
+}

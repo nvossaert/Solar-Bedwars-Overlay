@@ -1,0 +1,16 @@
+{
+  "name": "solar-overlay",
+  "version": "1.0.0",
+  "description": "Custom Hypixel Bedwars overlay (Cubelify-style) with Urchin blacklist integration, screen-capture hiding, and a self-hosted sniper/threat score.",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "test": "node test/stats.test.js"
+  },
+  "author": "Nath (nvossaert)",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^31.7.6"
+  }
+}

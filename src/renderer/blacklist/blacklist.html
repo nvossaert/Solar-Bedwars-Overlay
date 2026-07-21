@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:;" />
+  <link rel="stylesheet" href="../settings/settings.css" />
+  <link rel="stylesheet" href="blacklist.css" />
+</head>
+<body>
+  <div id="bar">
+    <span class="drag"><span class="logo">⚑</span> Blacklist Admin</span>
+    <div class="ctrls"><button id="min">—</button><button id="close">✕</button></div>
+  </div>
+  <main id="panel">
+    <div id="warn" class="warn hidden">No admin key set. Add it in <b>Settings → API Keys → Admin key</b> to submit tags.</div>
+
+    <h2>Look up player</h2>
+    <div class="sub">Check current tags before adding. Works by username or UUID.</div>
+    <div class="lookup">
+      <input id="lookName" type="text" placeholder="username or uuid" />
+      <button id="lookBtn" class="act">Look up</button>
+    </div>
+    <div id="lookResult"></div>
+
+    <h2 style="margin-top:22px">Add tag</h2>
+    <div class="sub">Admin-only. Submits to your Urchin add-tag endpoint.</div>
+    <div class="form">
+      <label>UUID <span class="hint">(auto-filled from lookup; hyphens optional)</span></label>
+      <input id="fUuid" type="text" placeholder="player uuid" />
+
+      <label>Tag type</label>
+      <select id="fType">
+        <option>cheater</option><option>sniper</option><option>caution</option>
+        <option value="info" selected>info</option><option>toxic</option><option value="__custom">custom…</option>
+      </select>
+      <input id="fTypeCustom" type="text" placeholder="custom tag type" class="hidden" />
+
+      <label>Reason</label>
+      <textarea id="fReason" placeholder="why this tag"></textarea>
+
+      <div class="checks">
+        <label class="cb"><input type="checkbox" id="fHide" /> Hide my username</label>
+        <label class="cb"><input type="checkbox" id="fOver" /> Overwrite existing tag of same type</label>
+      </div>
+
+      <button id="submit" class="act big">Add tag to blacklist</button>
+      <div id="result"></div>
+    </div>
+  </main>
+  <div id="toasts"></div>
+  <script src="blacklist.js"></script>
+</body>
+</html>
