@@ -11,27 +11,34 @@ const fs = require('fs');
 const path = require('path');
 const { app } = require('electron');
 
-// Tag severity -> feeds the sniper score and picks a color.
+// Tag severity -> feeds the sniper score and picks a color. Real tag_type values
+// seen from the local database export ('legit_sniper', 'caution', 'account') and
+// the live API's tooltip category ('Blatant Cheater', 'Replays Needed', ...) both
+// get normalized (lowercased, underscores -> spaces) before lookup, so exact
+// entries here take priority over the substring fallback below.
 const SEVERITY = {
   cheater: 1.0, hacker: 1.0, sniper: 0.95, blatant: 1.0, closet: 0.85,
   cheating: 1.0, autoclicker: 0.7, caution: 0.6, sus: 0.55, suspicious: 0.55,
   toxic: 0.4, annoying: 0.3, info: 0.2, note: 0.15, legit: 0.0, safe: 0.0,
+  'legit sniper': 0.5, account: 0.35,
 };
 const COLORS = {
   cheater: '#ff2d55', hacker: '#ff2d55', blatant: '#ff2d55', cheating: '#ff2d55',
   sniper: '#ff5b8a', closet: '#ff6b35', caution: '#ffb454', sus: '#ffb454',
   suspicious: '#ffb454', autoclicker: '#ffb454', toxic: '#e3e327', annoying: '#e3e327',
   info: '#58a6ff', note: '#8b949e', legit: '#56d364', safe: '#56d364', watchlist: '#bc8cff',
+  'legit sniper': '#ff8fb8', account: '#8b949e',
 };
 
+function normType(type) { return String(type || '').toLowerCase().trim().replace(/_/g, ' '); }
 function severityOf(type) {
-  const t = String(type || '').toLowerCase();
+  const t = normType(type);
   if (SEVERITY[t] != null) return SEVERITY[t];
   for (const k of Object.keys(SEVERITY)) if (t.includes(k)) return SEVERITY[k];
   return 0.25;
 }
 function colorOf(type) {
-  const t = String(type || '').toLowerCase();
+  const t = normType(type);
   if (COLORS[t]) return COLORS[t];
   for (const k of Object.keys(COLORS)) if (t.includes(k)) return COLORS[k];
   return '#58a6ff';
@@ -50,7 +57,11 @@ const REASON_KEYWORDS = [
   ['annoying', ['annoy', 'spam']],
   ['legit', ['legit', 'not a threat']],
 ];
-const LABELS = { cheater: 'CHEAT', sniper: 'SNIPE', suspicious: 'SUS', toxic: 'TOXIC', annoying: 'ANNOY', legit: 'LEGIT', info: 'INFO', note: 'NOTE', watchlist: 'WATCH' };
+const LABELS = {
+  cheater: 'CHEAT', sniper: 'SNIPE', suspicious: 'SUS', toxic: 'TOXIC', annoying: 'ANNOY',
+  legit: 'LEGIT', info: 'INFO', note: 'NOTE', watchlist: 'WATCH',
+  'legit sniper': 'L.SNIPE', account: 'ACCT', caution: 'CAUTION',
+};
 
 function classifyReason(reason) {
   // "antisniped"/"anti-sniped" describes something done TO the player (dodged/caught
@@ -67,14 +78,29 @@ function classifyReason(reason) {
   }
   return null;
 }
+// Live API tooltip format: "{Category} (Added by {who} {time} ago)\n- {detail line}".
+// The detail line(s) are optional; when absent the category itself is the reason.
+function parseTooltip(tooltip) {
+  const text = String(tooltip || '');
+  const lines = text.split('\n');
+  const header = lines[0] || '';
+  const m = header.match(/^(.*?)\s*\(Added by (.+)\)\s*$/i);
+  let category = header.trim();
+  let addedByInfo = '';
+  if (m) { category = m[1].trim(); addedByInfo = m[2].trim(); }
+  const detail = lines.slice(1).map((l) => l.replace(/^-\s*/, '').trim()).filter(Boolean).join(' ');
+  return { category: category || 'info', addedByInfo, reason: detail || category || 'info' };
+}
 function effectiveType(rawType, reason) {
   const t = String(rawType || '').toLowerCase().trim();
   if (t && t !== 'info' && t !== 'note') return rawType;
   return classifyReason(reason) || rawType || 'info';
 }
 function labelOf(type) {
-  const t = String(type || '').toLowerCase();
-  return LABELS[t] || t.slice(0, 4).toUpperCase();
+  const t = normType(type);
+  if (LABELS[t]) return LABELS[t];
+  for (const k of Object.keys(LABELS)) if (t.includes(k)) return LABELS[k];
+  return String(type || '').slice(0, 4).toUpperCase();
 }
 
 function norm(u) { return String(u || '').replace(/[^0-9a-fA-F]/g, '').toLowerCase(); }
@@ -116,10 +142,17 @@ class Urchin {
       .replace(/\{\{?sources\}?\}/gi, sources);
   }
 
-  // Parse a loosely-typed tag object from the Urchin/Cubelify response.
+  // Parse a loosely-typed tag object. The LIVE Urchin API doesn't return
+  // tag_type/reason/added_by at all — each tag is just { icon, color, tooltip },
+  // e.g. tooltip: "Blatant Cheater (Added by someone 15hr ago)\n- blatant legitscaff, ka".
+  // Older/bundled/local shapes still carry tag_type/reason/added_by directly.
   _parseTag(t) {
     if (t == null) return null;
     if (typeof t === 'string') return { type: effectiveType('info', t), text: t, reason: t };
+    if (t.tooltip !== undefined || t.icon !== undefined) {
+      const { category, addedByInfo, reason } = parseTooltip(t.tooltip);
+      return { type: effectiveType(category, reason), text: reason, reason, added_by: addedByInfo, source: t.source || 'urchin' };
+    }
     const rawType = t.tag_type || t.type || t.category || t.name || 'info';
     const reason = t.reason || t.tag_reason || t.text || t.description || '';
     const by = t.added_by || t.addedBy || t.author || '';
@@ -196,4 +229,4 @@ class Urchin {
   }
 }
 
-module.exports = { Urchin, severityOf, colorOf, labelOf, classifyReason, SEVERITY, COLORS };
+module.exports = { Urchin, severityOf, colorOf, labelOf, classifyReason, parseTooltip, SEVERITY, COLORS };

@@ -45,6 +45,23 @@ function text(path, ph, wide) {
   i.onchange = () => set(path, i.value);
   return i;
 }
+// Secret fields (API keys): hidden by default, revealed only while the eye is held/toggled on.
+function secretText(path, ph, wide) {
+  const wrap = el('div', 'secret-wrap' + (wide ? ' wide' : ''));
+  const i = el('input'); i.type = 'password'; i.autocomplete = 'off'; i.spellcheck = false;
+  i.value = getPath(cfg, path) ?? ''; if (ph) i.placeholder = ph;
+  i.onchange = () => set(path, i.value);
+  const eye = el('button', 'eye-toggle'); eye.type = 'button'; eye.textContent = '👁'; eye.title = 'Show/hide key';
+  eye.onclick = (e) => {
+    e.preventDefault();
+    const showing = i.type === 'text';
+    i.type = showing ? 'password' : 'text';
+    eye.classList.toggle('on', !showing);
+  };
+  wrap.appendChild(i); wrap.appendChild(eye);
+  wrap.inputEl = i;
+  return wrap;
+}
 function number(path, min, max, step) {
   const i = el('input'); i.type = 'number'; i.value = getPath(cfg, path) ?? 0;
   if (min != null) i.min = min; if (max != null) i.max = max; if (step != null) i.step = step;
@@ -128,9 +145,9 @@ function panelTriggers(p) {
 function panelApi(p) {
   p.appendChild(header('API Keys', 'Your keys live here — easy to change. Nothing is shared externally except to the APIs themselves.'));
   const row = el('div'); row.style.display = 'flex'; row.style.gap = '8px'; row.style.alignItems = 'center';
-  const t = text('hypixelKey', 'Hypixel API key', true); const b = el('button', 'act'); b.textContent = 'Test';
+  const t = secretText('hypixelKey', 'Hypixel API key', true); const b = el('button', 'act'); b.textContent = 'Test';
   const res = el('span'); res.style.fontSize = '11px';
-  b.onclick = async () => { await set('hypixelKey', t.value); res.textContent = 'testing…'; res.className = '';
+  b.onclick = async () => { await set('hypixelKey', t.inputEl.value); res.textContent = 'testing…'; res.className = '';
     const r = await api.testKey();
     if (r.ok) { res.innerHTML = `<span class="ok">valid</span> · ${r.record && r.record.limit ? r.record.limit + '/min' : 'ok'}`; }
     else { res.innerHTML = `<span class="bad">${esc(r.error)}</span>`; } };
@@ -141,10 +158,10 @@ function panelApi(p) {
   const ep = el('textarea'); ep.value = cfg.urchinEndpoint || ''; ep.style.width = '360px';
   ep.onchange = () => set('urchinEndpoint', ep.value);
   p.appendChild(fieldRow('Cubelify endpoint URL', 'Placeholders {id} {uuid} {name} {key} {sources} are substituted per player.', ep));
-  p.appendChild(fieldRow('Urchin key', 'Substituted into {key} in the endpoint above.', text('urchinKey', 'urchin key')));
+  p.appendChild(fieldRow('Urchin key', 'Substituted into {key} in the endpoint above.', secretText('urchinKey', 'urchin key')));
   p.appendChild(fieldRow('Sources', 'Comma-separated Urchin sources.', text('urchinSources', '', true)));
   p.appendChild(fieldRow('Admin base URL', 'Base for admin add-tag (Blacklist tab).', text('urchinAdminBase', '', true)));
-  p.appendChild(fieldRow('Admin key', 'Only needed for the Blacklist Admin tab (adding tags).', text('urchinAdminKey', 'admin key')));
+  p.appendChild(fieldRow('Admin key', 'Only needed for the Blacklist Admin tab (adding tags).', secretText('urchinAdminKey', 'admin key')));
 }
 
 function panelAppearance(p) {
@@ -226,7 +243,7 @@ function panelAbout(p) {
       <span class="pill">Alt+S</span> settings<br>
       Right-click a column header → toggle columns. Drag headers to reorder. Click header to sort.<br>
       Right-click a player row → Plancke, copy, local tag, watchlist, remove.<br>
-      Bundled local blacklist: <b>657 UUIDs / 733 info tags</b> imported from your CSV.
+      Bundled local blacklist: <b>9,014 UUIDs / 9,349 tags</b> (info, caution, legit_sniper, account) imported from local exports.
     </div>`;
   p.appendChild(s);
   const reset = el('button', 'ghost'); reset.textContent = 'Reset all settings to defaults';

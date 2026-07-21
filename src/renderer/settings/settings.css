@@ -23,12 +23,19 @@ h2{font-size:16px;margin-bottom:4px}
 .field .l .name{font-size:13px}
 .field .l .help{font-size:11px;color:var(--muted);margin-top:2px}
 .field .c{flex:0 0 auto;display:flex;align-items:center;gap:8px}
-input[type=text],input[type=number],textarea,select{background:var(--bg);border:1px solid var(--grid);color:var(--text);border-radius:6px;padding:6px 9px;font-size:12px;outline:none;font-family:inherit}
-input[type=text]:focus,input[type=number]:focus,textarea:focus,select:focus{border-color:var(--accent)}
+input[type=text],input[type=password],input[type=number],textarea,select{background:var(--bg);border:1px solid var(--grid);color:var(--text);border-radius:6px;padding:6px 9px;font-size:12px;outline:none;font-family:inherit}
+input[type=text]:focus,input[type=password]:focus,input[type=number]:focus,textarea:focus,select:focus{border-color:var(--accent)}
 input[type=text]{width:240px}
+input[type=password]{width:100%}
 input[type=number]{width:80px}
 textarea{width:320px;height:60px;resize:vertical}
 .wide input[type=text]{width:340px}
+.secret-wrap{display:flex;align-items:center;gap:6px;width:240px}
+.secret-wrap.wide{width:340px}
+.secret-wrap input[type=password]{flex:1;min-width:0}
+.eye-toggle{flex:0 0 auto;background:transparent;border:1px solid var(--grid);color:var(--muted);border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center}
+.eye-toggle:hover{border-color:var(--accent);color:var(--text)}
+.eye-toggle.on{color:var(--accent);border-color:var(--accent)}
 button.act{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px}
 button.ghost{background:transparent;border:1px solid var(--grid);color:var(--text);border-radius:6px;padding:6px 12px;cursor:pointer;font-size:12px}
 button.ghost:hover{border-color:var(--accent)}
