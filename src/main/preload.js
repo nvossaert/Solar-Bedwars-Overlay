@@ -4,7 +4,7 @@ const { contextBridge, ipcRenderer } = require('electron');
 const invoke = (ch, ...a) => ipcRenderer.invoke(ch, ...a);
 const on = (ch, cb) => { const h = (_e, p) => cb(p); ipcRenderer.on(ch, h); return () => ipcRenderer.removeListener(ch, h); };
 
-contextBridge.exposeInMainWorld('api', {
+contextBridge.exposeInMainWorld('solarBridge', {
   // config
   getConfig: () => invoke('config:get'),
   setConfig: (patch) => invoke('config:set', patch),

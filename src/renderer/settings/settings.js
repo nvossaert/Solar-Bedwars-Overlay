@@ -1,5 +1,5 @@
 'use strict';
-const api = window.api;
+const api = window.solarBridge;
 let cfg = null;
 
 const $ = (s) => document.querySelector(s);

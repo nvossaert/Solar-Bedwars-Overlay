@@ -8,23 +8,24 @@
 <body>
   <div id="app">
     <div id="titlebar">
-      <span id="drag" class="drag">
+      <div class="brand-wrap">
         <span class="logo">☀</span>
         <span class="brand">Solar</span>
         <span id="count" class="count">0</span>
         <span id="logdot" class="logdot" title="log watcher"></span>
-      </span>
+      </div>
       <div class="add">
         <input id="addInput" placeholder="add player…" spellcheck="false" />
       </div>
       <div class="btns">
-        <button id="btnRefresh" title="Refresh (re-fetch)">⟳</button>
-        <button id="btnClear" title="Clear list (Alt+C)">✕list</button>
-        <button id="btnClick" title="Toggle click-through (Alt+X)">☞</button>
-        <button id="btnBlacklist" title="Blacklist admin">⚑</button>
-        <button id="btnSettings" title="Settings (Alt+S)">⚙</button>
-        <button id="btnMin" title="Minimize">—</button>
-        <button id="btnClose" title="Quit">⏻</button>
+        <button id="btnRefresh" title="Refresh (re-fetch)"><span>⟳</span></button>
+        <button id="btnClear" title="Clear list (Alt+C)"><span>✕</span></button>
+        <button id="btnClick" title="Toggle click-through (Alt+X)"><span>☞</span></button>
+        <button id="btnBlacklist" title="Blacklist admin"><span>⚑</span></button>
+        <button id="btnSettings" title="Settings (Alt+S)"><span>⚙</span></button>
+        <div class="btn-sep"></div>
+        <button id="btnMin" class="win-ctrl" title="Minimize"><span>–</span></button>
+        <button id="btnClose" class="win-ctrl close" title="Quit"><span>✕</span></button>
       </div>
     </div>
 
@@ -33,7 +34,11 @@
         <thead><tr id="headRow"></tr></thead>
         <tbody id="body"></tbody>
       </table>
-      <div id="empty" class="empty">Waiting for players… join a game or add a name above.</div>
+      <div id="empty" class="empty">
+        <div class="empty-icon">☀</div>
+        <div class="empty-title">No players tracked yet</div>
+        <div class="empty-sub">Join a game, or add a name above to start watching.</div>
+      </div>
     </div>
 
     <div id="ctx" class="ctx hidden"></div>

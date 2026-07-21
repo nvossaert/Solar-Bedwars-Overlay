@@ -37,6 +37,46 @@ function colorOf(type) {
   return '#58a6ff';
 }
 
+// The bundled import and most local/live tags store tag_type as a generic
+// 'info' — the real signal (cheater/sniper/toxic/...) lives only in the free-text
+// reason. Classify from reason keywords whenever the stored type isn't already
+// something more specific, so tags stop rendering as blanket blue "info".
+const NEGATION_RE = /\b(not|isn'?t|wasn'?t|never|no)\b/;
+const REASON_KEYWORDS = [
+  ['cheater', ['blatant', 'aimbot', 'killaura', 'kill aura', 'scaffold', 'xray', 'x-ray', 'nuker', 'speedhack', 'speed hack', 'flyhack', 'fly hack', 'cheat', 'hack']],
+  ['sniper', ['closet', 'snipe']],
+  ['suspicious', ['autoclick', 'auto click', 'beam', 'boost', 'multi-account', 'multiaccount', 'alt account']],
+  ['toxic', ['toxic', 'racist', 'slur']],
+  ['annoying', ['annoy', 'spam']],
+  ['legit', ['legit', 'not a threat']],
+];
+const LABELS = { cheater: 'CHEAT', sniper: 'SNIPE', suspicious: 'SUS', toxic: 'TOXIC', annoying: 'ANNOY', legit: 'LEGIT', info: 'INFO', note: 'NOTE', watchlist: 'WATCH' };
+
+function classifyReason(reason) {
+  // "antisniped"/"anti-sniped" describes something done TO the player (dodged/caught
+  // out), not the player being a sniper — strip it so it can't trigger that category.
+  const text = String(reason || '').toLowerCase().replace(/anti[\s-]?snipe[ds]?/g, '');
+  for (const [type, words] of REASON_KEYWORDS) {
+    for (const word of words) {
+      const idx = text.indexOf(word);
+      if (idx === -1) continue;
+      const before = text.slice(Math.max(0, idx - 20), idx);
+      if (NEGATION_RE.test(before)) continue; // e.g. "isnt toxic" / "not cheating" — skip this hit
+      return type;
+    }
+  }
+  return null;
+}
+function effectiveType(rawType, reason) {
+  const t = String(rawType || '').toLowerCase().trim();
+  if (t && t !== 'info' && t !== 'note') return rawType;
+  return classifyReason(reason) || rawType || 'info';
+}
+function labelOf(type) {
+  const t = String(type || '').toLowerCase();
+  return LABELS[t] || t.slice(0, 4).toUpperCase();
+}
+
 function norm(u) { return String(u || '').replace(/[^0-9a-fA-F]/g, '').toLowerCase(); }
 
 class Urchin {
@@ -79,11 +119,11 @@ class Urchin {
   // Parse a loosely-typed tag object from the Urchin/Cubelify response.
   _parseTag(t) {
     if (t == null) return null;
-    if (typeof t === 'string') return { type: 'info', text: t, reason: t };
-    const type = t.tag_type || t.type || t.category || t.name || 'info';
+    if (typeof t === 'string') return { type: effectiveType('info', t), text: t, reason: t };
+    const rawType = t.tag_type || t.type || t.category || t.name || 'info';
     const reason = t.reason || t.tag_reason || t.text || t.description || '';
     const by = t.added_by || t.addedBy || t.author || '';
-    return { type, text: reason || type, reason, added_by: by, source: t.source || 'urchin' };
+    return { type: effectiveType(rawType, reason), text: reason || rawType, reason, added_by: by, source: t.source || 'urchin' };
   }
 
   async lookup(id, name) {
@@ -112,13 +152,13 @@ class Urchin {
 
     // 2) bundled local import (info tags removed from the API)
     for (const t of (this.local[u] || [])) {
-      out.tags.push({ type: t.tag_type || 'info', text: t.reason, reason: t.reason, added_by: t.added_by, source: 'local-import' });
+      out.tags.push({ type: effectiveType(t.tag_type, t.reason), text: t.reason, reason: t.reason, added_by: t.added_by, source: 'local-import' });
     }
     if (this.local[u]) out.sources.push('local-import');
 
     // 3) user-added local tags
     for (const t of (this.localTags[u] || [])) {
-      out.tags.push({ type: t.tag_type || 'info', text: t.reason, reason: t.reason, added_by: 'me', source: 'local' });
+      out.tags.push({ type: effectiveType(t.tag_type, t.reason), text: t.reason, reason: t.reason, added_by: 'me', source: 'local' });
     }
 
     // 4) soft watchlist from auto-triggers
@@ -130,6 +170,7 @@ class Urchin {
     for (const t of out.tags) {
       t.severity = severityOf(t.type);
       t.color = t.type === 'watchlist' ? COLORS.watchlist : colorOf(t.type);
+      t.label = labelOf(t.type);
       if (t.severity > sev) sev = t.severity;
     }
     out.severity = sev;
@@ -155,4 +196,4 @@ class Urchin {
   }
 }
 
-module.exports = { Urchin, severityOf, colorOf, SEVERITY, COLORS };
+module.exports = { Urchin, severityOf, colorOf, labelOf, classifyReason, SEVERITY, COLORS };

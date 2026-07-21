@@ -1,5 +1,5 @@
 'use strict';
-const api = window.api;
+const api = window.solarBridge;
 
 const COLMETA = {
   tag:     { label: 'Tag',        num: false },
@@ -136,7 +136,7 @@ function cell(row, key){
   switch(key){
     case 'tag':{
       const p = u && u.primary;
-      if(p){ td.innerHTML = `<span class="tagchip" style="background:${p.color}">${esc((p.type||'').slice(0,4).toUpperCase())}</span>`; }
+      if(p){ td.innerHTML = `<span class="tagchip" style="background:${p.color}">${esc(p.label || (p.type||'').slice(0,4).toUpperCase())}</span>`; }
       return td;
     }
     case 'star':{
