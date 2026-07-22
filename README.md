@@ -38,7 +38,7 @@ system tray.
 
 1. **General → Your IGN.** Set your username so the overlay knows who "you" are (mentions, hide-self).
 2. **Log & Detection → Log file path.** Point it at your client log and click *Browse…*.
-   Default guesses cover Lunar 1.8 (`.lunarclient/offline/multiver/logs/latest.log`), vanilla, and Badlion.
+   Default guesses cover Lunar (`.lunarclient/profiles/<version>/logs/latest.log`, 1.8 first), vanilla, and Badlion.
    Players are auto-added when you `/who`, join a party, get invites/DMs, etc.
 3. **API Keys → Hypixel key.** Your personal key is pre-filled. Hit **Test** to confirm it.
    (Personal keys allow 300 req / 5 min — the app rate-limits itself to stay under that. When your
@@ -59,7 +59,8 @@ system tray.
 - Hover any row for a full breakdown tooltip (finals, games, network level, monthly finals tracked, all tags).
 
 ### Monthly FKDR
-
+Hypixel has no native monthly stat, so the app stores one **snapshot per player per day** and computes
+the delta over the last ~30 days. It shows `—` until enough history accrues (a day or two of seeing a player).
 
 ### Sniper / Threat score (your own evaluation)
 A transparent 0–100 blend of FKDR, star, WLR, win streak, **recent-sweat trend** (monthly vs lifetime
@@ -69,8 +70,8 @@ Every weight is a slider in **Settings → Sniper Score**.
 
 ### Urchin blacklist + custom imported CSV
 - Live lookups hit your fully-configurable Urchin endpoint and render tags as colored chips.
-- Entire uploaded CSV (the `info`/caution tags removed in the last Urchin update) is bundled at
-  `data/blacklist.json` — **5k+ UUIDs / 10k+ tags** — and merged into every lookup, tagged `[local-import]`.
+- Your uploaded CSVs (`legit_sniper`/`caution`/`account`/`info` tags) are bundled at
+  `data/blacklist.json` — **9,014 UUIDs / 9,349 tags** — and merged into every lookup, tagged `[local-import]`.
 - Right-click a player → add a personal local `info` tag, or flag them to your watchlist.
 
 ### Blacklist Admin (⚑) — you have add-tag perms
@@ -153,10 +154,9 @@ git grep -nE "key=[0-9a-fA-F]{8}-" $(git rev-parse HEAD) || echo "no embedded ke
 
 ## Notes
 - Keys are stored locally in Electron's `userData/config.json`. Change them anytime in Settings.
-- Live API calls (Hypixel, Urchin, Mojang) confirm the
-  Urchin tag shape on your machine — the parser is defensive and follows the documented
-  `{ score:{value,mode}, tags:[…] }` format, but if your instance returns extra fields you want shown,
-  they're easy to surface in `urchin.js → _parseTag`.
+- Double-check the Urchin tag shape on your own machine — the parser is defensive and follows the
+  documented `{ score:{value,mode}, tags:[…] }` format, but if your instance returns extra fields
+  you want shown, they're easy to surface in `urchin.js → _parseTag`.
 - To package a Windows `.exe` later: add `electron-builder`, a `build` block, and run `electron-builder`.
 - Log formats vary by client. If detection misses something, paste a sample line and the regexes in
   `logWatcher.js` are straightforward to extend.
