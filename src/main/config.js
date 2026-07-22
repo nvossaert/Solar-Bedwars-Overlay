@@ -72,6 +72,9 @@ function defaults() {
     urchinAdminKey: secrets.urchinAdminKey || '', // required only for the "Add to blacklist" admin tab
     urchinSources: 'GAME,PARTY,PARTY_INVITES,CHAT,CHAT_MENTIONS,MANUAL,ME',
     urchinAdminBase: 'https://api.urchin.gg/v3',
+    // Urchin ships on by default (it's listed as a built-in entry in Settings -> Connections)
+    // but the user is free to switch it off if they'd rather run their own endpoints only.
+    urchinEnabled: true,
     // Extra blacklist/tag APIs beyond the built-in Urchin one, set up in Settings -> Connections.
     // Each entry: { id, name, endpoint, key, enabled }, same {id}{uuid}{name}{key}{sources} placeholders as urchinEndpoint.
     connections: [],

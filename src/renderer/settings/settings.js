@@ -16,6 +16,59 @@ async function set(path, val) { cfg = await api.setConfig(patchOf(path, val)); }
 
 const COLLABELS = { tag: 'Tag', star: 'Lvl', name: 'Player', fkdr: 'FKDR', wlr: 'WLR', finals: 'F.Kills', wins: 'Wins', ws: 'WS', mfkdr: 'M.FKDR', sniper: 'Sniper', lastseen: 'Last Login', bl: 'BL' };
 
+// A curated set of extra Hypixel stats, grouped by gamemode, that a user can flip on
+// as columns without having to know the raw API field names themselves. All off by
+// default. These just become ordinary custom columns under the hood (same dot-path
+// mechanism as the "add your own" box below), keyed with a stable 'cat:' prefix so
+// toggling one back on doesn't create a duplicate.
+const STAT_CATALOG = {
+  General: [
+    { key: 'cat:networkExp', label: 'Network XP', path: 'networkExp' },
+    { key: 'cat:karma', label: 'Karma', path: 'karma' },
+    { key: 'cat:achievementPoints', label: 'Achievement Points', path: 'achievementPoints' },
+    { key: 'cat:mostRecentGame', label: 'Last Game Played', path: 'mostRecentGameType' },
+  ],
+  Bedwars: [
+    { key: 'cat:bw_kills', label: 'Kills', path: 'stats.Bedwars.kills_bedwars' },
+    { key: 'cat:bw_deaths', label: 'Deaths', path: 'stats.Bedwars.deaths_bedwars' },
+    { key: 'cat:bw_beds_broken', label: 'Beds Broken', path: 'stats.Bedwars.beds_broken_bedwars' },
+    { key: 'cat:bw_beds_lost', label: 'Beds Lost', path: 'stats.Bedwars.beds_lost_bedwars' },
+    { key: 'cat:bw_games', label: 'Games Played', path: 'stats.Bedwars.games_played_bedwars' },
+    { key: 'cat:bw_coins', label: 'Coins', path: 'stats.Bedwars.coins' },
+    { key: 'cat:bw_solo_wins', label: 'Solo Wins', path: 'stats.Bedwars.eight_one_wins_bedwars' },
+    { key: 'cat:bw_solo_finals', label: 'Solo Final Kills', path: 'stats.Bedwars.eight_one_final_kills_bedwars' },
+    { key: 'cat:bw_doubles_wins', label: 'Doubles Wins', path: 'stats.Bedwars.eight_two_wins_bedwars' },
+    { key: 'cat:bw_doubles_finals', label: 'Doubles Final Kills', path: 'stats.Bedwars.eight_two_final_kills_bedwars' },
+    { key: 'cat:bw_3v3_wins', label: '3v3 Wins', path: 'stats.Bedwars.four_three_wins_bedwars' },
+    { key: 'cat:bw_4v4_wins', label: '4v4 Wins', path: 'stats.Bedwars.four_four_wins_bedwars' },
+  ],
+  Skywars: [
+    { key: 'cat:sw_kills', label: 'Kills', path: 'stats.SkyWars.kills' },
+    { key: 'cat:sw_deaths', label: 'Deaths', path: 'stats.SkyWars.deaths' },
+    { key: 'cat:sw_wins', label: 'Wins', path: 'stats.SkyWars.wins' },
+    { key: 'cat:sw_losses', label: 'Losses', path: 'stats.SkyWars.losses' },
+    { key: 'cat:sw_winstreak', label: 'Win Streak', path: 'stats.SkyWars.win_streak' },
+    { key: 'cat:sw_souls', label: 'Souls', path: 'stats.SkyWars.souls' },
+    { key: 'cat:sw_coins', label: 'Coins', path: 'stats.SkyWars.coins' },
+  ],
+  Duels: [
+    { key: 'cat:du_wins', label: 'Wins', path: 'stats.Duels.wins' },
+    { key: 'cat:du_losses', label: 'Losses', path: 'stats.Duels.losses' },
+    { key: 'cat:du_kills', label: 'Kills', path: 'stats.Duels.kills' },
+    { key: 'cat:du_deaths', label: 'Deaths', path: 'stats.Duels.deaths' },
+    { key: 'cat:du_winstreak', label: 'Win Streak', path: 'stats.Duels.current_winstreak' },
+    { key: 'cat:du_best_winstreak', label: 'Best Win Streak', path: 'stats.Duels.best_overall_winstreak' },
+    { key: 'cat:du_coins', label: 'Coins', path: 'stats.Duels.coins' },
+  ],
+  'Murder Mystery': [
+    { key: 'cat:mm_wins', label: 'Wins', path: 'stats.MurderMystery.wins' },
+    { key: 'cat:mm_kills', label: 'Kills', path: 'stats.MurderMystery.kills' },
+    { key: 'cat:mm_murderer_wins', label: 'Murderer Wins', path: 'stats.MurderMystery.murderer_wins' },
+    { key: 'cat:mm_detective_wins', label: 'Detective Wins', path: 'stats.MurderMystery.detective_wins' },
+    { key: 'cat:mm_coins', label: 'Coins', path: 'stats.MurderMystery.coins' },
+  ],
+};
+
 const THEMES = {
   midnight: { bg: '#0d1117', headerBg: '#161b22', text: '#e6edf3', accent: '#58a6ff', grid: '#21262d' },
   obsidian: { bg: '#000000', headerBg: '#0a0a0a', text: '#f0f0f0', accent: '#8b5cf6', grid: '#1a1a1a' },
@@ -166,9 +219,20 @@ function panelApi(p) {
 }
 
 function panelConnections(p) {
-  p.appendChild(header('Connections', 'Extra blacklist/tag APIs on top of the built-in Urchin one above. Same {id} {uuid} {name} {key} {sources} placeholders. Each response should look like { "tags": [...] } (or just a bare array) — tags can be either the { tag_type, reason, added_by } shape or the { icon, color, tooltip } shape.'));
-  const list = cfg.connections || [];
+  p.appendChild(header('Connections', 'Every blacklist/tag source that feeds the overlay, in one place. Same {id} {uuid} {name} {key} {sources} placeholders everywhere. Each response should look like { "tags": [...] } (or just a bare array) — tags can be either the { tag_type, reason, added_by } shape or the { icon, color, tooltip } shape.'));
   const box = el('div');
+
+  // Urchin ships built-in and on by default — listed here like any other connection
+  // so it's obvious it's running, but it's just a toggle away from being turned off.
+  const ub = el('div', 'colrow');
+  const usw = toggle('urchinEnabled');
+  const unm = el('span', 'cname'); unm.textContent = 'Urchin (built-in)';
+  const uedit = el('button'); uedit.textContent = '✎'; uedit.title = 'Endpoint / key / sources live under API Keys';
+  uedit.onclick = () => { active = 'API Keys'; rerender(); };
+  ub.appendChild(usw); ub.appendChild(unm); ub.appendChild(uedit);
+  box.appendChild(ub);
+
+  const list = cfg.connections || [];
   list.forEach((conn, idx) => {
     const row = el('div', 'colrow');
     const sw = el('label', 'sw'); const i = el('input'); i.type = 'checkbox'; i.checked = conn.enabled !== false;
@@ -295,6 +359,41 @@ function panelColumns(p) {
   const hint = el('div', 'kv');
   hint.textContent = 'A few common paths: stats.Bedwars.winstreak · stats.Bedwars.beds_broken_bedwars · achievements.bedwars_level · networkExp · karma';
   p.appendChild(hint);
+
+  catalogSection(p, custom);
+}
+
+// Pre-built stat toggles, grouped by gamemode — flip one on/off and it's added to
+// or pulled from customColumns + columns exactly like a hand-typed custom column.
+function catalogSection(p, custom) {
+  p.appendChild(header('More stats (by gamemode)', 'Off by default — turn on whatever you want to see. These read straight off the raw Hypixel player object, so a field only shows a value if Hypixel actually returns it for that account.'));
+  for (const [game, items] of Object.entries(STAT_CATALOG)) {
+    const gh = el('div'); gh.style.cssText = 'font-weight:600;margin:10px 0 2px;font-size:12px;color:var(--muted)'; gh.textContent = game;
+    p.appendChild(gh);
+    for (const item of items) {
+      const active = custom.some((c) => c.key === item.key);
+      const row = el('div', 'field');
+      const l = el('div', 'l'); l.innerHTML = `<div class="name">${esc(item.label)}</div>`;
+      const c = el('div', 'c');
+      const sw = el('label', 'sw'); const i = el('input'); i.type = 'checkbox'; i.checked = active;
+      const sl = el('span', 'slider'); sw.appendChild(i); sw.appendChild(sl);
+      i.onchange = async () => {
+        const nextCustom = (cfg.customColumns || []).slice();
+        const nextCols = (cfg.columns || []).slice();
+        if (i.checked) {
+          if (!nextCustom.some((x) => x.key === item.key)) nextCustom.push({ key: item.key, label: item.label, path: item.path });
+          if (!nextCols.some((x) => x.key === item.key)) nextCols.push({ key: item.key, visible: true, order: nextCols.length });
+        } else {
+          const ci = nextCustom.findIndex((x) => x.key === item.key); if (ci >= 0) nextCustom.splice(ci, 1);
+          const oi = nextCols.findIndex((x) => x.key === item.key); if (oi >= 0) nextCols.splice(oi, 1);
+        }
+        cfg = await api.setConfig({ customColumns: nextCustom, columns: nextCols });
+        rerender();
+      };
+      c.appendChild(sw); row.appendChild(l); row.appendChild(c);
+      p.appendChild(row);
+    }
+  }
 }
 function swap(a, i, j) { const t = a[i]; a[i] = a[j]; a[j] = t; }
 

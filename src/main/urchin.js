@@ -163,25 +163,28 @@ class Urchin {
     const cfg = this.getConfig();
     const out = { tags: [], score: 0, scoreMode: 'add', severity: 0, sources: [] };
 
-    // 1) live Urchin endpoint
-    try {
-      const url = this._buildUrl(cfg.urchinEndpoint, id, name, cfg.urchinKey);
-      if (url) {
-        const r = await fetch(url, { headers: { Accept: 'application/json' } });
-        if (r.ok) {
-          const j = await r.json().catch(() => ({}));
-          if (j && j.score) { out.score = +j.score.value || 0; out.scoreMode = j.score.mode || 'add'; }
-          const arr = Array.isArray(j.tags) ? j.tags : [];
-          for (const t of arr) {
-            const p = this._parseTag(t);
-            if (p) out.tags.push(p);
+    // 1) live Urchin endpoint — on by default, but the user can flip it off in
+    // Settings -> Connections and rely only on their own Connections instead.
+    if (cfg.urchinEnabled !== false) {
+      try {
+        const url = this._buildUrl(cfg.urchinEndpoint, id, name, cfg.urchinKey);
+        if (url) {
+          const r = await fetch(url, { headers: { Accept: 'application/json' } });
+          if (r.ok) {
+            const j = await r.json().catch(() => ({}));
+            if (j && j.score) { out.score = +j.score.value || 0; out.scoreMode = j.score.mode || 'add'; }
+            const arr = Array.isArray(j.tags) ? j.tags : [];
+            for (const t of arr) {
+              const p = this._parseTag(t);
+              if (p) out.tags.push(p);
+            }
+            if (arr.length) out.sources.push('urchin');
+          } else if (r.status === 401 || r.status === 403) {
+            out.error = 'urchin key ' + r.status;
           }
-          if (arr.length) out.sources.push('urchin');
-        } else if (r.status === 401 || r.status === 403) {
-          out.error = 'urchin key ' + r.status;
         }
-      }
-    } catch (e) { out.error = 'urchin unreachable'; }
+      } catch (e) { out.error = 'urchin unreachable'; }
+    }
 
     // 1b) user-defined Connections (Settings -> Connections) — same tag shapes as Urchin.
     for (const conn of (cfg.connections || [])) {
