@@ -1,8 +1,6 @@
 'use strict';
-/*
- * Config store. Persists to <userData>/config.json.
- * Everything toggleable lives here so the Settings window is just a view of this object.
- */
+// Config lives here and gets persisted to <userData>/config.json — the Settings
+// window is really just a form bound to this one object.
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -17,10 +15,24 @@ try { secrets = require('./secrets'); } catch (_) {}
 function guessLogPath() {
   // Sensible Windows defaults. User can override in Settings.
   const home = os.homedir();
+  const lunarProfiles = path.join(home, '.lunarclient', 'profiles');
+
+  // Lunar Client keeps one log dir per game-version profile, e.g.
+  // .lunarclient\profiles\1.8\logs\latest.log — 1.8 is where Bedwars lives, so try it first.
+  for (const v of ['1.8', '1.7', '1.21', '1.16', '1.12']) {
+    const p = path.join(lunarProfiles, v, 'logs', 'latest.log');
+    try { if (fs.existsSync(p)) return p; } catch (_) {}
+  }
+  // Fall back to scanning whatever profiles actually exist on this machine.
+  try {
+    for (const v of fs.readdirSync(lunarProfiles)) {
+      const p = path.join(lunarProfiles, v, 'logs', 'latest.log');
+      try { if (fs.existsSync(p)) return p; } catch (_) {}
+    }
+  } catch (_) {}
+
   const candidates = [
-    // Lunar Client 1.8 (most common for Bedwars sweats)
-    path.join(home, '.lunarclient', 'offline', 'multiver', 'logs', 'latest.log'),
-    path.join(home, '.lunarclient', 'offline', '1.8', 'logs', 'latest.log'),
+    path.join(lunarProfiles, '1.8', 'logs', 'latest.log'),
     // Vanilla / MultiMC-style
     path.join(process.env.APPDATA || home, '.minecraft', 'logs', 'latest.log'),
     // Badlion
@@ -60,6 +72,9 @@ function defaults() {
     urchinAdminKey: secrets.urchinAdminKey || '', // required only for the "Add to blacklist" admin tab
     urchinSources: 'GAME,PARTY,PARTY_INVITES,CHAT,CHAT_MENTIONS,MANUAL,ME',
     urchinAdminBase: 'https://api.urchin.gg/v3',
+    // Extra blacklist/tag APIs beyond the built-in Urchin one, set up in Settings -> Connections.
+    // Each entry: { id, name, endpoint, key, enabled }, same {id}{uuid}{name}{key}{sources} placeholders as urchinEndpoint.
+    connections: [],
 
     // ---- Identity ----
     selfName: '',   // your IGN — the name the overlay reacts to
@@ -100,6 +115,9 @@ function defaults() {
 
     // ---- Columns ----
     columns: ALL_COLUMNS.map((c, i) => ({ key: c.key, visible: true, order: i })),
+    // User-defined columns pulling an arbitrary dot-path stat off the raw Hypixel player
+    // object, e.g. { key: 'custom:abc', label: 'Beds Broken', path: 'stats.Bedwars.beds_broken_bedwars' }.
+    customColumns: [],
     sortBy: 'sniper',
     sortDir: 'desc',
     hideNicked: false,

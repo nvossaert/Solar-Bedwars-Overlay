@@ -1,12 +1,9 @@
 'use strict';
-/*
- * Urchin blacklist integration + local imported blacklist DB.
- *  - lookup(): hits the fully-configurable Urchin endpoint, parses tags + score,
- *    then merges in the bundled local import (data/blacklist.json), any local
- *    manually-added tags, and the soft "watchlist" from auto-triggers.
- *  - addTag(): admin-only POST /admin/add-tag (needs the admin key).
- * All tag parsing is defensive because the Cubelify tag shape is loosely typed.
- */
+// Everything blacklist-related lives here: the live Urchin lookup, whatever extra
+// Connections the user's set up, the blacklist.json we ship, locally-added tags,
+// and the soft watchlist from auto-triggers — lookup() merges all of that into one
+// tag list per player. addTag() is the admin path for writing a new tag to Urchin.
+// Parsing stays defensive throughout since the API's tag shape isn't strongly typed.
 const fs = require('fs');
 const path = require('path');
 const { app } = require('electron');
@@ -131,14 +128,16 @@ class Urchin {
     this._saveUserTags();
   }
 
-  _buildUrl(id, name) {
+  // Shared placeholder substitution for the built-in Urchin endpoint and any
+  // user-defined Connections — both use the same {id}{uuid}{name}{key}{sources} template.
+  _buildUrl(template, id, name, key) {
     const cfg = this.getConfig();
     const sources = encodeURIComponent(cfg.urchinSources || '');
-    return (cfg.urchinEndpoint || '')
+    return (template || '')
       .replace(/\{\{?id\}?\}/gi, id)
       .replace(/\{\{?uuid\}?\}/gi, id)
       .replace(/\{\{?name\}?\}/gi, encodeURIComponent(name || ''))
-      .replace(/\{\{?key\}?\}/gi, encodeURIComponent(cfg.urchinKey || ''))
+      .replace(/\{\{?key\}?\}/gi, encodeURIComponent(key || ''))
       .replace(/\{\{?sources\}?\}/gi, sources);
   }
 
@@ -161,11 +160,12 @@ class Urchin {
 
   async lookup(id, name) {
     const u = norm(id);
+    const cfg = this.getConfig();
     const out = { tags: [], score: 0, scoreMode: 'add', severity: 0, sources: [] };
 
     // 1) live Urchin endpoint
     try {
-      const url = this._buildUrl(id, name);
+      const url = this._buildUrl(cfg.urchinEndpoint, id, name, cfg.urchinKey);
       if (url) {
         const r = await fetch(url, { headers: { Accept: 'application/json' } });
         if (r.ok) {
@@ -182,6 +182,24 @@ class Urchin {
         }
       }
     } catch (e) { out.error = 'urchin unreachable'; }
+
+    // 1b) user-defined Connections (Settings -> Connections) — same tag shapes as Urchin.
+    for (const conn of (cfg.connections || [])) {
+      if (!conn.enabled || !conn.endpoint) continue;
+      try {
+        const url = this._buildUrl(conn.endpoint, id, name, conn.key);
+        const r = await fetch(url, { headers: { Accept: 'application/json' } });
+        if (!r.ok) continue;
+        const j = await r.json().catch(() => ({}));
+        const arr = Array.isArray(j) ? j : (Array.isArray(j.tags) ? j.tags : []);
+        let got = false;
+        for (const t of arr) {
+          const p = this._parseTag(t);
+          if (p) { p.source = conn.name || conn.id; out.tags.push(p); got = true; }
+        }
+        if (got) out.sources.push(conn.name || conn.id);
+      } catch (_) { /* one bad connection shouldn't break the others */ }
+    }
 
     // 2) bundled local import (info tags removed from the API)
     for (const t of (this.local[u] || [])) {

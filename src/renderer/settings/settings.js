@@ -93,6 +93,7 @@ const TABS = {
   'Log & Detection': panelLog,
   Triggers: panelTriggers,
   'API Keys': panelApi,
+  Connections: panelConnections,
   Appearance: panelAppearance,
   Columns: panelColumns,
   'Sniper Score': panelSniper,
@@ -118,7 +119,7 @@ function panelLog(p) {
   const t = text('logPath', '', true); const b = el('button', 'ghost'); b.textContent = 'Browse…';
   b.onclick = async () => { const r = await api.pickLog(); if (r) { t.value = r; cfg.logPath = r; toast('Log path set', 'ok'); } };
   row.appendChild(t); row.appendChild(b);
-  p.appendChild(fieldRow('Log file path', 'e.g. Lunar 1.8: .lunarclient/offline/multiver/logs/latest.log', row));
+  p.appendChild(fieldRow('Log file path', 'e.g. Lunar 1.8: .lunarclient/profiles/1.8/logs/latest.log', row));
   p.appendChild(fieldRow('Clear list on server change', 'Wipe the list when you leave/join a game.', toggle('clearOnServerChange')));
   p.appendChild(fieldRow('Clear on lobby join', '', toggle('clearOnLobbyJoin')));
 }
@@ -164,6 +165,63 @@ function panelApi(p) {
   p.appendChild(fieldRow('Admin key', 'Only needed for the Blacklist Admin tab (adding tags).', secretText('urchinAdminKey', 'admin key')));
 }
 
+function panelConnections(p) {
+  p.appendChild(header('Connections', 'Extra blacklist/tag APIs on top of the built-in Urchin one above. Same {id} {uuid} {name} {key} {sources} placeholders. Each response should look like { "tags": [...] } (or just a bare array) — tags can be either the { tag_type, reason, added_by } shape or the { icon, color, tooltip } shape.'));
+  const list = cfg.connections || [];
+  const box = el('div');
+  list.forEach((conn, idx) => {
+    const row = el('div', 'colrow');
+    const sw = el('label', 'sw'); const i = el('input'); i.type = 'checkbox'; i.checked = conn.enabled !== false;
+    const sl = el('span', 'slider'); sw.appendChild(i); sw.appendChild(sl);
+    i.onchange = async () => { const next = list.slice(); next[idx] = { ...conn, enabled: i.checked }; await set('connections', next); };
+    const nm = el('span', 'cname'); nm.textContent = conn.name || conn.id;
+    const edit = el('button'); edit.textContent = '✎'; edit.title = 'Edit';
+    edit.onclick = () => openConnEditor(conn, idx);
+    const rm = el('button'); rm.textContent = '✕'; rm.title = 'Remove';
+    rm.onclick = async () => { const next = list.filter((_, j) => j !== idx); await set('connections', next); rerender(); };
+    row.appendChild(sw); row.appendChild(nm); row.appendChild(edit); row.appendChild(rm);
+    box.appendChild(row);
+  });
+  p.appendChild(box);
+  const add = el('button', 'act'); add.textContent = '+ Add connection';
+  add.style.marginTop = '8px';
+  add.onclick = () => openConnEditor(null, -1);
+  p.appendChild(add);
+}
+
+function openConnEditor(conn, idx) {
+  const back = el('div'); back.style.cssText = 'position:fixed;inset:0;background:#0008;z-index:80;display:flex;align-items:center;justify-content:center';
+  const box = el('div'); box.style.cssText = 'background:var(--header);border:1px solid var(--grid);border-radius:8px;padding:14px;width:380px';
+  const inputCss = 'width:100%;margin-bottom:6px;padding:6px;background:var(--bg);border:1px solid var(--grid);color:var(--text);border-radius:5px;box-sizing:border-box;font-family:inherit';
+  box.innerHTML = `<div style="font-weight:600;margin-bottom:8px">${conn ? 'Edit' : 'Add'} connection</div>`;
+  const name = el('input'); name.type = 'text'; name.placeholder = 'Name (e.g. MyBlacklist)'; name.style.cssText = inputCss;
+  name.value = (conn && conn.name) || '';
+  const endpoint = el('textarea'); endpoint.placeholder = 'https://example.com/api?uuid={id}&key={key}'; endpoint.style.cssText = inputCss + ';height:60px;resize:vertical';
+  endpoint.value = (conn && conn.endpoint) || '';
+  const key = el('input'); key.type = 'password'; key.placeholder = 'API key (optional, fills {key})'; key.style.cssText = inputCss + ';margin-bottom:10px';
+  key.value = (conn && conn.key) || '';
+  box.appendChild(name); box.appendChild(endpoint); box.appendChild(key);
+  const btns = el('div'); btns.style.cssText = 'display:flex;gap:6px;justify-content:flex-end';
+  const cancel = el('button', 'ghost'); cancel.textContent = 'Cancel';
+  const saveBtn = el('button', 'act'); saveBtn.textContent = 'Save';
+  cancel.onclick = () => back.remove();
+  saveBtn.onclick = async () => {
+    if (!name.value.trim() || !endpoint.value.trim()) { toast('Name and endpoint are both required', 'err'); return; }
+    const list = (cfg.connections || []).slice();
+    const entry = {
+      id: (conn && conn.id) || ('conn_' + Date.now().toString(36)),
+      name: name.value.trim(), endpoint: endpoint.value.trim(), key: key.value,
+      enabled: conn ? conn.enabled !== false : true,
+    };
+    if (idx >= 0) list[idx] = entry; else list.push(entry);
+    cfg = await api.setConfig({ connections: list });
+    back.remove(); rerender(); toast('Connection saved', 'ok');
+  };
+  btns.appendChild(cancel); btns.appendChild(saveBtn); box.appendChild(btns);
+  back.appendChild(box); document.body.appendChild(back);
+  back.onclick = (e) => { if (e.target === back) back.remove(); };
+}
+
 function panelAppearance(p) {
   p.appendChild(header('Appearance', 'Look and window behavior.'));
   const presets = el('div', 'presets');
@@ -190,21 +248,53 @@ function panelAppearance(p) {
 function panelColumns(p) {
   p.appendChild(header('Columns', 'Toggle, and reorder with the arrows. You can also drag headers and click to sort in the overlay.'));
   const cols = (cfg.columns || []).slice().sort((a, b) => a.order - b.order);
+  const custom = cfg.customColumns || [];
+  const labelOf = (key) => COLLABELS[key] || (custom.find((c) => c.key === key) || {}).label || key;
   const box = el('div');
   cols.forEach((c, idx) => {
     const r = el('div', 'colrow');
     const sw = toggle('__col_' + c.key); // custom handled below
     sw.querySelector('input').checked = c.visible;
     sw.querySelector('input').onchange = async (e) => { c.visible = e.target.checked; await set('columns', cols); };
-    const nm = el('span', 'cname'); nm.textContent = COLLABELS[c.key] || c.key;
+    const nm = el('span', 'cname'); nm.textContent = labelOf(c.key);
     const up = el('button'); up.textContent = '▲'; const dn = el('button'); dn.textContent = '▼';
     up.onclick = async () => { if (idx > 0) { swap(cols, idx, idx - 1); cols.forEach((x, i) => x.order = i); await set('columns', cols); rerender(); } };
     dn.onclick = async () => { if (idx < cols.length - 1) { swap(cols, idx, idx + 1); cols.forEach((x, i) => x.order = i); await set('columns', cols); rerender(); } };
-    r.appendChild(sw); r.appendChild(nm); r.appendChild(up); r.appendChild(dn); box.appendChild(r);
+    r.appendChild(sw); r.appendChild(nm); r.appendChild(up); r.appendChild(dn);
+    if (custom.some((cc) => cc.key === c.key)) {
+      const rm = el('button'); rm.textContent = '✕'; rm.title = 'Remove custom column';
+      rm.onclick = async () => {
+        cfg = await api.setConfig({ columns: cols.filter((x) => x.key !== c.key), customColumns: custom.filter((x) => x.key !== c.key) });
+        rerender();
+      };
+      r.appendChild(rm);
+    }
+    box.appendChild(r);
   });
   p.appendChild(box);
-  p.appendChild(fieldRow('Default sort column', '', select('sortBy', Object.keys(COLLABELS).map((k) => ({ v: k, l: COLLABELS[k] })))));
+  const sortKeys = Object.keys(COLLABELS).concat(custom.map((c) => c.key));
+  p.appendChild(fieldRow('Default sort column', '', select('sortBy', sortKeys.map((k) => ({ v: k, l: labelOf(k) })))));
   p.appendChild(fieldRow('Sort direction', '', select('sortDir', [{ v: 'desc', l: 'High → Low' }, { v: 'asc', l: 'Low → High' }])));
+
+  p.appendChild(header('Custom columns', 'Pull any stat straight off your Hypixel player object by dot-path, e.g. stats.Bedwars.beds_broken_bedwars.'));
+  const form = el('div'); form.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px';
+  const lbl = el('input'); lbl.type = 'text'; lbl.placeholder = 'Column label (e.g. Beds Broken)'; lbl.style.width = '190px';
+  const pth = el('input'); pth.type = 'text'; pth.placeholder = 'stats.Bedwars.beds_broken_bedwars'; pth.style.width = '260px';
+  const addBtn = el('button', 'act'); addBtn.textContent = 'Add column';
+  addBtn.onclick = async () => {
+    const label = lbl.value.trim(), path = pth.value.trim();
+    if (!label || !path) { toast('Need both a label and a stat path', 'err'); return; }
+    const key = 'custom:' + path.replace(/[^a-zA-Z0-9]+/g, '_').toLowerCase() + '_' + Date.now().toString(36);
+    const nextCustom = [...custom, { key, label, path }];
+    const nextCols = [...cols, { key, visible: true, order: cols.length }];
+    cfg = await api.setConfig({ customColumns: nextCustom, columns: nextCols });
+    toast('Column added: ' + label, 'ok'); rerender();
+  };
+  form.appendChild(lbl); form.appendChild(pth); form.appendChild(addBtn);
+  p.appendChild(form);
+  const hint = el('div', 'kv');
+  hint.textContent = 'A few common paths: stats.Bedwars.winstreak · stats.Bedwars.beds_broken_bedwars · achievements.bedwars_level · networkExp · karma';
+  p.appendChild(hint);
 }
 function swap(a, i, j) { const t = a[i]; a[i] = a[j]; a[j] = t; }
 

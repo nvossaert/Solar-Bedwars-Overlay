@@ -1,9 +1,8 @@
 'use strict';
-/*
- * The live roster: usernames -> resolved, stat-loaded, tagged player rows.
- * Fetches are concurrency-limited and de-duplicated. Emits 'update' (full array)
- * whenever a row changes so the overlay can re-render.
- */
+// Turns raw usernames into resolved, stat-loaded, tagged rows for the overlay.
+// Lookups are queued and rate-limited so a big lobby doesn't hammer the APIs all
+// at once, and every change fires 'update' with the full list so the overlay can
+// just re-render rather than track deltas itself.
 const { EventEmitter } = require('events');
 const stats = require('./stats');
 
@@ -69,6 +68,7 @@ class Roster extends EventEmitter {
       ]);
 
       row.urchin = urchin;
+      row.raw = player || null; // full Hypixel player object, kept around for user-defined custom columns
       if (player) {
         const baseline = this.hy.monthlyBaseline(resolved.id);
         const s = stats.extract(player, baseline);

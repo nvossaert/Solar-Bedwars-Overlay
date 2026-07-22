@@ -1,12 +1,10 @@
 'use strict';
-/*
- * Hypixel + Mojang client.
- *  - Resolves username -> UUID (Mojang, cached to disk).
- *  - Fetches Hypixel player object with an in-memory TTL cache.
- *  - Simple token-bucket rate limiter tuned for the 300 req / 5 min personal key.
- *  - Persists daily snapshots per UUID so stats.js can compute "monthly" FKDR.
- * Uses global fetch (Electron 31 / Node 20) — zero runtime dependencies.
- */
+// Thin wrapper around Mojang (name -> uuid) and the Hypixel player API. UUIDs get
+// cached to disk, player objects get cached in memory for a few minutes, and a
+// token-bucket limiter keeps us under the 300 req/5min a personal key allows.
+// Also snapshots each player's stats once a day, which is what lets stats.js work
+// out a "monthly" FKDR later. No extra deps needed — just the fetch that ships
+// with modern Electron/Node.
 const fs = require('fs');
 const path = require('path');
 const { app } = require('electron');

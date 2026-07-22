@@ -19,7 +19,7 @@ function createOverlay() {
   overlayWin = new BrowserWindow({
     x: cfg.window.x, y: cfg.window.y, width: cfg.window.width, height: cfg.window.height,
     minWidth: 320, minHeight: 120,
-    frame: false, transparent: true, resizable: true, movable: true,
+    frame: false, transparent: true, resizable: true, movable: true, fullscreenable: false,
     alwaysOnTop: cfg.alwaysOnTop, skipTaskbar: false, backgroundColor: '#00000000',
     hasShadow: false, title: 'Solar Overlay',
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false },
@@ -29,6 +29,7 @@ function createOverlay() {
   applyClickThrough();
   overlayWin.setOpacity(cfg.window.opacity ?? 0.94);
   overlayWin.loadFile(path.join(__dirname, '..', 'renderer', 'overlay', 'overlay.html'));
+  blockFullscreenKey(overlayWin);
 
   const persist = () => { const b = overlayWin.getBounds(); config.save({ window: { ...getConfig().window, x: b.x, y: b.y, width: b.width, height: b.height } }); };
   overlayWin.on('moved', persist);
@@ -45,23 +46,40 @@ function applyClickThrough() {
   overlayWin.setIgnoreMouseEvents(!!getConfig().clickThrough, { forward: true });
 }
 
+// The overlay is frameless and meant to sit as a small always-on-top strip, so an
+// accidental F11 blowing it up to fullscreen is just disruptive, not useful — block it.
+function blockFullscreenKey(win) {
+  win.webContents.on('before-input-event', (event, input) => {
+    if (input.type === 'keyDown' && input.key === 'F11') event.preventDefault();
+  });
+}
+
 function childWindow(file, opts = {}) {
   const win = new BrowserWindow({
-    width: opts.width || 760, height: opts.height || 620, frame: false, resizable: true,
+    width: opts.width || 760, height: opts.height || 620, frame: false, resizable: true, fullscreenable: false,
     backgroundColor: '#0d1117', title: opts.title || 'Solar',
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false },
   });
   win.loadFile(file);
+  blockFullscreenKey(win);
   return win;
 }
 
+// Bring an existing child window back to front, undoing minimize/hide state.
+// A plain .focus() is a no-op on a minimized Windows BrowserWindow, which used
+// to make Settings look "stuck closed" once it had been minimized at any point.
+function wake(win) {
+  if (win.isMinimized()) win.restore();
+  if (!win.isVisible()) win.show();
+  win.focus();
+}
 function openSettings() {
-  if (settingsWin) { settingsWin.focus(); return; }
+  if (settingsWin && !settingsWin.isDestroyed()) { wake(settingsWin); return; }
   settingsWin = childWindow(path.join(__dirname, '..', 'renderer', 'settings', 'settings.html'), { title: 'Settings', width: 820, height: 700 });
   settingsWin.on('closed', () => { settingsWin = null; });
 }
 function openBlacklist() {
-  if (blacklistWin) { blacklistWin.focus(); return; }
+  if (blacklistWin && !blacklistWin.isDestroyed()) { wake(blacklistWin); return; }
   blacklistWin = childWindow(path.join(__dirname, '..', 'renderer', 'blacklist', 'blacklist.html'), { title: 'Blacklist Admin', width: 720, height: 640 });
   blacklistWin.on('closed', () => { blacklistWin = null; });
 }
@@ -218,6 +236,7 @@ function registerShortcuts() {
 
 // ---------------- boot ----------------
 app.whenReady().then(() => {
+  Menu.setApplicationMenu(null); // no menu bar on this app, and it's what binds F11 -> fullscreen by default
   hypixel = new Hypixel(getConfig);
   urchin = new Urchin(getConfig);
   roster = new Roster(hypixel, urchin, getConfig);

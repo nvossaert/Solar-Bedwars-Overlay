@@ -1,9 +1,7 @@
 'use strict';
-/*
- * Pure stat math. No I/O here so it can be unit-tested (see test/stats.test.js).
- * Given a raw Hypixel player object, produce the numbers the overlay shows plus
- * the self-hosted "sniper" (threat) score.
- */
+// Pure number-crunching, no I/O, so test/stats.test.js can exercise it directly.
+// Takes a raw Hypixel player object and works out everything the overlay shows,
+// plus our own "sniper"/threat score.
 
 // ---- Bedwars star / level from EXP (official leveling curve) ----
 const EASY_XP = [500, 1000, 2000, 3500];         // xp for levels 1..4 of each prestige

@@ -1,27 +1,30 @@
 'use strict';
-/*
- * Tails a Minecraft client log (configurable path — Lunar 1.8, vanilla, Badlion…)
- * and emits normalized Hypixel events. Handles file rotation (truncate/replace).
- *
- * Emitted events:
- *   who(names[])        - /who or accumulated pre-game lobby
- *   lobbyJoin(name)     - "X has joined (n/m)!"
- *   quit(name)          - "X has quit!"
- *   partyJoin(names[])  - joined your party
- *   partyList(names[])  - full party list
- *   partyInvite(name)   - invited you
- *   friendRequest(name) - friend request
- *   dmFrom(name), dmTo(name)
- *   mention({by,text})  - your name said in chat
- *   killedYou(name)     - a final-kill message crediting a player
- *   serverChange()      - sent to a new server / game over
- */
+// Tails whatever Minecraft log file the user points us at — Lunar, vanilla, Badlion,
+// doesn't matter which — and turns the chat noise into the normalized events below.
+// Also copes with the log getting rotated or truncated out from under us mid-read.
+//
+// What it emits:
+//   who(names[])        - /who or accumulated pre-game lobby
+//   lobbyJoin(name)     - "X has joined (n/m)!"
+//   quit(name)          - "X has quit!"
+//   partyJoin(names[])  - joined your party
+//   partyList(names[])  - full party list
+//   partyInvite(name)   - invited you
+//   friendRequest(name) - friend request
+//   dmFrom(name), dmTo(name)
+//   mention({by,text})  - your name said in chat
+//   killedYou(name)     - a final-kill message crediting a player
+//   serverChange()      - sent to a new server / game over
 const fs = require('fs');
 const { EventEmitter } = require('events');
 
 const NAME = '[A-Za-z0-9_]{1,16}';
 const stripColors = (s) => s.replace(/§[0-9a-fk-or]/gi, '').replace(/§[0-9a-fk-or]/gi, '');
 const stripRank = (s) => s.trim().replace(/^(?:\[[^\]]+\]\s*)+/, '').replace(/[^A-Za-z0-9_].*$/, '').trim();
+// Guild/Party/Officer chat lines put a "Guild > " style channel tag before the
+// rank+name, e.g. "Guild > [VIP] Name: text" — strip it before matching the
+// sender so mentions in those channels aren't missed (public chat has no tag).
+const CHANNEL_PREFIX = /^(?:Guild|Party|Officer|Co-op|Alliance)\s*>\s*/i;
 
 function chatOf(line) {
   const clean = stripColors(line);
@@ -68,7 +71,10 @@ class LogWatcher extends EventEmitter {
     if (st.size === this.pos) return;
     const stream = fs.createReadStream(this.path, { start: this.pos, end: st.size });
     let chunk = '';
-    stream.on('data', (d) => { chunk += d.toString('utf8'); });
+    // Minecraft/Lunar write logs in the JVM's platform charset (Latin-1 on Windows), not UTF-8 —
+    // decoding as utf8 turns every §-color-code byte into a replacement char and silently breaks
+    // all rank/name parsing in colored chat lines (which is most real chat).
+    stream.on('data', (d) => { chunk += d.toString('latin1'); });
     stream.on('end', () => {
       this.pos = st.size;
       this.buffer += chunk;
@@ -142,9 +148,10 @@ class LogWatcher extends EventEmitter {
       // don't return; a game-over line could still mention you
     }
 
-    // ---- your name said in normal chat ("Rank Name: text") ----
+    // ---- your name said in normal chat ("Rank Name: text" / "Rank Name [Guild tag]: text") ----
     if (this.selfNames.length) {
-      const cm = msg.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + '):\\s*(.*)$'));
+      const body = msg.replace(CHANNEL_PREFIX, '');
+      const cm = body.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')(?:\\s*\\[[^\\]]+\\])*\\s*:\\s*(.*)$'));
       if (cm) {
         const speaker = cm[1].toLowerCase();
         const text = cm[2].toLowerCase();

@@ -34,6 +34,14 @@ function relTime(ts){ if(!ts)return'—'; const s=(Date.now()-ts)/1000;
   const h=m/60; if(h<24)return Math.floor(h)+'h'; const d=h/24; if(d<30)return Math.floor(d)+'d';
   const mo=d/30; if(mo<12)return Math.floor(mo)+'mo'; return Math.floor(mo/12)+'y'; }
 function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function getPath(o,p){ return String(p||'').split('.').reduce((a,k)=>(a==null?a:a[k]), o); }
+// Custom columns (Settings -> Columns) pull an arbitrary stat off row.raw (the unmodified
+// Hypixel player object) by dot-path, so they need their own column-meta lookup on top of COLMETA.
+function colMeta(key){
+  if (COLMETA[key]) return COLMETA[key];
+  const c = (cfg.customColumns||[]).find((c)=>c.key===key);
+  return c ? { label: c.label, num: true } : null;
+}
 
 // ---------------- theme ----------------
 function applyTheme(){
@@ -51,13 +59,13 @@ function applyTheme(){
 
 // ---------------- columns ----------------
 function orderedColumns(){
-  return (cfg.columns || []).slice().sort((a,b)=>a.order-b.order).filter(c=>c.visible && COLMETA[c.key]);
+  return (cfg.columns || []).slice().sort((a,b)=>a.order-b.order).filter(c=>c.visible && colMeta(c.key));
 }
 
 function renderHead(){
   const head = $('#headRow'); head.innerHTML='';
   for(const col of orderedColumns()){
-    const meta = COLMETA[col.key];
+    const meta = colMeta(col.key);
     const th = el('th');
     th.dataset.key = col.key;
     th.draggable = true;
@@ -87,11 +95,12 @@ function reorder(fromKey, toKey){
 function columnMenu(x,y){
   const menu = $('#ctx'); menu.innerHTML='';
   const head = el('div','head'); head.textContent='Toggle columns'; menu.appendChild(head);
-  for(const key of Object.keys(COLMETA)){
+  const keys = Object.keys(COLMETA).concat((cfg.customColumns||[]).map(c=>c.key));
+  for(const key of keys){
     const c = cfg.columns.find(k=>k.key===key) || {key,visible:true,order:99};
     const it = el('div','item');
-    it.innerHTML = `<span>${esc(COLMETA[key].label)}</span><span>${c.visible?'✓':''}</span>`;
-    it.onclick = ()=>{ const cols = cfg.columns.map(k=>k.key===key?{...k,visible:!k.visible}:k);
+    it.innerHTML = `<span>${esc(colMeta(key).label)}</span><span>${c.visible?'✓':''}</span>`;
+    it.onclick = ()=>{ const cols = cfg.columns.some(k=>k.key===key) ? cfg.columns.map(k=>k.key===key?{...k,visible:!k.visible}:k) : [...cfg.columns, {key, visible:false, order:cfg.columns.length}];
       hideCtx(); save({ columns: cols }); };
     menu.appendChild(it);
   }
@@ -114,7 +123,11 @@ function sortVal(row, key){
     case 'lastseen': return s.lastLogin||0;
     case 'tag': return u.severity||0;
     case 'bl': return blCount(row);
-    default: return 0;
+    default:{
+      const cc = (cfg.customColumns||[]).find(c=>c.key===key);
+      if(cc && row.raw){ const v = getPath(row.raw, cc.path); return typeof v==='number' ? v : 0; }
+      return 0;
+    }
   }
 }
 function blCount(row){ const u=row.urchin; if(!u)return 0; return (u.tags||[]).filter(t=>t.source==='local-import'||t.source==='local'||t.source==='trigger').length; }
@@ -163,6 +176,14 @@ function cell(row, key){
     case 'lastseen':{ if(!s){td.textContent='';return td;} td.className='mono dim'; td.textContent=relTime(s.lastLogin); return td; }
     case 'bl':{ const n=blCount(row); td.className='mono'; td.innerHTML=n?`<span class="blnum">${n}</span>`:'<span class="dim">·</span>'; return td; }
   }
+  const cc = (cfg.customColumns||[]).find(c=>c.key===key);
+  if(cc){
+    if(!row.raw){ td.textContent = row.loading ? '' : '—'; return td; }
+    const v = getPath(row.raw, cc.path);
+    td.className = 'mono';
+    td.textContent = v==null ? '—' : (typeof v==='number' ? fmt(v) : String(v));
+    return td;
+  }
   return td;
 }
 function fmt(n){ n=+n||0; return n>=100000?(n/1000).toFixed(0)+'k':n.toLocaleString(); }
@@ -204,7 +225,7 @@ function showTip(e,row){
   if(u && u.tags && u.tags.length){
     html += `<div class="row" style="margin-top:4px"><b>Blacklist tags</b></div>`;
     for(const t of u.tags.slice(0,6)){
-      html += `<div class="row"><span class="tagchip" style="background:${t.color}">${esc(t.type)}</span> ${esc((t.reason||'').slice(0,90))} <span class="dim">[${esc(t.source)}]</span></div>`;
+      html += `<div class="row"><span class="tagchip" style="background:${t.color}">${esc(t.label || t.type)}</span> ${esc((t.reason||'').slice(0,90))} <span class="dim">[${esc(t.source)}]</span></div>`;
     }
   }
   tipEl.innerHTML = html;

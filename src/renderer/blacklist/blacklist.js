@@ -23,7 +23,7 @@ async function doLookup() {
   let html = `<div class="card"><div class="nm">${esc(r.name)} <span class="dim">${esc(r.uuid)}</span></div>`;
   if (!u.tags || !u.tags.length) html += `<div class="dim" style="margin-top:6px">No tags found.</div>`;
   else for (const t of u.tags) {
-    html += `<div class="tagline"><span class="tagchip" style="background:${t.color || '#58a6ff'}">${esc(t.type)}</span>
+    html += `<div class="tagline"><span class="tagchip" style="background:${t.color || '#58a6ff'}">${esc(t.label || t.type)}</span>
       <span>${esc(t.reason || '')} <span class="dim">[${esc(t.source || '')}]</span></span></div>`;
   }
   html += '</div>';
