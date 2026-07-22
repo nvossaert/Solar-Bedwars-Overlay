@@ -85,6 +85,9 @@ tbody td{padding:0 6px;height:var(--row);font-size:var(--font);
 tbody tr:nth-child(even){background:rgba(255,255,255,.015)}
 tbody tr:hover{background:rgba(88,166,255,.08)}
 tbody tr.bl{box-shadow:inset 3px 0 0 #da3633}
+tbody tr.highlight{background:rgba(255,180,64,.12)}
+tbody tr.highlight:hover{background:rgba(255,180,64,.19)}
+tbody tr.highlight.bl{box-shadow:inset 3px 0 0 #da3633, inset 0 0 0 1px rgba(255,180,64,.35)}
 
 .name{font-weight:600}
 .mono{font-variant-numeric:tabular-nums}

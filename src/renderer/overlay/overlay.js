@@ -42,6 +42,19 @@ function colMeta(key){
   const c = (cfg.customColumns||[]).find((c)=>c.key===key);
   return c ? { label: c.label, num: true } : null;
 }
+// A column's value normally comes from the computed stats (built-ins) or row.raw (custom
+// columns), but Settings -> Connections lets the user rewire either kind to a specific
+// Connection's raw response instead — 'hypixel' (or no source) means "leave it alone".
+function sourceValue(row, source, path){
+  if(!source || source==='hypixel') return getPath(row.raw, path);
+  const raw = row.urchin && row.urchin.raw && row.urchin.raw[source];
+  return getPath(raw, path);
+}
+function filteredTags(row, connId){
+  const tags = (row.urchin && row.urchin.tags) || [];
+  if(!connId || connId==='all') return tags;
+  return tags.filter((t)=>t.connId===connId);
+}
 
 // ---------------- theme ----------------
 function applyTheme(){
@@ -110,6 +123,11 @@ function columnMenu(x,y){
 // ---------------- sorting ----------------
 function sortVal(row, key){
   const s = row.stats||{}, sn = row.sniper||{}, u = row.urchin||{};
+  const override = (cfg.columnSources||{})[key];
+  if(override && key!=='tag' && key!=='bl' && override.path){
+    const v = sourceValue(row, override.source, override.path);
+    return typeof v==='number' ? v : 0;
+  }
   switch(key){
     case 'name': return (row.name||'').toLowerCase();
     case 'star': return s.star||0;
@@ -121,16 +139,25 @@ function sortVal(row, key){
     case 'mfkdr': return s.mfkdr==null?-1:s.mfkdr;
     case 'sniper': return sn.score||0;
     case 'lastseen': return s.lastLogin||0;
-    case 'tag': return u.severity||0;
-    case 'bl': return blCount(row);
+    case 'tag':{
+      if(override && override.source) return filteredTags(row, override.source).reduce((m,t)=>Math.max(m,t.severity||0),0);
+      return u.severity||0;
+    }
+    case 'bl': return blCount(row, override && override.source);
     default:{
       const cc = (cfg.customColumns||[]).find(c=>c.key===key);
-      if(cc && row.raw){ const v = getPath(row.raw, cc.path); return typeof v==='number' ? v : 0; }
+      if(cc){ const v = sourceValue(row, cc.source, cc.path); return typeof v==='number' ? v : 0; }
       return 0;
     }
   }
 }
-function blCount(row){ const u=row.urchin; if(!u)return 0; return (u.tags||[]).filter(t=>t.source==='local-import'||t.source==='local'||t.source==='trigger').length; }
+// Normally counts locally-sourced flags (local-import/local/trigger). When a Connection is
+// mapped onto this column, it instead counts however many tags THAT connection contributed.
+function blCount(row, connId){
+  const tags = (row.urchin && row.urchin.tags) || [];
+  if(connId && connId!=='all') return tags.filter((t)=>t.connId===connId).length;
+  return tags.filter(t=>t.source==='local-import'||t.source==='local'||t.source==='trigger').length;
+}
 
 function sorted(){
   const key = cfg.sortBy, dir = cfg.sortDir==='desc'?-1:1;
@@ -146,9 +173,17 @@ function sorted(){
 function cell(row, key){
   const td = el('td'); const s = row.stats, sn = row.sniper, u = row.urchin;
   if(row.loading && !s && key!=='name'){ td.innerHTML='<span class="loading">…</span>'; return td; }
+  const override = (cfg.columnSources||{})[key];
+  if(override && key!=='tag' && key!=='bl' && override.path){
+    const v = sourceValue(row, override.source, override.path);
+    td.className = 'mono';
+    td.textContent = v==null ? '—' : (typeof v==='number' ? fmt(v) : String(v));
+    return td;
+  }
   switch(key){
     case 'tag':{
-      const p = u && u.primary;
+      let p = u && u.primary;
+      if(override && override.source) p = filteredTags(row, override.source).slice().sort((a,b)=>(b.severity||0)-(a.severity||0))[0] || null;
       if(p){ td.innerHTML = `<span class="tagchip" style="background:${p.color}">${esc(p.label || (p.type||'').slice(0,4).toUpperCase())}</span>`; }
       return td;
     }
@@ -174,12 +209,11 @@ function cell(row, key){
     case 'sniper':{ if(!sn){td.textContent='';return td;} td.className='mono';
       td.innerHTML=`<span class="snlabel" style="color:${sn.color}">${sn.score}</span>`; return td; }
     case 'lastseen':{ if(!s){td.textContent='';return td;} td.className='mono dim'; td.textContent=relTime(s.lastLogin); return td; }
-    case 'bl':{ const n=blCount(row); td.className='mono'; td.innerHTML=n?`<span class="blnum">${n}</span>`:'<span class="dim">·</span>'; return td; }
+    case 'bl':{ const n=blCount(row, override && override.source); td.className='mono'; td.innerHTML=n?`<span class="blnum">${n}</span>`:'<span class="dim">·</span>'; return td; }
   }
   const cc = (cfg.customColumns||[]).find(c=>c.key===key);
   if(cc){
-    if(!row.raw){ td.textContent = row.loading ? '' : '—'; return td; }
-    const v = getPath(row.raw, cc.path);
+    const v = sourceValue(row, cc.source, cc.path);
     td.className = 'mono';
     td.textContent = v==null ? '—' : (typeof v==='number' ? fmt(v) : String(v));
     return td;
@@ -195,9 +229,14 @@ function render(){
   $('#count').textContent = rows.length;
   $('#empty').classList.toggle('hidden', rows.length>0);
   const cols = orderedColumns();
+  const hlStat = cfg.highlightEnabled !== false ? cfg.highlightStat : null;
   for(const row of list){
     const tr = el('tr');
     if(blCount(row)>0) tr.classList.add('bl');
+    if(hlStat){
+      const v = sortVal(row, hlStat);
+      if(typeof v==='number' && v >= (cfg.highlightThreshold ?? Infinity)) tr.classList.add('highlight');
+    }
     for(const c of cols) tr.appendChild(cell(row, c.key));
     tr.oncontextmenu = (e)=>{ e.preventDefault(); rowMenu(e.clientX,e.clientY,row); };
     tr.onmouseenter = (e)=> showTip(e,row);

@@ -44,19 +44,21 @@ function guessLogPath() {
   return candidates[0];
 }
 
+// The full set of built-in columns. Every one of these is just as removable/re-addable
+// as a custom column now — there's no "always shown" column anymore, Player included.
 const ALL_COLUMNS = [
-  { key: 'tag',      label: 'Tag',       width: 46,  always: false },
-  { key: 'star',     label: 'Lvl',       width: 58,  always: false },
-  { key: 'name',     label: 'Player',    width: 130, always: true  },
-  { key: 'fkdr',     label: 'FKDR',      width: 62,  always: false },
-  { key: 'wlr',      label: 'WLR',       width: 58,  always: false },
-  { key: 'finals',   label: 'F.Kills',   width: 70,  always: false },
-  { key: 'wins',     label: 'Wins',      width: 62,  always: false },
-  { key: 'ws',       label: 'WS',        width: 46,  always: false },
-  { key: 'mfkdr',    label: 'M.FKDR',    width: 64,  always: false },
-  { key: 'sniper',   label: 'Sniper',    width: 66,  always: false },
-  { key: 'lastseen', label: 'Last Login',width: 92,  always: false },
-  { key: 'bl',       label: 'BL',        width: 40,  always: false },
+  { key: 'tag',      label: 'Tag',       width: 46 },
+  { key: 'star',     label: 'Lvl',       width: 58 },
+  { key: 'name',     label: 'Player',    width: 130 },
+  { key: 'fkdr',     label: 'FKDR',      width: 62 },
+  { key: 'wlr',      label: 'WLR',       width: 58 },
+  { key: 'finals',   label: 'F.Kills',   width: 70 },
+  { key: 'wins',     label: 'Wins',      width: 62 },
+  { key: 'ws',       label: 'WS',        width: 46 },
+  { key: 'mfkdr',    label: 'M.FKDR',    width: 64 },
+  { key: 'sniper',   label: 'Sniper',    width: 66 },
+  { key: 'lastseen', label: 'Last Login',width: 92 },
+  { key: 'bl',       label: 'BL',        width: 40 },
 ];
 
 function defaults() {
@@ -118,9 +120,16 @@ function defaults() {
 
     // ---- Columns ----
     columns: ALL_COLUMNS.map((c, i) => ({ key: c.key, visible: true, order: i })),
-    // User-defined columns pulling an arbitrary dot-path stat off the raw Hypixel player
-    // object, e.g. { key: 'custom:abc', label: 'Beds Broken', path: 'stats.Bedwars.beds_broken_bedwars' }.
+    // User-defined columns pulling a stat off either the raw Hypixel player object or a
+    // Connection's raw response, e.g. { key: 'custom:abc', label: 'Beds Broken',
+    // source: 'hypixel', path: 'stats.Bedwars.beds_broken_bedwars' }. source is 'hypixel'
+    // (default) or a connection id ('urchin' or a user Connection's id).
     customColumns: [],
+    // Per-column overrides that rewire a BUILT-IN column (by key) to a Connection instead
+    // of its normal computed/Hypixel value — e.g. { tag: { source: 'myConnId' } } restricts
+    // the Tag/BL columns to just that connection's tags, or { mfkdr: { source: 'myConnId',
+    // path: 'stats.monthlyFkdr' } } pulls M.FKDR from that connection's response instead.
+    columnSources: {},
     sortBy: 'sniper',
     sortDir: 'desc',
     hideNicked: false,
@@ -137,16 +146,27 @@ function defaults() {
     },
 
     // ---- Sniper / threat score weights (transparent & tunable) ----
+    // FKDR, blacklist tags, and alt/smurf-account signals are weighted heavily by default —
+    // those are the strongest "this person is a real threat" indicators. The rest still
+    // contribute but matter less on their own.
     sniperWeights: {
-      fkdr: 26,
-      star: 14,
-      wlr: 14,
+      fkdr: 40,
+      star: 8,
+      wlr: 8,
       winstreak: 6,
-      monthlyTrend: 16,
-      accountAge: 10,
+      monthlyTrend: 10,
+      accountAge: 20,
       recentLogin: 4,
-      tags: 10,
+      tags: 26,
+      freshAccount: 14, // low star / freshly-joined account that's already good -> classic smurf signal
     },
+
+    // ---- Row highlight ----
+    // Flags a whole row when one stat clears a threshold. Any column key works (built-in,
+    // custom, or catalog), not just fkdr — just what most people care about by default.
+    highlightEnabled: true,
+    highlightStat: 'fkdr',
+    highlightThreshold: 8,
   };
 }
 

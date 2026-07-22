@@ -161,7 +161,7 @@ class Urchin {
   async lookup(id, name) {
     const u = norm(id);
     const cfg = this.getConfig();
-    const out = { tags: [], score: 0, scoreMode: 'add', severity: 0, sources: [] };
+    const out = { tags: [], score: 0, scoreMode: 'add', severity: 0, sources: [], raw: {} };
 
     // 1) live Urchin endpoint — on by default, but the user can flip it off in
     // Settings -> Connections and rely only on their own Connections instead.
@@ -172,11 +172,12 @@ class Urchin {
           const r = await fetch(url, { headers: { Accept: 'application/json' } });
           if (r.ok) {
             const j = await r.json().catch(() => ({}));
+            out.raw.urchin = j; // full response kept so a column can map to any field in it
             if (j && j.score) { out.score = +j.score.value || 0; out.scoreMode = j.score.mode || 'add'; }
             const arr = Array.isArray(j.tags) ? j.tags : [];
             for (const t of arr) {
               const p = this._parseTag(t);
-              if (p) out.tags.push(p);
+              if (p) { p.connId = 'urchin'; out.tags.push(p); }
             }
             if (arr.length) out.sources.push('urchin');
           } else if (r.status === 401 || r.status === 403) {
@@ -186,7 +187,8 @@ class Urchin {
       } catch (e) { out.error = 'urchin unreachable'; }
     }
 
-    // 1b) user-defined Connections (Settings -> Connections) — same tag shapes as Urchin.
+    // 1b) user-defined Connections (Settings -> Connections) — same tag shapes as Urchin,
+    // and their full response is kept too so a column can be mapped straight to a field in it.
     for (const conn of (cfg.connections || [])) {
       if (!conn.enabled || !conn.endpoint) continue;
       try {
@@ -194,11 +196,12 @@ class Urchin {
         const r = await fetch(url, { headers: { Accept: 'application/json' } });
         if (!r.ok) continue;
         const j = await r.json().catch(() => ({}));
+        out.raw[conn.id] = j;
         const arr = Array.isArray(j) ? j : (Array.isArray(j.tags) ? j.tags : []);
         let got = false;
         for (const t of arr) {
           const p = this._parseTag(t);
-          if (p) { p.source = conn.name || conn.id; out.tags.push(p); got = true; }
+          if (p) { p.source = conn.name || conn.id; p.connId = conn.id; out.tags.push(p); got = true; }
         }
         if (got) out.sources.push(conn.name || conn.id);
       } catch (_) { /* one bad connection shouldn't break the others */ }

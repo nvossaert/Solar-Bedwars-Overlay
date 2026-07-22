@@ -218,8 +218,17 @@ function panelApi(p) {
   p.appendChild(fieldRow('Admin key', 'Only needed for the Blacklist Admin tab (adding tags).', secretText('urchinAdminKey', 'admin key')));
 }
 
+// Every place a column's value can come from: Hypixel's own player object, or one of
+// the user's Connections (the built-in Urchin one included, if it's switched on).
+function availableSources() {
+  const opts = [{ v: 'hypixel', l: 'Hypixel player stats' }];
+  if (cfg.urchinEnabled !== false) opts.push({ v: 'urchin', l: 'Urchin (built-in)' });
+  for (const conn of (cfg.connections || [])) opts.push({ v: conn.id, l: conn.name || conn.id });
+  return opts;
+}
+
 function panelConnections(p) {
-  p.appendChild(header('Connections', 'Every blacklist/tag source that feeds the overlay, in one place. Same {id} {uuid} {name} {key} {sources} placeholders everywhere. Each response should look like { "tags": [...] } (or just a bare array) — tags can be either the { tag_type, reason, added_by } shape or the { icon, color, tooltip } shape.'));
+  p.appendChild(header('Connections', 'Every blacklist/tag source that feeds the overlay, in one place. Same {id} {uuid} {name} {key} {sources} placeholders everywhere. Each response should look like { "tags": [...] } (or just a bare array) — tags can be either the { tag_type, reason, added_by } shape or the { icon, color, tooltip } shape. Once a connection is added here, head to the Columns tab to map it onto Tag, M.FKDR, or any other column.'));
   const box = el('div');
 
   // Urchin ships built-in and on by default — listed here like any other connection
@@ -307,60 +316,146 @@ function panelAppearance(p) {
   p.appendChild(fieldRow('Always on top', '', toggle('alwaysOnTop')));
   p.appendChild(fieldRow('Hide from screen capture', 'Invisible to OBS / Discord share / screenshots (Windows).', toggle('hideFromCapture')));
   p.appendChild(fieldRow('Click-through', 'Mouse passes through to the game. Toggle with Alt+X.', toggle('clickThrough')));
+
+  p.appendChild(header('Row Highlight', 'Flag a whole row once a stat clears a threshold, so a nasty FKDR (or whatever you pick) jumps out without having to scan the column.'));
+  p.appendChild(fieldRow('Enable highlight', '', toggle('highlightEnabled')));
+  const custom = cfg.customColumns || [];
+  const labelOf = (key) => COLLABELS[key] || (custom.find((c) => c.key === key) || {}).label || key;
+  const statKeys = Object.keys(COLLABELS).filter((k) => k !== 'name' && k !== 'tag').concat(custom.map((c) => c.key));
+  p.appendChild(fieldRow('Stat to watch', 'FKDR by default, but any column works.', select('highlightStat', statKeys.map((k) => ({ v: k, l: labelOf(k) })))));
+  p.appendChild(fieldRow('Threshold', 'Row lights up once this stat is at or above the value.', number('highlightThreshold', 0, 1000000, 0.1)));
 }
 
 function panelColumns(p) {
-  p.appendChild(header('Columns', 'Toggle, and reorder with the arrows. You can also drag headers and click to sort in the overlay.'));
+  p.appendChild(header('Columns', 'Every column here is fully yours — add, remove, hide, and reorder any of them, built-in ones included.'));
   const cols = (cfg.columns || []).slice().sort((a, b) => a.order - b.order);
   const custom = cfg.customColumns || [];
   const labelOf = (key) => COLLABELS[key] || (custom.find((c) => c.key === key) || {}).label || key;
   const box = el('div');
   cols.forEach((c, idx) => {
     const r = el('div', 'colrow');
-    const sw = toggle('__col_' + c.key); // custom handled below
+    const sw = toggle('__col_' + c.key); // visibility only — actual persistence happens below
     sw.querySelector('input').checked = c.visible;
     sw.querySelector('input').onchange = async (e) => { c.visible = e.target.checked; await set('columns', cols); };
     const nm = el('span', 'cname'); nm.textContent = labelOf(c.key);
     const up = el('button'); up.textContent = '▲'; const dn = el('button'); dn.textContent = '▼';
     up.onclick = async () => { if (idx > 0) { swap(cols, idx, idx - 1); cols.forEach((x, i) => x.order = i); await set('columns', cols); rerender(); } };
     dn.onclick = async () => { if (idx < cols.length - 1) { swap(cols, idx, idx + 1); cols.forEach((x, i) => x.order = i); await set('columns', cols); rerender(); } };
-    r.appendChild(sw); r.appendChild(nm); r.appendChild(up); r.appendChild(dn);
-    if (custom.some((cc) => cc.key === c.key)) {
-      const rm = el('button'); rm.textContent = '✕'; rm.title = 'Remove custom column';
-      rm.onclick = async () => {
-        cfg = await api.setConfig({ columns: cols.filter((x) => x.key !== c.key), customColumns: custom.filter((x) => x.key !== c.key) });
-        rerender();
-      };
-      r.appendChild(rm);
-    }
+    const rm = el('button'); rm.textContent = '✕'; rm.title = 'Remove column';
+    rm.onclick = async () => {
+      cfg = await api.setConfig({
+        columns: cols.filter((x) => x.key !== c.key),
+        customColumns: custom.filter((x) => x.key !== c.key), // no-op for built-ins, drops the definition otherwise
+      });
+      rerender();
+    };
+    r.appendChild(sw); r.appendChild(nm); r.appendChild(up); r.appendChild(dn); r.appendChild(rm);
     box.appendChild(r);
   });
   p.appendChild(box);
+
+  // Bring back a built-in column you removed earlier.
+  const missingBuiltins = Object.keys(COLLABELS).filter((k) => !cols.some((c) => c.key === k));
+  if (missingBuiltins.length) {
+    const row = el('div'); row.style.cssText = 'display:flex;gap:8px;align-items:center;margin:6px 0 12px';
+    const pick = el('select'); for (const k of missingBuiltins) { const o = el('option'); o.value = k; o.textContent = COLLABELS[k]; pick.appendChild(o); }
+    const addBackBtn = el('button', 'ghost'); addBackBtn.textContent = '+ Add back';
+    addBackBtn.onclick = async () => {
+      cfg = await api.setConfig({ columns: [...cols, { key: pick.value, visible: true, order: cols.length }] });
+      rerender();
+    };
+    row.appendChild(pick); row.appendChild(addBackBtn);
+    p.appendChild(row);
+  }
+
   const sortKeys = Object.keys(COLLABELS).concat(custom.map((c) => c.key));
   p.appendChild(fieldRow('Default sort column', '', select('sortBy', sortKeys.map((k) => ({ v: k, l: labelOf(k) })))));
   p.appendChild(fieldRow('Sort direction', '', select('sortDir', [{ v: 'desc', l: 'High → Low' }, { v: 'asc', l: 'Low → High' }])));
 
-  p.appendChild(header('Custom columns', 'Pull any stat straight off your Hypixel player object by dot-path, e.g. stats.Bedwars.beds_broken_bedwars.'));
-  const form = el('div'); form.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px';
-  const lbl = el('input'); lbl.type = 'text'; lbl.placeholder = 'Column label (e.g. Beds Broken)'; lbl.style.width = '190px';
-  const pth = el('input'); pth.type = 'text'; pth.placeholder = 'stats.Bedwars.beds_broken_bedwars'; pth.style.width = '260px';
+  p.appendChild(header('Custom columns', 'Pull a stat off your Hypixel player object, or off one of your Connections, by dot-path.'));
+  const form = el('div'); form.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;align-items:center';
+  const lbl = el('input'); lbl.type = 'text'; lbl.placeholder = 'Column label (e.g. Beds Broken)'; lbl.style.width = '180px';
+  const srcSel = el('select'); for (const o of availableSources()) { const op = el('option'); op.value = o.v; op.textContent = o.l; srcSel.appendChild(op); }
+  const pth = el('input'); pth.type = 'text'; pth.placeholder = 'stats.Bedwars.beds_broken_bedwars'; pth.style.width = '220px';
   const addBtn = el('button', 'act'); addBtn.textContent = 'Add column';
   addBtn.onclick = async () => {
-    const label = lbl.value.trim(), path = pth.value.trim();
+    const label = lbl.value.trim(), path = pth.value.trim(), source = srcSel.value;
     if (!label || !path) { toast('Need both a label and a stat path', 'err'); return; }
     const key = 'custom:' + path.replace(/[^a-zA-Z0-9]+/g, '_').toLowerCase() + '_' + Date.now().toString(36);
-    const nextCustom = [...custom, { key, label, path }];
+    const nextCustom = [...custom, { key, label, path, source }];
     const nextCols = [...cols, { key, visible: true, order: cols.length }];
     cfg = await api.setConfig({ customColumns: nextCustom, columns: nextCols });
     toast('Column added: ' + label, 'ok'); rerender();
   };
-  form.appendChild(lbl); form.appendChild(pth); form.appendChild(addBtn);
+  form.appendChild(lbl); form.appendChild(srcSel); form.appendChild(pth); form.appendChild(addBtn);
   p.appendChild(form);
   const hint = el('div', 'kv');
-  hint.textContent = 'A few common paths: stats.Bedwars.winstreak · stats.Bedwars.beds_broken_bedwars · achievements.bedwars_level · networkExp · karma';
+  hint.textContent = 'Hypixel examples: stats.Bedwars.winstreak · stats.Bedwars.beds_broken_bedwars · networkExp · karma. For a Connection source, the path is relative to that connection\'s own JSON response.';
   p.appendChild(hint);
 
   catalogSection(p, custom);
+  columnSourceSection(p, cols, custom, labelOf);
+}
+
+// Rewire an existing column (built-in or custom) to pull from a Connection instead of its
+// normal source. Tag/BL just filter to that connection's tags; everything else needs a
+// JSON path into that connection's response.
+function columnSourceSection(p, cols, custom, labelOf) {
+  p.appendChild(header('Column data sources', 'Map any column to one of your Connections — e.g. point Tag at just the Urchin endpoint, or pull M.FKDR/Winstreak from your own tracker instead of Hypixel.'));
+  const mapped = cfg.columnSources || {};
+  const allKeys = cols.map((c) => c.key);
+  const mappedKeys = Object.keys(mapped).filter((k) => allKeys.includes(k));
+  const connOpts = availableSources().filter((o) => o.v !== 'hypixel');
+
+  const box = el('div');
+  for (const key of mappedKeys) {
+    const src = mapped[key] || {};
+    const row = el('div', 'colrow');
+    const nm = el('span', 'cname'); nm.textContent = labelOf(key);
+    const srcSel = el('select');
+    for (const o of connOpts) { const op = el('option'); op.value = o.v; op.textContent = o.l; if (src.source === o.v) op.selected = true; srcSel.appendChild(op); }
+    srcSel.onchange = async () => {
+      const next = { ...mapped, [key]: { ...mapped[key], source: srcSel.value } };
+      cfg = await api.setConfig({ columnSources: next });
+    };
+    row.appendChild(nm); row.appendChild(srcSel);
+    if (key !== 'tag' && key !== 'bl') {
+      const pathInput = el('input'); pathInput.type = 'text'; pathInput.placeholder = 'json.path.in.response'; pathInput.style.width = '170px';
+      pathInput.value = src.path || '';
+      pathInput.onchange = async () => {
+        const next = { ...mapped, [key]: { ...mapped[key], path: pathInput.value.trim() } };
+        cfg = await api.setConfig({ columnSources: next });
+      };
+      row.appendChild(pathInput);
+    }
+    const rm = el('button'); rm.textContent = '✕'; rm.title = 'Remove mapping';
+    rm.onclick = async () => { const next = { ...mapped }; delete next[key]; cfg = await api.setConfig({ columnSources: next }); rerender(); };
+    row.appendChild(rm);
+    box.appendChild(row);
+  }
+  p.appendChild(box);
+
+  if (!connOpts.length) {
+    const msg = el('div', 'kv'); msg.textContent = 'Add a Connection first (Connections tab) before mapping a column to it.';
+    p.appendChild(msg);
+    return;
+  }
+  const unmapped = allKeys.filter((k) => !mappedKeys.includes(k));
+  if (!unmapped.length) return;
+
+  const form = el('div'); form.style.cssText = 'display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px';
+  const colSel = el('select'); for (const k of unmapped) { const op = el('option'); op.value = k; op.textContent = labelOf(k); colSel.appendChild(op); }
+  const connSel = el('select'); for (const o of connOpts) { const op = el('option'); op.value = o.v; op.textContent = o.l; connSel.appendChild(op); }
+  const pathIn = el('input'); pathIn.type = 'text'; pathIn.placeholder = 'json.path (not needed for Tag/BL)'; pathIn.style.width = '200px';
+  const addMapBtn = el('button', 'act'); addMapBtn.textContent = '+ Map column';
+  addMapBtn.onclick = async () => {
+    if (colSel.value !== 'tag' && colSel.value !== 'bl' && !pathIn.value.trim()) { toast('Need a JSON path for this column', 'err'); return; }
+    const next = { ...mapped, [colSel.value]: { source: connSel.value, path: pathIn.value.trim() } };
+    cfg = await api.setConfig({ columnSources: next });
+    toast('Mapped ' + labelOf(colSel.value), 'ok'); rerender();
+  };
+  form.appendChild(colSel); form.appendChild(connSel); form.appendChild(pathIn); form.appendChild(addMapBtn);
+  p.appendChild(form);
 }
 
 // Pre-built stat toggles, grouped by gamemode — flip one on/off and it's added to
@@ -409,9 +504,10 @@ function panelSniper(p) {
     ['sniperWeights.accountAge', 'Alt/sniper account signal (high star, low network level)'],
     ['sniperWeights.recentLogin', 'Logged in recently (actively playing)'],
     ['sniperWeights.tags', 'Blacklist / Urchin tags'],
+    ['sniperWeights.freshAccount', 'Fresh account already performing well (classic smurf/alt signal)'],
   ];
   for (const [k, l] of w) p.appendChild(fieldRow(l, '', range(k, 0, 40, 1, 1)));
-  const info = el('div', 'kv'); info.textContent = 'Weights are relative — the final score is normalized to 0–100.';
+  const info = el('div', 'kv'); info.textContent = 'Weights are relative, not required to add up to 100 — the final score is capped there. Tags, account signals, and FKDR are weighted heaviest by default.';
   p.appendChild(info);
 }
 

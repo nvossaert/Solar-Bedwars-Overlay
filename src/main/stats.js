@@ -148,6 +148,14 @@ function sniperScore(s, opts = {}) {
     const hrs = (now - s.lastLogin) / 3.6e6;
     fRecent = clamp01(1 - hrs / 24);
   }
+  // Freshly-joined account that's already good is the classic smurf/sniper tell — a real
+  // grinder's stats build up over months, an alt just shows up already sweaty. Distinct from
+  // fAcct above, which only fires once an account's actually put in the hours (star > 100).
+  let fFresh = 0;
+  if (s.firstLogin && s.fkdr >= 2) {
+    const days = (now - s.firstLogin) / 86400000;
+    if (days < 60) fFresh = clamp01((60 - days) / 60) * clamp01(s.fkdr / 6);
+  }
 
   const parts = {
     fkdr: fFkdr * (w.fkdr || 0),
@@ -158,6 +166,7 @@ function sniperScore(s, opts = {}) {
     accountAge: fAcct * (w.accountAge || 0),
     recentLogin: fRecent * (w.recentLogin || 0),
     tags: tagWeight * (w.tags || 0),
+    freshAccount: fFresh * (w.freshAccount || 0),
   };
   let score = Math.round(Object.values(parts).reduce((a, b) => a + b, 0));
   score = Math.max(0, Math.min(100, score));
