@@ -59,8 +59,7 @@ system tray.
 - Hover any row for a full breakdown tooltip (finals, games, network level, monthly finals tracked, all tags).
 
 ### Monthly FKDR
-Hypixel has no native monthly stat, so the app stores one **snapshot per player per day** and computes
-the delta over the last ~30 days. It shows `—` until enough history accrues (a day or two of seeing a player).
+
 
 ### Sniper / Threat score (your own evaluation)
 A transparent 0–100 blend of FKDR, star, WLR, win streak, **recent-sweat trend** (monthly vs lifetime
@@ -68,10 +67,10 @@ FKDR — a smurf/sniper signal), **account plausibility** (high star + low netwo
 **recent login**, and **blacklist tags**. Labels: `CHILL → DECENT → SWEAT → TRYHARD → DANGER → SNIPER`.
 Every weight is a slider in **Settings → Sniper Score**.
 
-### Urchin blacklist + your imported CSV
+### Urchin blacklist + custom imported CSV
 - Live lookups hit your fully-configurable Urchin endpoint and render tags as colored chips.
-- Your uploaded CSV (the `info`/caution tags removed in the last Urchin update) is bundled at
-  `data/blacklist.json` — **657 UUIDs / 733 tags** — and merged into every lookup, tagged `[local-import]`.
+- Entire uploaded CSV (the `info`/caution tags removed in the last Urchin update) is bundled at
+  `data/blacklist.json` — **5k+ UUIDs / 10k+ tags** — and merged into every lookup, tagged `[local-import]`.
 - Right-click a player → add a personal local `info` tag, or flag them to your watchlist.
 
 ### Blacklist Admin (⚑) — you have add-tag perms
@@ -152,9 +151,9 @@ git ls-files | grep -i secret                          # should show ONLY secret
 git grep -nE "key=[0-9a-fA-F]{8}-" $(git rev-parse HEAD) || echo "no embedded keys — good"
 ```
 
-## Notes & next steps
+## Notes
 - Keys are stored locally in Electron's `userData/config.json`. Change them anytime in Settings.
-- Live API calls (Hypixel, Urchin, Mojang) couldn't be reached from the build sandbox, so confirm the
+- Live API calls (Hypixel, Urchin, Mojang) confirm the
   Urchin tag shape on your machine — the parser is defensive and follows the documented
   `{ score:{value,mode}, tags:[…] }` format, but if your instance returns extra fields you want shown,
   they're easy to surface in `urchin.js → _parseTag`.
