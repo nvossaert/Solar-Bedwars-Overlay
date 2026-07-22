@@ -9,6 +9,7 @@ const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': 
 function getPath(o, p) { return p.split('.').reduce((a, k) => (a == null ? a : a[k]), o); }
 function patchOf(path, val) {
   const parts = path.split('.'); const root = {}; let cur = root;
+  if (parts.some((p) => p === '__proto__' || p === 'constructor' || p === 'prototype')) return root;
   for (let i = 0; i < parts.length - 1; i++) { cur[parts[i]] = {}; cur = cur[parts[i]]; }
   cur[parts[parts.length - 1]] = val; return root;
 }
