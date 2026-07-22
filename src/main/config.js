@@ -92,13 +92,16 @@ function defaults() {
     clearOnLobbyJoin: true,
 
     // ---- Auto-blacklist / watchlist triggers ----
+    // On by default — this is the whole point of the overlay (auto-track anyone who
+    // interacts with you), and a new user shouldn't have to dig into Settings to get
+    // basic "someone said my name" detection working. Still fully toggleable per-trigger.
     triggers: {
-      onNameInChat: false,
-      onPartyJoin: false,
-      onPartyInvite: false,
-      onDirectMessage: false,
-      onFriendRequest: false,
-      onKilledYou: false,
+      onNameInChat: true,
+      onPartyJoin: true,
+      onPartyInvite: true,
+      onDirectMessage: true,
+      onFriendRequest: true,
+      onKilledYou: true,
     },
     autoTagType: 'info',
     watchlist: {}, // { uuid: {reason, added_on, name} } local-only soft flags
