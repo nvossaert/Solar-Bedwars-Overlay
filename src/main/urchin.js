@@ -253,6 +253,39 @@ class Urchin {
     return out;
   }
 
+  // Urchin's "Coral" API (api.urchin.gg/v3) also exposes player-stats endpoints beyond the
+  // blacklist lookup, using the same key. Verified against the live OpenAPI docs at
+  // api.urchin.gg/openapi.json and a real authenticated call before wiring these in.
+
+  // Monthly stat delta for a player, straight from Urchin's own snapshot history — richer than
+  // our own local daily snapshots (hypixel.js) since it works immediately instead of needing this
+  // app to have already seen the player at least twice, 24h+ apart. Falls back to null (caller
+  // then uses the local snapshot method) on any error, missing key, or lack of permission.
+  async monthlyDelta(uuid, name) {
+    const cfg = this.getConfig();
+    if (!cfg.urchinKey) return null;
+    try {
+      const url = 'https://api.urchin.gg/v3/player/sessions/monthly?player=' + encodeURIComponent(norm(uuid) || name || '');
+      const r = await fetch(url, { headers: { 'X-API-Key': cfg.urchinKey } });
+      if (!r.ok) return null;
+      return await r.json();
+    } catch (_) { return null; }
+  }
+
+  // Bed Wars winstreak history reconstructed from Urchin's snapshots, per mode. Useful even when
+  // a player's live Hypixel winstreak field is hidden (a common privacy setting), since a big
+  // recorded winstreak in the past is still a real signal.
+  async winstreaks(uuid, name) {
+    const cfg = this.getConfig();
+    if (!cfg.urchinKey) return null;
+    try {
+      const url = 'https://api.urchin.gg/v3/player/winstreaks?player=' + encodeURIComponent(norm(uuid) || name || '');
+      const r = await fetch(url, { headers: { 'X-API-Key': cfg.urchinKey } });
+      if (!r.ok) return null;
+      return await r.json();
+    } catch (_) { return null; }
+  }
+
   // Admin: add a tag to the real Urchin DB.
   async addTag({ uuid, tag_type, reason, hide_username = false, overwrite = false }) {
     const cfg = this.getConfig();
@@ -270,4 +303,29 @@ class Urchin {
   }
 }
 
-module.exports = { Urchin, severityOf, colorOf, labelOf, iconOf, classifyReason, parseTooltip, SEVERITY, COLORS, ICONS };
+// Max StreakEntry.value across every mode in a winstreaks() response, or null if there's nothing
+// recorded yet. Each entry is { value, approximate, timestamp, readable } per the Coral API schema.
+function highestWinstreak(winstreaksResponse) {
+  if (!winstreaksResponse || !winstreaksResponse.modes) return null;
+  let best = null;
+  for (const entries of Object.values(winstreaksResponse.modes)) {
+    for (const e of (entries || [])) {
+      if (typeof e.value === 'number' && (best == null || e.value > best)) best = e.value;
+    }
+  }
+  return best;
+}
+
+// Bedwars final-kill/-death deltas out of a monthlyDelta() response's recursive diff, in the
+// { finalKills, finalDeaths } shape stats.extract() already expects — numeric stat changes come
+// back as bare numbers per the API, an omitted key just means that stat didn't move this period.
+function monthlyFinalsDelta(monthlyResponse) {
+  if (!monthlyResponse || !monthlyResponse.delta) return null;
+  const bw = (monthlyResponse.delta.stats || {}).Bedwars;
+  if (!bw) return null;
+  const fk = bw.final_kills_bedwars, fd = bw.final_deaths_bedwars;
+  if (typeof fk !== 'number' && typeof fd !== 'number') return null;
+  return { finalKills: typeof fk === 'number' ? fk : 0, finalDeaths: typeof fd === 'number' ? fd : 0 };
+}
+
+module.exports = { Urchin, severityOf, colorOf, labelOf, iconOf, classifyReason, parseTooltip, highestWinstreak, monthlyFinalsDelta, SEVERITY, COLORS, ICONS };

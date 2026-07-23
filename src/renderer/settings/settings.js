@@ -15,7 +15,7 @@ function patchOf(path, val) {
 }
 async function set(path, val) { cfg = await api.setConfig(patchOf(path, val)); }
 
-const COLLABELS = { source: 'Source', tag: 'Tag', star: 'Lvl', name: 'Player', fkdr: 'FKDR', wlr: 'WLR', finals: 'F.Kills', wins: 'Wins', ws: 'WS', mfkdr: 'M.FKDR', sniper: 'Sniper', lastseen: 'Last Login', bl: 'BL' };
+const COLLABELS = { source: 'Source', tag: 'Tag', star: 'Lvl', name: 'Player', fkdr: 'FKDR', wlr: 'WLR', finals: 'F.Kills', wins: 'Wins', ws: 'WS', hws: 'Peak WS', mfkdr: 'M.FKDR', sniper: 'Sniper', lastseen: 'Last Login', bl: 'BL' };
 
 // A curated set of extra Hypixel stats, grouped by gamemode, that a user can flip on
 // as columns without having to know the raw API field names themselves. All off by

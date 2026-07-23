@@ -52,9 +52,13 @@ function starColor(star) {
 /*
  * Extract a clean stats object from a raw Hypixel player payload.
  * `snapshot` is an optional { finalKills, finalDeaths, wins, losses, ts } captured >= ~30d ago
- * used to compute monthly (session-tracked) FKDR.
+ * used to compute monthly (session-tracked) FKDR - our own fallback when Urchin's monthly
+ * delta below isn't available (no key, no permission, or the call failed).
+ * `monthlyDelta` is an optional { finalKills, finalDeaths } straight from Urchin's own session
+ * tracking (urchin.monthlyFinalsDelta) - preferred when present since it works immediately,
+ * without needing this app to have already seen the player at least twice, a day+ apart.
  */
-function extract(player, snapshot) {
+function extract(player, snapshot, monthlyDelta) {
   if (!player) return null;
   const bw = ((player.stats || {}).Bedwars) || {};
   const finalKills = +bw.final_kills_bedwars || 0;
@@ -75,9 +79,12 @@ function extract(player, snapshot) {
   const kdr = ratio(kills, deaths);
   const bblr = ratio(bedsBroken, bedsLost);
 
-  // Monthly / tracked FKDR from snapshot delta
+  // Monthly / tracked FKDR: prefer Urchin's own session delta, fall back to our local snapshot.
   let mfkdr = null, mFinals = null;
-  if (snapshot && (finalKills - snapshot.finalKills) >= 0) {
+  if (monthlyDelta) {
+    const dFk = monthlyDelta.finalKills || 0, dFd = monthlyDelta.finalDeaths || 0;
+    if (dFk + dFd > 0) { mfkdr = ratio(dFk, dFd); mFinals = dFk; }
+  } else if (snapshot && (finalKills - snapshot.finalKills) >= 0) {
     const dFk = finalKills - snapshot.finalKills;
     const dFd = finalDeaths - snapshot.finalDeaths;
     if (dFk + dFd > 0) { mfkdr = ratio(dFk, dFd); mFinals = dFk; }

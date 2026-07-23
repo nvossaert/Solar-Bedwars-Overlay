@@ -13,6 +13,7 @@ const COLMETA = {
   finals:  { label: 'F.Kills',    num: true,  width: 70 },
   wins:    { label: 'Wins',       num: true,  width: 62 },
   ws:      { label: 'WS',         num: true,  width: 46 },
+  hws:     { label: 'Peak WS',    num: true,  width: 60 },
   mfkdr:   { label: 'M.FKDR',     num: true,  width: 64 },
   sniper:  { label: 'Sniper',     num: true,  width: 66 },
   lastseen:{ label: 'Last Login', num: true,  width: 92 },
@@ -203,6 +204,7 @@ function sortVal(row, key){
     case 'finals': return s.finalKills||0;
     case 'wins': return s.wins||0;
     case 'ws': return s.winstreak||0;
+    case 'hws': return s.highestWinstreak==null?-1:s.highestWinstreak;
     case 'mfkdr': return s.mfkdr==null?-1:s.mfkdr;
     case 'sniper': return sn.score||0;
     case 'lastseen': return s.lastLogin||0;
@@ -277,6 +279,7 @@ function cell(row, key){
     case 'finals':{ if(!s){td.textContent='';return td;} td.className='mono'; td.textContent=fmt(s.finalKills); return td; }
     case 'wins':{ if(!s){td.textContent='';return td;} td.className='mono'; td.textContent=fmt(s.wins); return td; }
     case 'ws':{ if(!s){td.textContent='';return td;} td.className='mono'; td.textContent=(s.winstreak==null?'—':s.winstreak); return td; }
+    case 'hws':{ if(!s){td.textContent='';return td;} td.className='mono dim'; td.textContent=(s.highestWinstreak==null?'—':s.highestWinstreak); return td; }
     case 'mfkdr':{ if(!s){td.textContent='';return td;} td.className='mono';
       td.innerHTML = s.mfkdr==null?'<span class="dim">—</span>':`<span style="color:${fkdrColor(s.mfkdr)}">${s.mfkdr.toFixed(2)}</span>`; return td; }
     case 'sniper':{ if(!sn){td.textContent='';return td;} td.className='mono';

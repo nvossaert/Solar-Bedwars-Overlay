@@ -56,6 +56,7 @@ const ALL_COLUMNS = [
   { key: 'finals',   label: 'F.Kills',   width: 70 },
   { key: 'wins',     label: 'Wins',      width: 62 },
   { key: 'ws',       label: 'WS',        width: 46 },
+  { key: 'hws',      label: 'Peak WS',   width: 60 },
   { key: 'mfkdr',    label: 'M.FKDR',    width: 64 },
   { key: 'sniper',   label: 'Sniper',    width: 66 },
   { key: 'lastseen', label: 'Last Login',width: 92 },

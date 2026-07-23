@@ -5,6 +5,7 @@
 // just re-render rather than track deltas itself.
 const { EventEmitter } = require('events');
 const stats = require('./stats');
+const { monthlyFinalsDelta, highestWinstreak } = require('./urchin');
 
 class Roster extends EventEmitter {
   constructor(hypixel, urchin, getConfig) {
@@ -62,16 +63,22 @@ class Roster extends EventEmitter {
       row.uuid = resolved.id;
       row.name = resolved.name; // fix casing
 
-      const [player, urchin] = await Promise.all([
+      // monthlyResp/winstreaksResp are Urchin's own player-stats endpoints (Coral API), separate
+      // from the blacklist lookup above - both no-op internally (return null, no request) if
+      // there's no urchinKey configured, so this is free when the feature isn't in use.
+      const [player, urchin, monthlyResp, winstreaksResp] = await Promise.all([
         this.hy.fetchPlayer(resolved.id).catch((e) => { row.apiError = e.code === 403 ? 'bad key' : (e.code === 429 ? 'rate limit' : 'api err'); return null; }),
         this.ur.lookup(resolved.id, resolved.name).catch(() => ({ tags: [], severity: 0, score: 0 })),
+        this.ur.monthlyDelta(resolved.id, resolved.name).catch(() => null),
+        this.ur.winstreaks(resolved.id, resolved.name).catch(() => null),
       ]);
 
       row.urchin = urchin;
       row.raw = player || null; // full Hypixel player object, kept around for user-defined custom columns
       if (player) {
         const baseline = this.hy.monthlyBaseline(resolved.id);
-        const s = stats.extract(player, baseline);
+        const s = stats.extract(player, baseline, monthlyFinalsDelta(monthlyResp));
+        s.highestWinstreak = highestWinstreak(winstreaksResp);
         row.stats = s;
         row.sniper = stats.sniperScore(s, { weights: cfg.sniperWeights, tagSeverity: urchin.severity || 0 });
         row.displayName = player.displayname || resolved.name;
