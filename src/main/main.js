@@ -146,7 +146,9 @@ function wireWatcher() {
   // the name already on-screen.
   watcher.on('finalKillCount', ({ killer, count }) => {
     const candidates = hypixel.findByFinalKills(count, 2).filter((c) => c.name.toLowerCase() !== killer.toLowerCase());
-    if (candidates.length) roster.setDenickHint(killer, { count, candidates, ts: Date.now() });
+    if (!candidates.length) return;
+    roster.setDenickHint(killer, { count, candidates, ts: Date.now() });
+    if (candidates.length === 1) toast(`Possible nick: ${killer} -> ${candidates[0].name}?`, 'warn');
   });
   watcher.on('status', (s) => broadcast('log:status', s));
 }
