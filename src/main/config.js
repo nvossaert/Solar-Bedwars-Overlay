@@ -47,6 +47,7 @@ function guessLogPath() {
 // The full set of built-in columns. Every one of these is just as removable/re-addable
 // as a custom column now — there's no "always shown" column anymore, Player included.
 const ALL_COLUMNS = [
+  { key: 'source',   label: 'Source',    width: 44 },
   { key: 'tag',      label: 'Tag',       width: 46 },
   { key: 'star',     label: 'Lvl',       width: 58 },
   { key: 'name',     label: 'Player',    width: 130 },
@@ -112,7 +113,9 @@ function defaults() {
     cacheMinutes: 3,
 
     // ---- Overlay window ----
-    window: { x: 60, y: 60, width: 720, height: 380, opacity: 0.94 },
+    // Wide enough to fit every default column (now with per-column widths actually applied,
+    // see overlay.js) without squeezing the Player name down to a sliver.
+    window: { x: 60, y: 60, width: 900, height: 420, opacity: 0.94 },
     alwaysOnTop: true,
     hideFromCapture: true, // setContentProtection -> invisible to OBS/Discord/screenshots
     clickThrough: false,

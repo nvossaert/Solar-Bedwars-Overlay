@@ -110,7 +110,10 @@ async function watchlistAdd(name, reason, kind) {
 }
 
 function wireWatcher() {
-  watcher.on('who', (names) => roster.addNames(names, 'GAME'));
+  // "ONLINE: a, b, c" is the full-lobby list a client dumps on load (via /who or auto-who) —
+  // clearOnLobbyJoin wipes stale entries right before repopulating from that fresh list, a
+  // safety net for when serverChange's own detection doesn't fire first.
+  watcher.on('who', (names) => { if (getConfig().clearOnLobbyJoin) roster.clear(); roster.addNames(names, 'GAME'); });
   watcher.on('lobbyJoin', (n) => roster.addNames([n], 'GAME'));
   watcher.on('partyList', (names) => roster.addNames(names, 'PARTY'));
   watcher.on('quit', (n) => { /* keep in list; optional removal */ });

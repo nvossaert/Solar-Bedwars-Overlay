@@ -1,20 +1,24 @@
 'use strict';
 const api = window.solarBridge;
 
+// width here is actually applied now (via the <colgroup> renderHead() builds) instead of every
+// column just splitting the window evenly, which is what was squeezing Player down to a sliver.
 const COLMETA = {
-  tag:     { label: 'Tag',        num: false },
-  star:    { label: 'Lvl',        num: true  },
-  name:    { label: 'Player',     num: false },
-  fkdr:    { label: 'FKDR',       num: true  },
-  wlr:     { label: 'WLR',        num: true  },
-  finals:  { label: 'F.Kills',    num: true  },
-  wins:    { label: 'Wins',       num: true  },
-  ws:      { label: 'WS',         num: true  },
-  mfkdr:   { label: 'M.FKDR',     num: true  },
-  sniper:  { label: 'Sniper',     num: true  },
-  lastseen:{ label: 'Last Login', num: true  },
-  bl:      { label: 'BL',         num: true  },
+  source:  { label: 'Source',     num: false, width: 44 },
+  tag:     { label: 'Tag',        num: false, width: 46 },
+  star:    { label: 'Lvl',        num: true,  width: 58 },
+  name:    { label: 'Player',     num: false, width: 130 },
+  fkdr:    { label: 'FKDR',       num: true,  width: 62 },
+  wlr:     { label: 'WLR',        num: true,  width: 58 },
+  finals:  { label: 'F.Kills',    num: true,  width: 70 },
+  wins:    { label: 'Wins',       num: true,  width: 62 },
+  ws:      { label: 'WS',         num: true,  width: 46 },
+  mfkdr:   { label: 'M.FKDR',     num: true,  width: 64 },
+  sniper:  { label: 'Sniper',     num: true,  width: 66 },
+  lastseen:{ label: 'Last Login', num: true,  width: 92 },
+  bl:      { label: 'BL',         num: true,  width: 40 },
 };
+const DEFAULT_COL_WIDTH = 70;
 const RANKCOLOR = {
   SUPERSTAR: '#ffaa00', MVP_PLUS: '#55ffff', MVP: '#55ffff', SUPERSTAR_PLUS: '#ffaa00',
   VIP_PLUS: '#55ff55', VIP: '#55ff55', YOUTUBER: '#ff5555', ADMIN: '#ff5555', HELPER: '#5555ff',
@@ -85,7 +89,7 @@ function getPath(o,p){ return String(p||'').split('.').reduce((a,k)=>(a==null?a:
 function colMeta(key){
   if (COLMETA[key]) return COLMETA[key];
   const c = (cfg.customColumns||[]).find((c)=>c.key===key);
-  return c ? { label: c.label, num: true } : null;
+  return c ? { label: c.label, num: true, width: Math.max(56, c.label.length * 7 + 24) } : null;
 }
 // A column's value normally comes from the computed stats (built-ins) or row.raw (custom
 // columns), but Settings -> Connections lets the user rewire either kind to a specific
@@ -122,7 +126,24 @@ function orderedColumns(){
 
 function renderHead(){
   const head = $('#headRow'); head.innerHTML='';
-  for(const col of orderedColumns()){
+  const cols = orderedColumns();
+
+  // Each column now gets its own real pixel width via <colgroup> instead of the table splitting
+  // available space evenly across however many columns are visible — that equal-split is what
+  // was squeezing Player down to a few characters once several columns were on.
+  let colgroup = $('#tbl > colgroup');
+  if(!colgroup){ colgroup = document.createElement('colgroup'); colgroup.id='colgroup'; $('#tbl').prepend(colgroup); }
+  colgroup.innerHTML='';
+  let totalWidth = 0;
+  for(const col of cols){
+    const w = colMeta(col.key).width || DEFAULT_COL_WIDTH;
+    totalWidth += w;
+    const c = document.createElement('col'); c.style.width = w+'px';
+    colgroup.appendChild(c);
+  }
+  $('#tbl').style.width = totalWidth+'px';
+
+  for(const col of cols){
     const meta = colMeta(col.key);
     const th = el('th');
     th.dataset.key = col.key;
@@ -175,6 +196,7 @@ function sortVal(row, key){
   }
   switch(key){
     case 'name': return (row.name||'').toLowerCase();
+    case 'source': return row.source || '';
     case 'star': return s.star||0;
     case 'fkdr': return s.fkdr||0;
     case 'wlr': return s.wlr||0;
@@ -219,7 +241,7 @@ function sorted(){
 // ---------------- row rendering ----------------
 function cell(row, key){
   const td = el('td'); const s = row.stats, sn = row.sniper, u = row.urchin;
-  if(row.loading && !s && key!=='name'){ td.innerHTML='<span class="loading">…</span>'; return td; }
+  if(row.loading && !s && key!=='name' && key!=='source'){ td.innerHTML='<span class="loading">…</span>'; return td; }
   const override = (cfg.columnSources||{})[key];
   if(override && key!=='tag' && key!=='bl' && override.path){
     const v = sourceValue(row, override.source, override.path);
@@ -238,14 +260,16 @@ function cell(row, key){
       if(!s){ td.textContent=''; return td; }
       td.innerHTML = `<span class="star" style="color:${s.starColorHex}">${s.star}✫</span>`; return td;
     }
+    case 'source':{
+      td.className='center'; td.innerHTML = sourceBadge(row.source); return td;
+    }
     case 'name':{
       td.className='name';
-      const badge = sourceBadge(row.source);
       const denick = denickMark(row);
-      if(row.nicked){ td.innerHTML=`${badge}<span class="nick">${esc(row.name)} (nick?)</span>${denick}`; return td; }
-      if(row.apiError){ td.innerHTML=`${badge}${esc(row.name)} <span class="err">${esc(row.apiError)}</span>${denick}`; return td; }
+      if(row.nicked){ td.innerHTML=`<span class="nick">${esc(row.name)} (nick?)</span>${denick}`; return td; }
+      if(row.apiError){ td.innerHTML=`${esc(row.name)} <span class="err">${esc(row.apiError)}</span>${denick}`; return td; }
       const col = RANKCOLOR[(s&&s.rank)||'NONE']||'var(--text)';
-      td.innerHTML=`${badge}<span style="color:${col}">${esc(row.name)}</span>${denick}` + (row.loading?' <span class="loading">…</span>':'');
+      td.innerHTML=`<span style="color:${col}">${esc(row.name)}</span>${denick}` + (row.loading?' <span class="loading">…</span>':'');
       return td;
     }
     case 'fkdr':{ if(!s){td.textContent='';return td;} td.className='mono'; td.innerHTML=`<span style="color:${fkdrColor(s.fkdr)}">${s.fkdr.toFixed(2)}</span>`; return td; }

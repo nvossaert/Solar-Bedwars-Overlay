@@ -152,8 +152,11 @@ class LogWatcher extends EventEmitter {
     if (m) { this.emit('finalKillCount', { victim: m[1], killer: m[2], count: parseInt(m[3], 10) }); }
 
     // ---- server / game change -> clear ----
-    if (/^Sending you to /.test(msg) || /^ +Bed Wars$/i.test(msg) || /^\s*1st Killer/.test(msg) ||
-        /You have respawned!/.test(msg) === false && /^You are now in /.test(msg)) {
+    // Some clients (Lunar included) drop a raw status blob straight into chat on every server
+    // switch, e.g. {"server":"dynamiclobby39C","gametype":"BEDWARS","lobbyname":"..."} — far more
+    // reliable than the prose messages below, which vary by client and don't always show up.
+    if (/"server"\s*:\s*"[^"]+"/.test(msg) && /"gametype"\s*:\s*"[^"]+"/.test(msg)) { this.emit('serverChange'); return; }
+    if (/^Sending you to /.test(msg) || /^ +Bed Wars$/i.test(msg) || /^\s*1st Killer/.test(msg) || /^You are now in /.test(msg)) {
       this.emit('serverChange');
       // don't return; a game-over line could still mention you
     }
