@@ -20,13 +20,28 @@ class Roster extends EventEmitter {
 
   list() { return [...this.players.values()]; }
 
-  clear() { this.players.clear(); this._emit(); }
-
-  removeByUuid(uuid) {
-    for (const [k, v] of this.players) if (v.uuid === uuid) this.players.delete(k);
+  // clear() wipes everyone except "you" (source==='SELF') - your own row is meant to be a
+  // permanent fixture, not something that gets swept away with the rest of a stale lobby.
+  clear() {
+    const keep = [...this.players.entries()].filter(([, v]) => v.source === 'SELF');
+    this.players.clear();
+    for (const [k, v] of keep) this.players.set(k, v);
     this._emit();
   }
-  removeByName(name) { this.players.delete(name.toLowerCase()); this._emit(); }
+
+  // Same permanence as clear(): your own row shouldn't disappear from a stray click on the
+  // per-row remove button either - the only way to change it is via Settings (rename or hide).
+  removeByUuid(uuid) {
+    for (const [k, v] of this.players) if (v.uuid === uuid && v.source !== 'SELF') this.players.delete(k);
+    this._emit();
+  }
+  removeByName(name) {
+    const key = name.toLowerCase();
+    const row = this.players.get(key);
+    if (row && row.source === 'SELF') return;
+    this.players.delete(key);
+    this._emit();
+  }
 
   addNames(names, source) {
     const cfg = this.getConfig();
@@ -95,6 +110,24 @@ class Roster extends EventEmitter {
     } catch (e) {
       row.loading = false; row.error = String(e.message || e); this._emit();
     }
+  }
+
+  // Keeps "you" pinned in the list based on the current selfName/hideSelf settings - called at
+  // boot and again whenever either setting changes, so a rename or toggling hideSelf takes
+  // effect immediately rather than waiting for the name to show up through log detection.
+  setSelf(name, hide) {
+    for (const [k, v] of this.players) if (v.source === 'SELF') this.players.delete(k);
+    const trimmed = String(name || '').trim();
+    if (!trimmed || hide) { this._emit(); return; }
+    const key = trimmed.toLowerCase();
+    const existing = this.players.get(key);
+    if (existing) { existing.source = 'SELF'; }
+    else {
+      const row = { name: trimmed, key, uuid: null, source: 'SELF', addedAt: Date.now(), loading: true };
+      this.players.set(key, row);
+      this._enqueue(row);
+    }
+    this._emit();
   }
 
   // Attaches a best-effort "this might actually be X" hint to an already-listed player (see

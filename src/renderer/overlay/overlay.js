@@ -43,6 +43,8 @@ const SOURCE_BADGE = {
   MANUAL: { title: 'Added manually', color: '#8b949e', text: '+' },
   house: { title: 'Their Housing instance you teleported into', color: '#c9a06b',
     svg: '<svg viewBox="0 0 16 16" width="12" height="11"><path d="M8,1.5 L14.5,7 L12.5,7 L12.5,14.5 L3.5,14.5 L3.5,7 L1.5,7 Z" fill="currentColor"/></svg>' },
+  SELF: { title: 'This is you', color: '#ffd700',
+    svg: '<svg viewBox="0 0 16 16" width="12" height="12"><path d="M8,1.5 L9.53,5.9 L14.18,5.99 L10.47,8.8 L11.82,13.26 L8,10.6 L4.18,13.26 L5.53,8.8 L1.82,5.99 L6.47,5.9 Z" fill="currentColor"/></svg>' },
 };
 // Best-effort de-nick hint (see main.js/hypixel.findByFinalKills): the killer's own reported
 // final-kill count matched someone this app has already seen stats for. Only a suggestion —
@@ -230,12 +232,13 @@ function blCount(row, connId){
   return tags.filter(t=>t.source==='local-import'||t.source==='local'||t.source==='trigger').length;
 }
 
+// You always come first, party members next, everyone else follows the normal sort.
+function rowTier(row){ return row.source==='SELF' ? 0 : row.source==='PARTY' ? 1 : 2; }
 function sorted(){
   const key = cfg.sortBy, dir = cfg.sortDir==='desc'?-1:1;
   return rows.slice().sort((a,b)=>{
-    // Party members always float to the top, ahead of the normal sort.
-    const ap = a.source==='PARTY' ? 0 : 1, bp = b.source==='PARTY' ? 0 : 1;
-    if(ap!==bp) return ap-bp;
+    const at=rowTier(a), bt=rowTier(b);
+    if(at!==bt) return at-bt;
     const av=sortVal(a,key), bv=sortVal(b,key);
     if(av<bv)return -1*dir; if(av>bv)return 1*dir;
     return (a.name||'').localeCompare(b.name||'');
@@ -323,6 +326,7 @@ function render(){
     const tr = el('tr');
     if(blCount(row)>0) tr.classList.add('bl');
     if(row.nicked) tr.classList.add('nicked');
+    if(row.source==='SELF') tr.classList.add('self');
     if(hlStat){
       const v = sortVal(row, hlStat);
       if(typeof v==='number' && v >= (cfg.highlightThreshold ?? Infinity)) tr.classList.add('highlight');

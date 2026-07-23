@@ -237,6 +237,8 @@ function registerIpc() {
   ipcMain.handle('link:open', (_e, url) => shell.openExternal(url));
 }
 
+function applySelf() { const cfg = getConfig(); roster.setSelf(cfg.selfName, cfg.hideSelf); }
+
 function afterConfigChange(patch = {}) {
   if (overlayWin) {
     overlayWin.setAlwaysOnTop(getConfig().alwaysOnTop, 'screen-saver');
@@ -244,6 +246,7 @@ function afterConfigChange(patch = {}) {
     applyCapture(); applyClickThrough();
   }
   if (patch.logPath !== undefined || patch.logEnabled !== undefined || patch.selfName !== undefined || patch.reactNames !== undefined) startWatcher();
+  if (patch.selfName !== undefined || patch.hideSelf !== undefined) applySelf();
   if (patch.refreshSeconds !== undefined) applyRefreshTimer();
 }
 
@@ -289,6 +292,7 @@ app.whenReady().then(() => {
   registerShortcuts();
   startWatcher();
   applyRefreshTimer();
+  applySelf(); // your own IGN, if configured, is in the list from the moment the app starts
 
   app.on('activate', () => { if (!overlayWin) createOverlay(); });
 });

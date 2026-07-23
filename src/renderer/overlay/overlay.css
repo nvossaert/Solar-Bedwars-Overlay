@@ -96,6 +96,9 @@ tbody tr.highlight.bl{box-shadow:inset 3px 0 0 #da3633, inset 0 0 0 1px rgba(255
    a blacklist/highlight signal - this is "identity unknown", not a threat rating. */
 tbody tr.nicked{background:rgba(34,211,238,.10);box-shadow:inset 3px 0 0 #22d3ee}
 tbody tr.nicked:hover{background:rgba(34,211,238,.17)}
+/* Gold, so "this is you" reads as a special fixture rather than any kind of warning. */
+tbody tr.self{background:rgba(255,215,0,.08);box-shadow:inset 3px 0 0 #ffd700}
+tbody tr.self:hover{background:rgba(255,215,0,.14)}
 
 .name{font-weight:600;position:relative}
 .rmrow{position:absolute;right:2px;top:50%;transform:translateY(-50%);
