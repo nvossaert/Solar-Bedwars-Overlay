@@ -94,9 +94,15 @@ tbody tr.highlight:hover{background:rgba(255,180,64,.19)}
 tbody tr.highlight.bl{box-shadow:inset 3px 0 0 #da3633, inset 0 0 0 1px rgba(255,180,64,.35)}
 
 .name{font-weight:600}
-.center{text-align:center}
-.srcbadge{display:inline-flex;align-items:center;justify-content:center;
-  vertical-align:middle;font-weight:800;font-size:10px;line-height:1}
+/* table-cell vertical-align:middle doesn't reliably center an inline-flex child against its own
+   line box (text vs. svg badges land at slightly different baselines depending on font metrics) -
+   absolute-positioning dead center sidesteps that instead of fighting it. Not display:flex on the
+   <td> itself, since overriding a table-cell's display can mess with the <colgroup> width it's
+   supposed to respect. */
+.center{position:relative;text-align:center}
+.srcbadge{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  display:inline-flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:10px;line-height:1}
 .srcbadge svg{display:block}
 .denick{margin-left:4px;color:var(--accent);font-weight:700;font-size:10px;cursor:help}
 .mono{font-variant-numeric:tabular-nums}
