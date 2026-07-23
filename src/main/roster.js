@@ -86,6 +86,16 @@ class Roster extends EventEmitter {
     }
   }
 
+  // Attaches a best-effort "this might actually be X" hint to an already-listed player (see
+  // hypixel.findByFinalKills) — only meaningful if the row already exists, since a nicked
+  // killer would already have been added via the normal lobby/who detection.
+  setDenickHint(name, hint) {
+    const row = this.players.get(String(name).toLowerCase());
+    if (!row) return;
+    row.denickHint = hint;
+    this._emit();
+  }
+
   // periodic re-fetch for open list (used when refreshSeconds > 0)
   refreshAll() {
     for (const row of this.players.values()) { row.loading = true; this._enqueue(row); }

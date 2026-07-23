@@ -7,7 +7,9 @@
 .card{background:var(--header);border:1px solid var(--grid);border-radius:8px;padding:12px;margin-top:8px}
 .card .nm{font-weight:600;font-size:14px}
 .tagline{display:flex;gap:8px;align-items:flex-start;padding:5px 0;border-top:1px solid var(--grid);margin-top:6px}
-.tagchip{display:inline-block;padding:1px 7px;border-radius:4px;font-size:10px;font-weight:700;color:#0d1117}
+.tagchip{display:inline-flex;align-items:center;justify-content:center;width:20px;height:16px;
+  padding:0;border-radius:4px;color:#0d1117;flex:0 0 auto}
+.tagchip svg{display:block}
 .form{display:flex;flex-direction:column;gap:6px;max-width:460px}
 .form label{font-size:12px;color:var(--muted);margin-top:6px}
 .form input[type=text],.form select,.form textarea{background:var(--bg);border:1px solid var(--grid);color:var(--text);border-radius:6px;padding:8px 10px;font-size:13px;outline:none;font-family:inherit;width:100%}

@@ -96,7 +96,7 @@ function startWatcher() {
   if (cfg.logEnabled) watcher.start(cfg.logPath); else watcher.stop();
 }
 
-async function watchlistAdd(name, reason) {
+async function watchlistAdd(name, reason, kind) {
   try {
     const r = await hypixel.resolveUuid(name);
     if (!r) return;
@@ -104,7 +104,7 @@ async function watchlistAdd(name, reason) {
     const wl = { ...(cfg.watchlist || {}) };
     wl[r.id] = { name: r.name, reason, added_on: new Date().toISOString() };
     config.save({ watchlist: wl });
-    roster.addNames([r.name], 'trigger');
+    roster.addNames([r.name], kind || 'trigger');
     toast(`Flagged ${r.name}: ${reason}`, 'warn');
   } catch (_) {}
 }
@@ -116,24 +116,35 @@ function wireWatcher() {
   watcher.on('quit', (n) => { /* keep in list; optional removal */ });
   watcher.on('serverChange', () => { if (getConfig().clearOnServerChange) roster.clear(); });
 
+  // Each trigger passes its own "kind" through to the roster row so the overlay can show
+  // a distinct badge for how a player was actually detected (party, mention, DM, ...),
+  // not just a generic "flagged" marker.
   watcher.on('partyJoin', (names) => {
     roster.addNames(names, 'PARTY');
-    if (getConfig().triggers.onPartyJoin) names.forEach((n) => watchlistAdd(n, 'joined your party'));
+    if (getConfig().triggers.onPartyJoin) names.forEach((n) => watchlistAdd(n, 'joined your party', 'PARTY'));
   });
   watcher.on('partyInvite', (n) => {
-    if (getConfig().triggers.onPartyInvite) watchlistAdd(n, 'party invite');
+    if (getConfig().triggers.onPartyInvite) watchlistAdd(n, 'party invite', 'partyInvite');
     toast(`Party invite from ${n}`, 'info');
   });
-  watcher.on('friendRequest', (n) => { if (getConfig().triggers.onFriendRequest) watchlistAdd(n, 'friend request'); });
+  watcher.on('friendRequest', (n) => { if (getConfig().triggers.onFriendRequest) watchlistAdd(n, 'friend request', 'friendRequest'); });
   watcher.on('dmFrom', (n, text) => {
-    if (getConfig().triggers.onDirectMessage) watchlistAdd(n, 'DM: ' + (text || '').slice(0, 40));
+    if (getConfig().triggers.onDirectMessage) watchlistAdd(n, 'DM: ' + (text || '').slice(0, 40), 'dm');
     toast(`DM from ${n}`, 'info');
   });
   watcher.on('mention', ({ by, text }) => {
-    if (getConfig().triggers.onNameInChat) watchlistAdd(by, 'said your name: ' + (text || '').slice(0, 40));
+    if (getConfig().triggers.onNameInChat) watchlistAdd(by, 'said your name: ' + (text || '').slice(0, 40), 'mention');
     toast(`${by} mentioned you`, 'warn');
   });
-  watcher.on('killedYou', (n) => { if (getConfig().triggers.onKilledYou) watchlistAdd(n, 'final-killed you'); });
+  watcher.on('killedYou', (n) => { if (getConfig().triggers.onKilledYou) watchlistAdd(n, 'final-killed you', 'kill'); });
+  // De-nick attempt: match the killer's reported lifetime final-kill count against players this
+  // app has already seen stats for (see hypixel.findByFinalKills — there's no way to search
+  // Hypixel-wide, only what's locally cached). Only useful when it points somewhere other than
+  // the name already on-screen.
+  watcher.on('finalKillCount', ({ killer, count }) => {
+    const candidates = hypixel.findByFinalKills(count, 2).filter((c) => c.name.toLowerCase() !== killer.toLowerCase());
+    if (candidates.length) roster.setDenickHint(killer, { count, candidates, ts: Date.now() });
+  });
   watcher.on('status', (s) => broadcast('log:status', s));
 }
 
@@ -170,7 +181,7 @@ function registerIpc() {
 
   ipcMain.handle('urchin:addTag', (_e, payload) => urchin.addTag(payload));
   ipcMain.handle('urchin:addLocal', (_e, uuid, tag) => { urchin.addLocalTag(uuid, tag); roster.refreshAll(); return true; });
-  ipcMain.handle('watchlist:add', (_e, name, reason) => watchlistAdd(name, reason || 'manual'));
+  ipcMain.handle('watchlist:add', (_e, name, reason) => watchlistAdd(name, reason || 'manual', 'MANUAL'));
 
   ipcMain.handle('lookup:name', async (_e, name) => {
     const r = await hypixel.resolveUuid(name);

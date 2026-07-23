@@ -14,6 +14,9 @@
 //   dmFrom(name), dmTo(name)
 //   mention({by,text})  - your name said in chat
 //   killedYou(name)     - a final-kill message crediting a player
+//   finalKillCount({killer,victim,count}) - a kill line carrying the killer's lifetime final-kill
+//                         tally (e.g. "Victim was Killer's #3560 FINAL KILL!") — the only lead we
+//                         get on a nicked killer's real identity, see hypixel.findByFinalKills()
 //   serverChange()      - sent to a new server / game over
 const fs = require('fs');
 const { EventEmitter } = require('events');
@@ -140,6 +143,13 @@ class LogWatcher extends EventEmitter {
     //      Hypixel uses "<victim> was killed by <killer>. FINAL KILL!" ----
     m = msg.match(new RegExp('was (?:final killed|killed) by (?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')'));
     if (m && /FINAL KILL|final killed/i.test(msg)) { this.emit('killedYou', m[1]); /* fallthrough for mention */ }
+
+    // ---- kill line carrying the killer's running lifetime final-kill count, e.g.
+    //      "Victim was Killer's #3560 FINAL KILL!" — a possessive variant of the line above that
+    //      some clients/servers show. This is speculative pending a real sample; the wording here
+    //      matches what was described, so tune it once an actual log line is available.
+    m = msg.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ') was (?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')\'s #?(\\d+)(?:st|nd|rd|th)?\\s+FINAL KILL', 'i'));
+    if (m) { this.emit('finalKillCount', { victim: m[1], killer: m[2], count: parseInt(m[3], 10) }); }
 
     // ---- server / game change -> clear ----
     if (/^Sending you to /.test(msg) || /^ +Bed Wars$/i.test(msg) || /^\s*1st Killer/.test(msg) ||

@@ -122,6 +122,37 @@ class Hypixel {
     const base = inWindow.length ? inWindow[0] : arr[0];
     return { finalKills: base.fk, finalDeaths: base.fd, wins: base.w, losses: base.l, ts: base.ts };
   }
+
+  // Best-effort de-nick: Hypixel's public API has no "search by stat" endpoint, so there's no
+  // way to look up an unknown player from a final-kill count alone. What this CAN do is check
+  // whether the count matches someone this app has already looked up before (this session's
+  // in-memory cache, or a past daily snapshot) — real help only for players you've seen stats
+  // for previously, not a general reverse-lookup across all of Hypixel.
+  findByFinalKills(count, tolerance = 1) {
+    const nameForUuid = (uuid) => {
+      for (const rec of Object.values(this.uuidCache)) if (rec.id === uuid) return rec.name;
+      return null;
+    };
+    const seen = new Set();
+    const out = [];
+    for (const [uuid, c] of this.playerCache) {
+      const fk = +(((c.data || {}).stats || {}).Bedwars || {}).final_kills_bedwars || 0;
+      if (Math.abs(fk - count) <= tolerance && !seen.has(uuid)) {
+        seen.add(uuid);
+        out.push({ uuid, name: nameForUuid(uuid), finalKills: fk, via: 'session' });
+      }
+    }
+    for (const uuid of Object.keys(this.snapshots)) {
+      if (seen.has(uuid)) continue;
+      const arr = this.snapshots[uuid];
+      const last = arr[arr.length - 1];
+      if (last && Math.abs(last.fk - count) <= tolerance) {
+        seen.add(uuid);
+        out.push({ uuid, name: nameForUuid(uuid), finalKills: last.fk, via: 'snapshot' });
+      }
+    }
+    return out.filter((c) => c.name);
+  }
 }
 
 module.exports = { Hypixel };

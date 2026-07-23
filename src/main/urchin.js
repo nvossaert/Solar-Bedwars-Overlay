@@ -59,6 +59,16 @@ const LABELS = {
   legit: 'LEGIT', info: 'INFO', note: 'NOTE', watchlist: 'WATCH',
   'legit sniper': 'L.SNIPE', account: 'ACCT', caution: 'CAUTION',
 };
+// Which small glyph the overlay draws for a tag chip instead of the text label — the chip's
+// background already carries severity via COLORS, so the icon just needs to carry category:
+// 'burst' = hard confirmed threat, 'triangle' = suspicion/caution, 'person' = account-identity
+// signal, 'panel' = behavior note, 'check'/'dot' = benign/informational.
+const ICONS = {
+  cheater: 'burst', hacker: 'burst', blatant: 'burst', cheating: 'burst', sniper: 'burst', closet: 'burst',
+  'legit sniper': 'burst', caution: 'triangle', sus: 'triangle', suspicious: 'triangle', autoclicker: 'triangle',
+  account: 'person', toxic: 'panel', annoying: 'panel', watchlist: 'panel',
+  info: 'dot', note: 'dot', legit: 'check', safe: 'check',
+};
 
 function classifyReason(reason) {
   // "antisniped"/"anti-sniped" describes something done TO the player (dodged/caught
@@ -98,6 +108,12 @@ function labelOf(type) {
   if (LABELS[t]) return LABELS[t];
   for (const k of Object.keys(LABELS)) if (t.includes(k)) return LABELS[k];
   return String(type || '').slice(0, 4).toUpperCase();
+}
+function iconOf(type) {
+  const t = normType(type);
+  if (ICONS[t]) return ICONS[t];
+  for (const k of Object.keys(ICONS)) if (t.includes(k)) return ICONS[k];
+  return 'dot';
 }
 
 function norm(u) { return String(u || '').replace(/[^0-9a-fA-F]/g, '').toLowerCase(); }
@@ -228,6 +244,7 @@ class Urchin {
       t.severity = severityOf(t.type);
       t.color = t.type === 'watchlist' ? COLORS.watchlist : colorOf(t.type);
       t.label = labelOf(t.type);
+      t.icon = t.type === 'watchlist' ? 'panel' : iconOf(t.type);
       if (t.severity > sev) sev = t.severity;
     }
     out.severity = sev;
@@ -253,4 +270,4 @@ class Urchin {
   }
 }
 
-module.exports = { Urchin, severityOf, colorOf, labelOf, classifyReason, parseTooltip, SEVERITY, COLORS };
+module.exports = { Urchin, severityOf, colorOf, labelOf, iconOf, classifyReason, parseTooltip, SEVERITY, COLORS, ICONS };

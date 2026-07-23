@@ -20,6 +20,51 @@ const RANKCOLOR = {
   VIP_PLUS: '#55ff55', VIP: '#55ff55', YOUTUBER: '#ff5555', ADMIN: '#ff5555', HELPER: '#5555ff',
   MODERATOR: '#00aa00', GAME_MASTER: '#00aa00', NONE: 'var(--text)',
 };
+// How a player actually ended up on the list — shown as a small badge next to their name so it's
+// obvious at a glance whether this is just someone in your game, or someone who invited/DM'd/killed
+// you specifically. GAME (plain lobby detection) is the common case and gets no badge on purpose.
+const SOURCE_BADGE = {
+  PARTY: { title: 'In your party', color: '#58a6ff',
+    svg: '<svg viewBox="0 0 16 10" width="12" height="8"><circle cx="6" cy="5" r="4.2" fill="currentColor" opacity=".95"/><circle cx="11" cy="5" r="4.2" fill="currentColor" opacity=".55"/></svg>' },
+  mention: { title: 'Said your name in chat', color: '#3fb950', text: '@' },
+  partyInvite: { title: 'Invited you to a party', color: '#bc8cff',
+    svg: '<svg viewBox="0 0 16 16" width="11" height="11"><circle cx="8" cy="8" r="6.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4.4v7.2M4.4 8h7.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' },
+  dm: { title: 'Sent you a DM', color: '#58a6ff',
+    svg: '<svg viewBox="0 0 16 12" width="13" height="10"><rect x=".7" y=".7" width="14.6" height="10.6" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M1.3 1.3l6.7 5.7 6.7-5.7" fill="none" stroke="currentColor" stroke-width="1.3"/></svg>' },
+  friendRequest: { title: 'Sent you a friend request', color: '#3ddc97',
+    svg: '<svg viewBox="0 0 16 16" width="12" height="12"><circle cx="6" cy="5" r="3" fill="currentColor"/><path d="M1 15c0-3 2.2-5 5-5s5 2 5 5" fill="currentColor"/><path d="M12 4v4M10 6h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' },
+  kill: { title: 'Final-killed you', color: '#ff5555',
+    svg: '<svg viewBox="0 0 16 16" width="12" height="12"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>' },
+  MANUAL: { title: 'Added manually', color: '#8b949e', text: '+' },
+};
+// Best-effort de-nick hint (see main.js/hypixel.findByFinalKills): the killer's own reported
+// final-kill count matched someone this app has already seen stats for. Only a suggestion —
+// there's no way to search all of Hypixel by stat, this is limited to previously-seen players.
+function denickMark(row){
+  const h = row.denickHint;
+  if(!h || !h.candidates || !h.candidates.length) return '';
+  const names = h.candidates.map((c)=>c.name).join(', ');
+  return `<span class="denick" title="Final-kill count (#${h.count}) matches: ${esc(names)} — best-effort guess, not certain">≈?</span>`;
+}
+function sourceBadge(source){
+  const b = SOURCE_BADGE[source];
+  if(!b) return '';
+  const inner = b.svg || esc(b.text);
+  return `<span class="srcbadge" style="color:${b.color}" title="${esc(b.title)}">${inner}</span>`;
+}
+
+// Small glyphs for blacklist tag chips instead of text labels (CHEAT/SNIPE/etc.) — the chip's
+// background color already carries severity, these just carry category at a glance. Drawn in
+// currentColor so they inherit the chip's existing dark text color automatically.
+const TAG_ICON_SVG = {
+  burst: '<svg viewBox="0 0 16 16" width="11" height="11"><path d="M14,10.49 L10.49,14 L5.51,14 L2,10.49 L2,5.51 L5.51,2 L10.49,2 L14,5.51 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><rect x="7.3" y="4.6" width="1.4" height="4.4" rx="0.7" fill="currentColor"/><circle cx="8" cy="11.2" r="0.85" fill="currentColor"/></svg>',
+  triangle: '<svg viewBox="0 0 16 16" width="11" height="11"><path d="M8,2.2 L14.4,13.6 L1.6,13.6 Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><rect x="7.3" y="7" width="1.4" height="3.6" rx="0.7" fill="currentColor"/><circle cx="8" cy="11.7" r="0.8" fill="currentColor"/></svg>',
+  person: '<svg viewBox="0 0 16 16" width="11" height="11"><circle cx="8" cy="5.4" r="3" fill="currentColor"/><path d="M2.2,14c0-3.2,2.4-5.4,5.8-5.4s5.8,2.2,5.8,5.4" fill="currentColor"/></svg>',
+  panel: '<svg viewBox="0 0 16 16" width="11" height="11"><rect x="1.8" y="2.6" width="12.4" height="10.4" rx="1.3" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="1.8" y="2.6" width="12.4" height="3" rx="1.3" fill="currentColor"/></svg>',
+  dot: '<svg viewBox="0 0 16 16" width="9" height="9"><circle cx="8" cy="8" r="3.4" fill="currentColor"/></svg>',
+  check: '<svg viewBox="0 0 16 16" width="11" height="11"><path d="M2.6,8.4 L6.2,12 L13.4,4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+};
+function tagIcon(t){ return TAG_ICON_SVG[t && t.icon] || TAG_ICON_SVG.dot; }
 
 let cfg = null;
 let rows = [];
@@ -162,7 +207,9 @@ function blCount(row, connId){
 function sorted(){
   const key = cfg.sortBy, dir = cfg.sortDir==='desc'?-1:1;
   return rows.slice().sort((a,b)=>{
-    // loading/nicked rows sink
+    // Party members always float to the top, ahead of the normal sort.
+    const ap = a.source==='PARTY' ? 0 : 1, bp = b.source==='PARTY' ? 0 : 1;
+    if(ap!==bp) return ap-bp;
     const av=sortVal(a,key), bv=sortVal(b,key);
     if(av<bv)return -1*dir; if(av>bv)return 1*dir;
     return (a.name||'').localeCompare(b.name||'');
@@ -184,7 +231,7 @@ function cell(row, key){
     case 'tag':{
       let p = u && u.primary;
       if(override && override.source) p = filteredTags(row, override.source).slice().sort((a,b)=>(b.severity||0)-(a.severity||0))[0] || null;
-      if(p){ td.innerHTML = `<span class="tagchip" style="background:${p.color}">${esc(p.label || (p.type||'').slice(0,4).toUpperCase())}</span>`; }
+      if(p){ td.innerHTML = `<span class="tagchip" style="background:${p.color}" title="${esc(p.label || (p.type||'').slice(0,4).toUpperCase())}">${tagIcon(p)}</span>`; }
       return td;
     }
     case 'star':{
@@ -193,10 +240,12 @@ function cell(row, key){
     }
     case 'name':{
       td.className='name';
-      if(row.nicked){ td.innerHTML=`<span class="nick">${esc(row.name)} (nick?)</span>`; return td; }
-      if(row.apiError){ td.innerHTML=`${esc(row.name)} <span class="err">${esc(row.apiError)}</span>`; return td; }
+      const badge = sourceBadge(row.source);
+      const denick = denickMark(row);
+      if(row.nicked){ td.innerHTML=`${badge}<span class="nick">${esc(row.name)} (nick?)</span>${denick}`; return td; }
+      if(row.apiError){ td.innerHTML=`${badge}${esc(row.name)} <span class="err">${esc(row.apiError)}</span>${denick}`; return td; }
       const col = RANKCOLOR[(s&&s.rank)||'NONE']||'var(--text)';
-      td.innerHTML=`<span style="color:${col}">${esc(row.name)}</span>` + (row.loading?' <span class="loading">…</span>':'');
+      td.innerHTML=`${badge}<span style="color:${col}">${esc(row.name)}</span>${denick}` + (row.loading?' <span class="loading">…</span>':'');
       return td;
     }
     case 'fkdr':{ if(!s){td.textContent='';return td;} td.className='mono'; td.innerHTML=`<span style="color:${fkdrColor(s.fkdr)}">${s.fkdr.toFixed(2)}</span>`; return td; }
@@ -251,7 +300,7 @@ let tipEl=null;
 function showTip(e,row){
   hideTip();
   const s=row.stats, sn=row.sniper, u=row.urchin;
-  if(!s && !(u&&u.tags&&u.tags.length)) return;
+  if(!s && !(u&&u.tags&&u.tags.length) && !row.denickHint) return;
   tipEl = el('div','tip');
   let html = `<div class="row"><b>${esc(row.displayName||row.name)}</b></div>`;
   if(s){
@@ -264,8 +313,12 @@ function showTip(e,row){
   if(u && u.tags && u.tags.length){
     html += `<div class="row" style="margin-top:4px"><b>Blacklist tags</b></div>`;
     for(const t of u.tags.slice(0,6)){
-      html += `<div class="row"><span class="tagchip" style="background:${t.color}">${esc(t.label || t.type)}</span> ${esc((t.reason||'').slice(0,90))} <span class="dim">[${esc(t.source)}]</span></div>`;
+      html += `<div class="row"><span class="tagchip" style="background:${t.color}" title="${esc(t.label || t.type)}">${tagIcon(t)}</span> <b>${esc(t.label || t.type)}</b> ${esc((t.reason||'').slice(0,90))} <span class="dim">[${esc(t.source)}]</span></div>`;
     }
+  }
+  if(row.denickHint && row.denickHint.candidates && row.denickHint.candidates.length){
+    html += `<div class="row" style="margin-top:4px"><b>Possibly nicked</b></div>`;
+    html += `<div class="row dim">Final-kill count #${row.denickHint.count} matches: ${esc(row.denickHint.candidates.map(c=>c.name).join(', '))} (not certain — right-click to add)</div>`;
   }
   tipEl.innerHTML = html;
   document.body.appendChild(tipEl);
@@ -297,6 +350,10 @@ function rowMenu(x,y,row){
   add('＋ Local info tag…', ()=> tagModal(row));
   add('⚑ Flag to watchlist', ()=> api.addWatchlist(row.name, 'manual flag'));
   if(row.uuid) add('⚑ Add to Urchin (admin)…', ()=> api.openBlacklist());
+  if(row.denickHint && row.denickHint.candidates && row.denickHint.candidates.length){
+    m.appendChild(el('div','sep'));
+    for(const c of row.denickHint.candidates) add(`≈? Add suggested identity: ${c.name}`, ()=> api.addPlayer(c.name));
+  }
   m.appendChild(el('div','sep'));
   add('✕ Remove from list', ()=> api.removePlayer(row.uuid||row.name));
   showCtx(x,y);

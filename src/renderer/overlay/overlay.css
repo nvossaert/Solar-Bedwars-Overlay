@@ -90,14 +90,19 @@ tbody tr.highlight:hover{background:rgba(255,180,64,.19)}
 tbody tr.highlight.bl{box-shadow:inset 3px 0 0 #da3633, inset 0 0 0 1px rgba(255,180,64,.35)}
 
 .name{font-weight:600}
+.srcbadge{display:inline-flex;align-items:center;justify-content:center;margin-right:4px;
+  vertical-align:middle;font-weight:800;font-size:10px;line-height:1;position:relative;top:-1px}
+.srcbadge svg{display:block}
+.denick{margin-left:4px;color:var(--accent);font-weight:700;font-size:10px;cursor:help}
 .mono{font-variant-numeric:tabular-nums}
 .dim{color:var(--muted)}
 .nick{color:#8b949e;font-style:italic}
 .err{color:#f85149;font-size:10px}
 .loading{color:var(--muted);font-style:italic}
-.tagchip{display:inline-block;padding:1px 6px;border-radius:5px;font-size:9.5px;font-weight:700;
-  color:#0d1117;line-height:15px;max-width:100%;overflow:hidden;text-overflow:ellipsis;vertical-align:middle;
+.tagchip{display:inline-flex;align-items:center;justify-content:center;width:19px;height:15px;
+  padding:0;border-radius:5px;color:#0d1117;vertical-align:middle;
   box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.tagchip svg{display:block}
 .snlabel{font-weight:700;font-size:10px;padding:1px 6px;border-radius:5px;background:rgba(255,255,255,.06)}
 .star{font-weight:700}
 .blnum{color:#f85149;font-weight:700}
