@@ -253,6 +253,10 @@ function cell(row, key){
   }
   switch(key){
     case 'tag':{
+      // A nicked name can't be tag-looked-up (we don't know who they really are), so it takes
+      // priority over any blacklist tag here — a bright, distinct chip rather than the muted
+      // "(nick?)" text that used to be the only clue, which was easy to miss scanning the list.
+      if(row.nicked){ td.innerHTML = `<span class="tagchip nickchip" title="Nicked — real identity unknown">?</span>`; return td; }
       let p = u && u.primary;
       if(override && override.source) p = filteredTags(row, override.source).slice().sort((a,b)=>(b.severity||0)-(a.severity||0))[0] || null;
       if(p){ td.innerHTML = `<span class="tagchip" style="background:${p.color}" title="${esc(p.label || (p.type||'').slice(0,4).toUpperCase())}">${tagIcon(p)}</span>`; }
@@ -268,7 +272,7 @@ function cell(row, key){
     case 'name':{
       td.className='name';
       const denick = denickMark(row);
-      if(row.nicked){ td.innerHTML=`<span class="nick">${esc(row.name)} (nick?)</span>${denick}`; return td; }
+      if(row.nicked){ td.innerHTML=`<span class="nick">${esc(row.name)}</span>${denick}`; return td; }
       if(row.apiError){ td.innerHTML=`${esc(row.name)} <span class="err">${esc(row.apiError)}</span>${denick}`; return td; }
       const col = RANKCOLOR[(s&&s.rank)||'NONE']||'var(--text)';
       td.innerHTML=`<span style="color:${col}">${esc(row.name)}</span>${denick}` + (row.loading?' <span class="loading">…</span>':'');
@@ -309,6 +313,7 @@ function render(){
   for(const row of list){
     const tr = el('tr');
     if(blCount(row)>0) tr.classList.add('bl');
+    if(row.nicked) tr.classList.add('nicked');
     if(hlStat){
       const v = sortVal(row, hlStat);
       if(typeof v==='number' && v >= (cfg.highlightThreshold ?? Infinity)) tr.classList.add('highlight');
@@ -327,9 +332,12 @@ let tipEl=null;
 function showTip(e,row){
   hideTip();
   const s=row.stats, sn=row.sniper, u=row.urchin;
-  if(!s && !(u&&u.tags&&u.tags.length) && !row.denickHint) return;
+  if(!s && !(u&&u.tags&&u.tags.length) && !row.denickHint && !row.nicked) return;
   tipEl = el('div','tip');
   let html = `<div class="row"><b>${esc(row.displayName||row.name)}</b></div>`;
+  if(row.nicked){
+    html += `<div class="row" style="color:#22d3ee"><b>Nicked — real identity unknown</b></div>`;
+  }
   if(s){
     html += `<div class="row">${s.star}✫ · FKDR ${s.fkdr.toFixed(2)} · WLR ${s.wlr.toFixed(2)} · WS ${s.winstreak==null?'?':s.winstreak}</div>`;
     html += `<div class="row dim">Finals ${fmt(s.finalKills)}/${fmt(s.finalDeaths)} · Wins ${fmt(s.wins)} · Games ${fmt(s.gamesPlayed)}</div>`;
