@@ -13,7 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^31.7.6",
-    "electron-builder": "^25.1.8"
+    "electron-builder": "^26.15.3"
   },
   "build": {
     "appId": "gg.solar.overlay",
