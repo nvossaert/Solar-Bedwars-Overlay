@@ -100,10 +100,18 @@ tbody tr.nicked:hover{background:rgba(34,211,238,.17)}
 tbody tr.self{background:rgba(255,215,0,.08);box-shadow:inset 3px 0 0 #ffd700}
 tbody tr.self:hover{background:rgba(255,215,0,.14)}
 
-.name{font-weight:600;position:relative}
-.rmrow{position:absolute;right:2px;top:50%;transform:translateY(-50%);
+.name{font-weight:600}
+/* Always the last cell of every row regardless of which named column is configured last, and
+   sticky so it stays visible at the right edge even if the table has to scroll horizontally
+   (many custom columns, a narrow window, ...). position:sticky still establishes a containing
+   block for the absolutely-centered button below, same reliable pattern as .center/.srcbadge —
+   table-cell vertical-align never centers non-text content consistently (see there for why). */
+.actionscell{position:sticky;right:0;padding:0!important;background:var(--bg)}
+tbody tr:nth-child(even) .actionscell{background:color-mix(in srgb, var(--bg) 98%, #fff)}
+tbody tr:hover .actionscell{background:color-mix(in srgb, var(--bg) 92%, #58a6ff)}
+.rmrow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   width:16px;height:16px;padding:0;border:none;border-radius:4px;
-  background:var(--header);color:var(--muted);font-size:10px;line-height:1;cursor:pointer;
+  background:transparent;color:var(--muted);font-size:10px;line-height:1;cursor:pointer;
   display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .12s,color .12s,background .12s}
 tbody tr:hover .rmrow{opacity:1}
 .rmrow:hover{background:#da3633;color:#fff}
@@ -128,6 +136,9 @@ tbody tr:hover .rmrow{opacity:1}
   padding:0;border-radius:5px;color:#0d1117;vertical-align:middle;
   box-shadow:0 1px 3px rgba(0,0,0,.3)}
 .tagchip svg{display:block}
+/* Real artwork (see tagChip() in overlay.js) sits on its own with no chip background/shadow —
+   the hand-drawn fallback icons above are the only ones that still need the colored panel. */
+.tagchip.plain{background:transparent;box-shadow:none}
 .snlabel{font-weight:700;font-size:10px;padding:1px 6px;border-radius:5px;background:rgba(255,255,255,.06)}
 .star{font-weight:700}
 .blnum{color:#f85149;font-weight:700}

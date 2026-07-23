@@ -69,6 +69,25 @@ const ICONS = {
   account: 'person', toxic: 'panel', annoying: 'panel', watchlist: 'panel',
   info: 'dot', note: 'dot', legit: 'check', safe: 'check',
 };
+// Real tag-chip artwork, provided as files in assets/ — takes priority over the hand-drawn ICONS
+// SVGs above wherever we have an exact (or close) match. More specific entries are listed first
+// since the substring fallback below returns on the first hit.
+const TYPE_IMAGES = {
+  'confirmed cheater': 'Confirmed_Cheater.webp',
+  'closet cheater': 'closet_cheater.webp',
+  'blatant cheater': 'Blatant_Cheater.webp',
+  'replays needed': 'replays_needed.webp',
+  confirmed: 'Confirmed_Cheater.webp',
+  closet: 'closet_cheater.webp',
+  blatant: 'Blatant_Cheater.webp',
+  replays: 'replays_needed.webp',
+  sniper: 'sniper.webp',
+  account: 'account.webp',
+  caution: 'caution.webp',
+  cheater: 'Blatant_Cheater.webp',
+  hacker: 'Blatant_Cheater.webp',
+  cheating: 'Blatant_Cheater.webp',
+};
 
 function classifyReason(reason) {
   // "antisniped"/"anti-sniped" describes something done TO the player (dodged/caught
@@ -114,6 +133,12 @@ function iconOf(type) {
   if (ICONS[t]) return ICONS[t];
   for (const k of Object.keys(ICONS)) if (t.includes(k)) return ICONS[k];
   return 'dot';
+}
+function imageOf(type) {
+  const t = normType(type);
+  if (TYPE_IMAGES[t]) return TYPE_IMAGES[t];
+  for (const k of Object.keys(TYPE_IMAGES)) if (t.includes(k)) return TYPE_IMAGES[k];
+  return null; // no matching artwork — caller falls back to the hand-drawn icon
 }
 
 function norm(u) { return String(u || '').replace(/[^0-9a-fA-F]/g, '').toLowerCase(); }
@@ -245,6 +270,7 @@ class Urchin {
       t.color = t.type === 'watchlist' ? COLORS.watchlist : colorOf(t.type);
       t.label = labelOf(t.type);
       t.icon = t.type === 'watchlist' ? 'panel' : iconOf(t.type);
+      t.image = t.type === 'watchlist' ? null : imageOf(t.type);
       if (t.severity > sev) sev = t.severity;
     }
     out.severity = sev;
@@ -328,4 +354,4 @@ function monthlyFinalsDelta(monthlyResponse) {
   return { finalKills: typeof fk === 'number' ? fk : 0, finalDeaths: typeof fd === 'number' ? fd : 0 };
 }
 
-module.exports = { Urchin, severityOf, colorOf, labelOf, iconOf, classifyReason, parseTooltip, highestWinstreak, monthlyFinalsDelta, SEVERITY, COLORS, ICONS };
+module.exports = { Urchin, severityOf, colorOf, labelOf, iconOf, imageOf, classifyReason, parseTooltip, highestWinstreak, monthlyFinalsDelta, SEVERITY, COLORS, ICONS, TYPE_IMAGES };

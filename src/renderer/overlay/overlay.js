@@ -20,6 +20,7 @@ const COLMETA = {
   bl:      { label: 'BL',         num: true,  width: 40 },
 };
 const DEFAULT_COL_WIDTH = 70;
+const ACTIONS_COL_WIDTH = 22;
 const RANKCOLOR = {
   SUPERSTAR: '#ffaa00', MVP_PLUS: '#55ffff', MVP: '#55ffff', SUPERSTAR_PLUS: '#ffaa00',
   VIP_PLUS: '#55ff55', VIP: '#55ff55', YOUTUBER: '#ff5555', ADMIN: '#ff5555', HELPER: '#5555ff',
@@ -73,7 +74,21 @@ const TAG_ICON_SVG = {
   dot: '<svg viewBox="0 0 16 16" width="9" height="9"><circle cx="8" cy="8" r="3.4" fill="currentColor"/></svg>',
   check: '<svg viewBox="0 0 16 16" width="11" height="11"><path d="M2.6,8.4 L6.2,12 L13.4,4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 };
-function tagIcon(t){ return TAG_ICON_SVG[t && t.icon] || TAG_ICON_SVG.dot; }
+// The real provided artwork (assets/*.webp) wins whenever urchin.js found a match for this
+// tag's type; the hand-drawn SVGs above are strictly the fallback for whatever it doesn't cover.
+function tagIcon(t){
+  if(t && t.image) return `<img src="../../../assets/${t.image}" width="13" height="13" alt="" style="display:block">`;
+  return TAG_ICON_SVG[t && t.icon] || TAG_ICON_SVG.dot;
+}
+// Real artwork already carries its own color (e.g. the sniper burst is red, caution is orange) -
+// a colored chip behind it just competes with it and can wash it out entirely (yellow icon on a
+// yellow chip). Only the monochrome hand-drawn fallback icons still need that background, since
+// they're drawn in currentColor and rely on it for their severity color.
+function tagChip(t, title){
+  const hasImg = !!(t && t.image);
+  const style = hasImg ? '' : ` style="background:${t.color}"`;
+  return `<span class="tagchip${hasImg?' plain':''}"${style} title="${esc(title)}">${tagIcon(t)}</span>`;
+}
 
 let cfg = null;
 let rows = [];
@@ -146,6 +161,11 @@ function renderHead(){
     const c = document.createElement('col'); c.style.width = w+'px';
     colgroup.appendChild(c);
   }
+  // A fixed, non-configurable actions column at the very end of every row (see render()) — not
+  // part of orderedColumns() since it isn't a data column, just the per-row remove button.
+  totalWidth += ACTIONS_COL_WIDTH;
+  const actionsCol = document.createElement('col'); actionsCol.style.width = ACTIONS_COL_WIDTH+'px';
+  colgroup.appendChild(actionsCol);
   $('#tbl').style.width = totalWidth+'px';
 
   for(const col of cols){
@@ -165,6 +185,7 @@ function renderHead(){
       const from = e.dataTransfer.getData('text/plain'); reorder(from, col.key); };
     head.appendChild(th);
   }
+  head.appendChild(el('th')); // blank header for the actions column
 }
 
 function reorder(fromKey, toKey){
@@ -264,7 +285,7 @@ function cell(row, key){
       if(row.nicked){ td.innerHTML = `<span class="tagchip nickchip" title="Nicked — real identity unknown">?</span>`; return td; }
       let p = u && u.primary;
       if(override && override.source) p = filteredTags(row, override.source).slice().sort((a,b)=>(b.severity||0)-(a.severity||0))[0] || null;
-      if(p){ td.innerHTML = `<span class="tagchip" style="background:${p.color}" title="${esc(p.label || (p.type||'').slice(0,4).toUpperCase())}">${tagIcon(p)}</span>`; }
+      if(p){ td.innerHTML = tagChip(p, p.label || (p.type||'').slice(0,4).toUpperCase()); }
       return td;
     }
     case 'star':{
@@ -283,11 +304,6 @@ function cell(row, key){
         const col = RANKCOLOR[(s&&s.rank)||'NONE']||'var(--text)';
         td.innerHTML=`<span style="color:${col}">${esc(row.name)}</span>${denick}` + (row.loading?' <span class="loading">…</span>':'');
       }
-      // One-click remove, revealed on row hover — right-click still has the full menu, but
-      // fixing a single mistyped name shouldn't need it just to clear one row.
-      const rm = el('button','rmrow'); rm.type='button'; rm.textContent='✕'; rm.title='Remove from list';
-      rm.onclick = (e)=>{ e.stopPropagation(); api.removePlayer(row.uuid||row.name); };
-      td.appendChild(rm);
       return td;
     }
     case 'fkdr':{ if(!s){td.textContent='';return td;} td.className='mono'; td.innerHTML=`<span style="color:${fkdrColor(s.fkdr)}">${s.fkdr.toFixed(2)}</span>`; return td; }
@@ -314,6 +330,17 @@ function cell(row, key){
 }
 function fmt(n){ n=+n||0; return n>=100000?(n/1000).toFixed(0)+'k':n.toLocaleString(); }
 
+// One-click remove, always the last cell of the row (sticky to the right edge, so it stays put
+// even if the table scrolls horizontally) and revealed on row hover. Right-click still has the
+// full menu, but fixing one mistyped name shouldn't need it just to clear a single row.
+function actionsCell(row){
+  const td = el('td','actionscell');
+  const rm = el('button','rmrow'); rm.type='button'; rm.textContent='✕'; rm.title='Remove from list';
+  rm.onclick = (e)=>{ e.stopPropagation(); api.removePlayer(row.uuid||row.name); };
+  td.appendChild(rm);
+  return td;
+}
+
 function render(){
   if(!cfg) return;
   const body = $('#body'); body.innerHTML='';
@@ -332,6 +359,7 @@ function render(){
       if(typeof v==='number' && v >= (cfg.highlightThreshold ?? Infinity)) tr.classList.add('highlight');
     }
     for(const c of cols) tr.appendChild(cell(row, c.key));
+    tr.appendChild(actionsCell(row));
     tr.oncontextmenu = (e)=>{ e.preventDefault(); rowMenu(e.clientX,e.clientY,row); };
     tr.onmouseenter = (e)=> showTip(e,row);
     tr.onmousemove = (e)=> moveTip(e);
@@ -361,7 +389,7 @@ function showTip(e,row){
   if(u && u.tags && u.tags.length){
     html += `<div class="row" style="margin-top:4px"><b>Blacklist tags</b></div>`;
     for(const t of u.tags.slice(0,6)){
-      html += `<div class="row"><span class="tagchip" style="background:${t.color}" title="${esc(t.label || t.type)}">${tagIcon(t)}</span> <b>${esc(t.label || t.type)}</b> ${esc((t.reason||'').slice(0,90))} <span class="dim">[${esc(t.source)}]</span></div>`;
+      html += `<div class="row">${tagChip(t, t.label || t.type)} <b>${esc(t.label || t.type)}</b> ${esc((t.reason||'').slice(0,90))} <span class="dim">[${esc(t.source)}]</span></div>`;
     }
   }
   if(row.denickHint && row.denickHint.candidates && row.denickHint.candidates.length){

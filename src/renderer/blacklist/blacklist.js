@@ -16,7 +16,17 @@ const TAG_ICON_SVG = {
   dot: '<svg viewBox="0 0 16 16" width="9" height="9"><circle cx="8" cy="8" r="3.4" fill="currentColor"/></svg>',
   check: '<svg viewBox="0 0 16 16" width="11" height="11"><path d="M2.6,8.4 L6.2,12 L13.4,4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 };
-function tagIcon(t){ return TAG_ICON_SVG[t && t.icon] || TAG_ICON_SVG.dot; }
+function tagIcon(t){
+  if(t && t.image) return `<img src="../../../assets/${t.image}" width="13" height="13" alt="" style="display:block">`;
+  return TAG_ICON_SVG[t && t.icon] || TAG_ICON_SVG.dot;
+}
+// See overlay.js's tagChip() — same reasoning: real artwork already carries its own color, so a
+// colored chip behind it only hurts contrast (e.g. yellow icon on a yellow chip).
+function tagChip(t, title){
+  const hasImg = !!(t && t.image);
+  const style = hasImg ? '' : ` style="background:${t.color || '#58a6ff'}"`;
+  return `<span class="tagchip${hasImg?' plain':''}"${style} title="${esc(title)}">${tagIcon(t)}</span>`;
+}
 
 async function refreshWarn() { cfg = await api.getConfig(); $('#warn').classList.toggle('hidden', !!cfg.urchinAdminKey); }
 
@@ -35,7 +45,7 @@ async function doLookup() {
   let html = `<div class="card"><div class="nm">${esc(r.name)} <span class="dim">${esc(r.uuid)}</span></div>`;
   if (!u.tags || !u.tags.length) html += `<div class="dim" style="margin-top:6px">No tags found.</div>`;
   else for (const t of u.tags) {
-    html += `<div class="tagline"><span class="tagchip" style="background:${t.color || '#58a6ff'}" title="${esc(t.label || t.type)}">${tagIcon(t)}</span>
+    html += `<div class="tagline">${tagChip(t, t.label || t.type)}
       <span><b>${esc(t.label || t.type)}</b> ${esc(t.reason || '')} <span class="dim">[${esc(t.source || '')}]</span></span></div>`;
   }
   html += '</div>';
