@@ -204,7 +204,7 @@ function panelApi(p) {
   const res = el('span'); res.style.fontSize = '11px';
   b.onclick = async () => { await set('hypixelKey', t.inputEl.value); res.textContent = 'testing…'; res.className = '';
     const r = await api.testKey();
-    if (r.ok) { res.innerHTML = `<span class="ok">valid</span> · ${r.record && r.record.limit ? r.record.limit + '/min' : 'ok'}`; }
+    if (r.ok) { res.innerHTML = `<span class="ok">valid</span> · ${r.record && r.record.limit ? r.record.limit + '/5min' : 'ok'}`; }
     else { res.innerHTML = `<span class="bad">${esc(r.error)}</span>`; } };
   row.appendChild(t); row.appendChild(b); row.appendChild(res);
   p.appendChild(fieldRow('Hypixel API key', 'From developer.hypixel.net. Personal key = 300 req / 5 min.', row));

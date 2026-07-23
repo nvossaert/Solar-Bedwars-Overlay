@@ -57,6 +57,10 @@ class Roster extends EventEmitter {
 
   async _load(row) {
     const cfg = this.getConfig();
+    // Clear any flags from a previous failed attempt before trying again - otherwise a stale
+    // "bad key"/"nicked" sticks around forever even after a fix (a new key, Mojang recovering
+    // from a blip, ...) makes this attempt succeed, since nothing below ever un-sets them.
+    row.apiError = null; row.error = null; row.nicked = false;
     try {
       const resolved = await this.hy.resolveUuid(row.name);
       if (!resolved) { row.loading = false; row.nicked = true; row.error = 'nicked'; this._emit(); return; }

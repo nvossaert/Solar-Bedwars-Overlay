@@ -213,10 +213,16 @@ function registerIpc() {
   });
 
   ipcMain.handle('key:test', async () => {
+    // /v2/key used to be how you checked a key, but Hypixel removed it - it now 404s
+    // ("Unknown endpoint") even for a perfectly valid key. Rate-limit info comes back as
+    // headers on any real call now, so ping a tiny no-target endpoint instead and read those.
     try {
-      const r = await fetch('https://api.hypixel.net/v2/key', { headers: { 'API-Key': getConfig().hypixelKey } });
+      const r = await fetch('https://api.hypixel.net/v2/punishmentstats', { headers: { 'API-Key': getConfig().hypixelKey } });
       const j = await r.json().catch(() => ({}));
-      if (r.ok && j.success) return { ok: true, record: j.record };
+      if (r.ok && j.success) {
+        const limit = r.headers.get('ratelimit-limit');
+        return { ok: true, record: { limit: limit ? Number(limit) : null } };
+      }
       return { ok: false, error: j.cause || ('HTTP ' + r.status) };
     } catch (e) { return { ok: false, error: String(e.message || e) }; }
   });
