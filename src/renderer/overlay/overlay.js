@@ -41,6 +41,8 @@ const SOURCE_BADGE = {
   kill: { title: 'Final-killed you', color: '#ff5555',
     svg: '<svg viewBox="0 0 16 16" width="12" height="12"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v3M8 12v3M1 8h3M12 8h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>' },
   MANUAL: { title: 'Added manually', color: '#8b949e', text: '+' },
+  house: { title: 'Their Housing instance you teleported into', color: '#c9a06b',
+    svg: '<svg viewBox="0 0 16 16" width="12" height="11"><path d="M8,1.5 L14.5,7 L12.5,7 L12.5,14.5 L3.5,14.5 L3.5,7 L1.5,7 Z" fill="currentColor"/></svg>' },
 };
 // Best-effort de-nick hint (see main.js/hypixel.findByFinalKills): the killer's own reported
 // final-kill count matched someone this app has already seen stats for. Only a suggestion —

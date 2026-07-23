@@ -117,7 +117,21 @@ function wireWatcher() {
   watcher.on('lobbyJoin', (n) => roster.addNames([n], 'GAME'));
   watcher.on('partyList', (names) => roster.addNames(names, 'PARTY'));
   watcher.on('quit', (n) => { /* keep in list; optional removal */ });
-  watcher.on('serverChange', () => { if (getConfig().clearOnServerChange) roster.clear(); });
+  // Housing fires its own serverChange twice in a row - once for the housing lobby, once more
+  // for the actual house instance right after the teleport message names its owner - so a plain
+  // clear-on-serverChange would wipe the owner right back out the moment they're added. Re-add
+  // them once, but only if that second serverChange lands within a few seconds of the teleport;
+  // past that it's a stale value from some earlier, unrelated house and shouldn't leak forward.
+  let pendingHouseOwner = null, pendingHouseOwnerTs = 0;
+  watcher.on('houseEntered', (owner) => {
+    pendingHouseOwner = owner; pendingHouseOwnerTs = Date.now();
+    roster.addNames([owner], 'house');
+  });
+  watcher.on('serverChange', () => {
+    if (getConfig().clearOnServerChange) roster.clear();
+    if (pendingHouseOwner && Date.now() - pendingHouseOwnerTs < 8000) roster.addNames([pendingHouseOwner], 'house');
+    pendingHouseOwner = null;
+  });
 
   // Each trigger passes its own "kind" through to the roster row so the overlay can show
   // a distinct badge for how a player was actually detected (party, mention, DM, ...),
@@ -140,6 +154,9 @@ function wireWatcher() {
     toast(`${by} mentioned you`, 'warn');
   });
   watcher.on('killedYou', (n) => { if (getConfig().triggers.onKilledYou) watchlistAdd(n, 'final-killed you', 'kill'); });
+  // Housing has none of Bedwars' lobby-fill/kill-feed chatter, so the house owner (from the
+  // teleport message) is the one useful thing to auto-track there.
+  watcher.on('houseEntered', (owner) => roster.addNames([owner], 'house'));
   // De-nick attempt: match the killer's reported lifetime final-kill count against players this
   // app has already seen stats for (see hypixel.findByFinalKills — there's no way to search
   // Hypixel-wide, only what's locally cached). Only useful when it points somewhere other than

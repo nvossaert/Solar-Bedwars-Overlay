@@ -17,6 +17,7 @@
 //   finalKillCount({killer,victim,count}) - a kill line carrying the killer's lifetime final-kill
 //                         tally (e.g. "Victim was Killer's #3560 FINAL KILL!") — the only lead we
 //                         get on a nicked killer's real identity, see hypixel.findByFinalKills()
+//   houseEntered(name)  - teleporting into someone's Housing instance
 //   serverChange()      - sent to a new server / game over
 const fs = require('fs');
 const { EventEmitter } = require('events');
@@ -108,6 +109,12 @@ class LogWatcher extends EventEmitter {
     // ---- quit: "Name has quit!" ----
     m = msg.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ') has quit!'));
     if (m) { this.emit('quit', m[1]); return; }
+
+    // ---- Housing: "Attempting to teleport you to [Rank] Name's house..." — the only real
+    // clue to who the house belongs to, since Housing has no lobby-fill/kill-feed messages
+    // the way Bedwars does. Verified against a real captured log line. ----
+    m = msg.match(new RegExp('^Attempting to teleport you to (?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')\'s house'));
+    if (m) { this.emit('houseEntered', m[1]); return; }
 
     // ---- party invite: "X has invited you to join their party!" ----
     m = msg.match(new RegExp('(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ') has invited you to join'));
