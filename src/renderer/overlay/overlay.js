@@ -272,10 +272,17 @@ function cell(row, key){
     case 'name':{
       td.className='name';
       const denick = denickMark(row);
-      if(row.nicked){ td.innerHTML=`<span class="nick">${esc(row.name)}</span>${denick}`; return td; }
-      if(row.apiError){ td.innerHTML=`${esc(row.name)} <span class="err">${esc(row.apiError)}</span>${denick}`; return td; }
-      const col = RANKCOLOR[(s&&s.rank)||'NONE']||'var(--text)';
-      td.innerHTML=`<span style="color:${col}">${esc(row.name)}</span>${denick}` + (row.loading?' <span class="loading">…</span>':'');
+      if(row.nicked){ td.innerHTML=`<span class="nick">${esc(row.name)}</span>${denick}`; }
+      else if(row.apiError){ td.innerHTML=`${esc(row.name)} <span class="err">${esc(row.apiError)}</span>${denick}`; }
+      else {
+        const col = RANKCOLOR[(s&&s.rank)||'NONE']||'var(--text)';
+        td.innerHTML=`<span style="color:${col}">${esc(row.name)}</span>${denick}` + (row.loading?' <span class="loading">…</span>':'');
+      }
+      // One-click remove, revealed on row hover — right-click still has the full menu, but
+      // fixing a single mistyped name shouldn't need it just to clear one row.
+      const rm = el('button','rmrow'); rm.type='button'; rm.textContent='✕'; rm.title='Remove from list';
+      rm.onclick = (e)=>{ e.stopPropagation(); api.removePlayer(row.uuid||row.name); };
+      td.appendChild(rm);
       return td;
     }
     case 'fkdr':{ if(!s){td.textContent='';return td;} td.className='mono'; td.innerHTML=`<span style="color:${fkdrColor(s.fkdr)}">${s.fkdr.toFixed(2)}</span>`; return td; }
