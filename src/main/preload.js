@@ -37,6 +37,7 @@ contextBridge.exposeInMainWorld('solarBridge', {
   testKey: () => invoke('key:test'),
   pickLog: () => invoke('log:pick'),
   openLink: (url) => invoke('link:open', url),
+  splashDone: () => invoke('splash:done'),
 
   // events
   onToast: (cb) => on('toast', cb),

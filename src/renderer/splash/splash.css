@@ -1,0 +1,74 @@
+:root{ --bg:#0d1117; --accent:#58a6ff; --gold:#ffb454; --muted:#8b949e; --text:#e6edf3; }
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;background:transparent;overflow:hidden;
+  font-family:'Segoe UI',Roboto,system-ui,sans-serif;-webkit-user-select:none;user-select:none}
+
+#card{
+  position:relative;width:100%;height:100%;border-radius:20px;overflow:hidden;
+  background:
+    radial-gradient(120% 100% at 50% 8%, #1a2130 0%, #0d1117 55%, #090c11 100%);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 30px 70px rgba(0,0,0,.6), 0 0 0 1px rgba(0,0,0,.3) inset;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  opacity:0;transform:scale(.94);
+  animation:cardIn .6s cubic-bezier(.2,.8,.2,1) forwards;
+}
+#card.leaving{animation:cardOut .5s cubic-bezier(.4,0,1,1) forwards}
+@keyframes cardIn{to{opacity:1;transform:scale(1)}}
+@keyframes cardOut{to{opacity:0;transform:scale(1.04)}}
+
+/* starfield: JS scatters N .star dots, each twinkling on its own random cycle so the
+   field never looks synchronized/mechanical */
+#stars{position:absolute;inset:0;pointer-events:none}
+.star{position:absolute;border-radius:50%;background:#fff;animation:twinkle 3.5s ease-in-out infinite}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.9}}
+
+#glow{position:absolute;top:16%;left:50%;width:340px;height:340px;transform:translateX(-50%);
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle, color-mix(in srgb, var(--gold) 55%, transparent) 0%, transparent 70%);
+  animation:breathe 3.4s ease-in-out infinite;opacity:0;
+  animation:breathe 3.4s ease-in-out infinite, fadeIn .8s ease .15s forwards}
+@keyframes breathe{0%,100%{transform:translateX(-50%) scale(1);opacity:.55}50%{transform:translateX(-50%) scale(1.12);opacity:.8}}
+@keyframes fadeIn{to{opacity:1}}
+
+#orbitWrap{position:relative;width:220px;height:220px;margin-top:6px}
+#orbit{position:absolute;top:0;left:0;opacity:0;
+  animation:fadeIn .6s ease .25s forwards, spin 22s linear infinite}
+@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+.ring{fill:none;stroke:color-mix(in srgb, var(--accent) 40%, transparent);stroke-width:1.2}
+.ring2{stroke:color-mix(in srgb, var(--gold) 30%, transparent)}
+.orbiter{fill:var(--accent)}
+.o2{fill:var(--gold);animation:none}
+
+#sun{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);
+  filter:drop-shadow(0 0 18px color-mix(in srgb, var(--gold) 65%, transparent));
+  animation:sunIn .7s cubic-bezier(.2,1.4,.4,1) .2s forwards, sunPulse 2.6s ease-in-out 1s infinite}
+@keyframes sunIn{to{transform:translate(-50%,-50%) scale(1)}}
+@keyframes sunPulse{0%,100%{filter:drop-shadow(0 0 16px color-mix(in srgb, var(--gold) 55%, transparent))}
+  50%{filter:drop-shadow(0 0 28px color-mix(in srgb, var(--gold) 80%, transparent))}}
+#rays{transform-origin:100px 100px;animation:spin 34s linear infinite reverse}
+
+#wordmark{display:flex;gap:3px;margin-top:2px;font-size:34px;font-weight:800;letter-spacing:4px;color:var(--text)}
+#wordmark span{display:inline-block;opacity:0;transform:translateY(14px) scale(.8);
+  animation:letterIn .5s cubic-bezier(.2,1.1,.3,1) forwards;
+  animation-delay:calc(1.05s + var(--i) * 80ms);
+  background:linear-gradient(100deg, var(--text) 40%, var(--gold) 50%, var(--text) 60%);
+  background-size:280% 100%;background-position:180% 0;-webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+@keyframes letterIn{
+  0%{opacity:0;transform:translateY(14px) scale(.8);background-position:180% 0}
+  55%{opacity:1;transform:translateY(0) scale(1.04)}
+  100%{opacity:1;transform:translateY(0) scale(1);background-position:-80% 0}
+}
+#subtitle{margin-top:6px;font-size:10.5px;letter-spacing:3px;color:var(--muted);font-weight:600;
+  opacity:0;animation:fadeIn .6s ease 1.9s forwards}
+
+#progress{position:absolute;left:24px;right:24px;bottom:16px;height:2px;border-radius:2px;
+  background:rgba(255,255,255,.08);overflow:hidden}
+#bar{height:100%;width:0%;border-radius:2px;
+  background:linear-gradient(90deg, var(--accent), var(--gold));
+  animation:fill 5s linear forwards}
+@keyframes fill{to{width:100%}}
+
+#credit{position:absolute;right:14px;bottom:22px;font-size:9px;letter-spacing:.3px;color:var(--muted);
+  opacity:0;animation:fadeIn .8s ease 4.1s forwards}

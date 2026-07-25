@@ -7,7 +7,7 @@ const { Urchin } = require('./urchin');
 const { Roster } = require('./roster');
 const { LogWatcher } = require('./logWatcher');
 
-let overlayWin = null, settingsWin = null, blacklistWin = null, tray = null;
+let overlayWin = null, settingsWin = null, blacklistWin = null, splashWin = null, tray = null;
 let hypixel, urchin, roster, watcher;
 let refreshTimer = null;
 
@@ -21,7 +21,8 @@ function createOverlay() {
     minWidth: 320, minHeight: 120,
     frame: false, transparent: true, resizable: true, movable: true, fullscreenable: false,
     alwaysOnTop: cfg.alwaysOnTop, skipTaskbar: false, backgroundColor: '#00000000',
-    hasShadow: false, title: 'Solar Overlay',
+    hasShadow: false, title: 'Solar Overlay', show: false,
+    icon: path.join(__dirname, '..', '..', 'assets', 'icon-256.png'),
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false },
   });
   overlayWin.setAlwaysOnTop(cfg.alwaysOnTop, 'screen-saver');
@@ -35,6 +36,22 @@ function createOverlay() {
   overlayWin.on('moved', persist);
   overlayWin.on('resized', persist);
   overlayWin.on('closed', () => { overlayWin = null; });
+}
+
+// A short, one-time-per-launch animated title card. It owns its own ~5.5s timing (see
+// splash.js) and reports back over IPC when it's done rather than main.js guessing a
+// delay, so the hand-off to the real overlay always matches what actually played out.
+function createSplash() {
+  splashWin = new BrowserWindow({
+    width: 460, height: 300, frame: false, transparent: true, resizable: false, movable: false,
+    fullscreenable: false, alwaysOnTop: true, skipTaskbar: true, backgroundColor: '#00000000',
+    hasShadow: false, show: false, center: true,
+    icon: path.join(__dirname, '..', '..', 'assets', 'icon-256.png'),
+    webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false },
+  });
+  splashWin.once('ready-to-show', () => splashWin.show());
+  splashWin.loadFile(path.join(__dirname, '..', 'renderer', 'splash', 'splash.html'));
+  splashWin.on('closed', () => { splashWin = null; });
 }
 
 function applyCapture() {
@@ -58,6 +75,7 @@ function childWindow(file, opts = {}) {
   const win = new BrowserWindow({
     width: opts.width || 760, height: opts.height || 620, frame: false, resizable: true, fullscreenable: false,
     backgroundColor: '#0d1117', title: opts.title || 'Solar',
+    icon: path.join(__dirname, '..', '..', 'assets', 'icon-256.png'),
     webPreferences: { preload: path.join(__dirname, 'preload.js'), contextIsolation: true, nodeIntegration: false },
   });
   win.loadFile(file);
@@ -200,6 +218,11 @@ function registerIpc() {
   ipcMain.handle('open:settings', () => openSettings());
   ipcMain.handle('open:blacklist', () => openBlacklist());
   ipcMain.handle('app:quit', () => app.quit());
+  ipcMain.handle('splash:done', () => {
+    if (splashWin && !splashWin.isDestroyed()) splashWin.close();
+    if (overlayWin) overlayWin.show();
+    return true;
+  });
 
   ipcMain.handle('urchin:addTag', (_e, payload) => urchin.addTag(payload));
   ipcMain.handle('urchin:addLocal', (_e, uuid, tag) => { urchin.addLocalTag(uuid, tag); roster.refreshAll(); return true; });
@@ -267,7 +290,7 @@ function buildTray() {
     tray.on('double-click', toggleOverlay);
   } catch (_) {}
 }
-function toggleOverlay() { if (!overlayWin) return createOverlay(); overlayWin.isVisible() ? overlayWin.hide() : overlayWin.show(); }
+function toggleOverlay() { if (!overlayWin) { createOverlay(); overlayWin.show(); return; } overlayWin.isVisible() ? overlayWin.hide() : overlayWin.show(); }
 
 function registerShortcuts() {
   globalShortcut.register('Alt+B', toggleOverlay);
@@ -287,14 +310,15 @@ app.whenReady().then(() => {
   roster.on('update', (list) => broadcast('roster:update', list));
   wireWatcher();
   registerIpc();
-  createOverlay();
+  createSplash();
+  createOverlay(); // stays hidden (show:false) until the splash reports done, see ipcMain 'splash:done'
   buildTray();
   registerShortcuts();
   startWatcher();
   applyRefreshTimer();
   applySelf(); // your own IGN, if configured, is in the list from the moment the app starts
 
-  app.on('activate', () => { if (!overlayWin) createOverlay(); });
+  app.on('activate', () => { if (!overlayWin) { createOverlay(); overlayWin.show(); } });
 });
 
 app.on('window-all-closed', () => {}); // stay alive in tray

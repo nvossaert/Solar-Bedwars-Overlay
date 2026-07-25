@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+  <link rel="stylesheet" href="splash.css" />
+</head>
+<body>
+  <div id="card">
+    <div id="stars"></div>
+    <div id="glow"></div>
+
+    <div id="orbitWrap">
+      <svg id="orbit" viewBox="0 0 220 220" width="220" height="220">
+        <circle class="ring ring1" cx="110" cy="110" r="98" />
+        <circle class="ring ring2" cx="110" cy="110" r="80" />
+        <circle class="orbiter o1" cx="110" cy="12" r="3.4" />
+        <circle class="orbiter o2" cx="110" cy="30" r="2.4" />
+      </svg>
+
+      <svg id="sun" viewBox="0 0 200 200" width="150" height="150">
+        <defs>
+          <linearGradient id="ray" x1="0" y1="1" x2="0" y2="0">
+            <stop offset="0%" stop-color="#ff9d3d" />
+            <stop offset="100%" stop-color="#58a6ff" />
+          </linearGradient>
+          <radialGradient id="core" cx="35%" cy="30%" r="75%">
+            <stop offset="0%" stop-color="#fff6dd" />
+            <stop offset="45%" stop-color="#ffcf6b" />
+            <stop offset="100%" stop-color="#ff9d3d" />
+          </radialGradient>
+        </defs>
+        <g id="rays">
+          <rect x="93" y="8" width="14" height="36" rx="7" fill="url(#ray)" />
+          <rect x="93" y="8" width="14" height="36" rx="7" fill="url(#ray)" transform="rotate(45 100 100)" />
+          <rect x="93" y="8" width="14" height="36" rx="7" fill="url(#ray)" transform="rotate(90 100 100)" />
+          <rect x="93" y="8" width="14" height="36" rx="7" fill="url(#ray)" transform="rotate(135 100 100)" />
+          <rect x="93" y="8" width="14" height="36" rx="7" fill="url(#ray)" transform="rotate(180 100 100)" />
+          <rect x="93" y="8" width="14" height="36" rx="7" fill="url(#ray)" transform="rotate(225 100 100)" />
+          <rect x="93" y="8" width="14" height="36" rx="7" fill="url(#ray)" transform="rotate(270 100 100)" />
+          <rect x="93" y="8" width="14" height="36" rx="7" fill="url(#ray)" transform="rotate(315 100 100)" />
+        </g>
+        <circle id="core" cx="100" cy="100" r="37" fill="url(#core)" />
+        <circle cx="100" cy="100" r="37" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2" />
+      </svg>
+    </div>
+
+    <div id="wordmark" aria-label="Solar">
+      <span style="--i:0">S</span><span style="--i:1">O</span><span style="--i:2">L</span><span style="--i:3">A</span><span style="--i:4">R</span>
+    </div>
+    <div id="subtitle">BEDWARS OVERLAY</div>
+
+    <div id="progress"><div id="bar"></div></div>
+    <div id="credit">brought to you by vossis_YT</div>
+  </div>
+  <script src="splash.js"></script>
+</body>
+</html>
