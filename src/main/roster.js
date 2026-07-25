@@ -20,10 +20,13 @@ class Roster extends EventEmitter {
 
   list() { return [...this.players.values()]; }
 
-  // clear() wipes everyone except "you" (source==='SELF') - your own row is meant to be a
-  // permanent fixture, not something that gets swept away with the rest of a stale lobby.
+  // clear() wipes everyone except "you" (source==='SELF') and your party (source==='PARTY') -
+  // both are meant to be permanent fixtures across lobby/server transitions, not swept away with
+  // the rest of a stale lobby. Party membership doesn't reset just because the game does, and
+  // there's no reliable "left the party" log line to know when it actually changes - so like
+  // SELF, the only way a party member leaves the list is the per-row remove button.
   clear() {
-    const keep = [...this.players.entries()].filter(([, v]) => v.source === 'SELF');
+    const keep = [...this.players.entries()].filter(([, v]) => v.source === 'SELF' || v.source === 'PARTY');
     this.players.clear();
     for (const [k, v] of keep) this.players.set(k, v);
     this._emit();

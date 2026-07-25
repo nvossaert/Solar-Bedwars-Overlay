@@ -353,7 +353,7 @@ function render(){
     const tr = el('tr');
     if(blCount(row)>0) tr.classList.add('bl');
     if(row.nicked) tr.classList.add('nicked');
-    if(row.source==='SELF') tr.classList.add('self');
+    if(row.source==='SELF' || row.source==='PARTY') tr.classList.add('team');
     if(hlStat){
       const v = sortVal(row, hlStat);
       if(typeof v==='number' && v >= (cfg.highlightThreshold ?? Infinity)) tr.classList.add('highlight');

@@ -96,9 +96,10 @@ tbody tr.highlight.bl{box-shadow:inset 3px 0 0 #da3633, inset 0 0 0 1px rgba(255
    a blacklist/highlight signal - this is "identity unknown", not a threat rating. */
 tbody tr.nicked{background:rgba(34,211,238,.10);box-shadow:inset 3px 0 0 #22d3ee}
 tbody tr.nicked:hover{background:rgba(34,211,238,.17)}
-/* Gold, so "this is you" reads as a special fixture rather than any kind of warning. */
-tbody tr.self{background:rgba(255,215,0,.08);box-shadow:inset 3px 0 0 #ffd700}
-tbody tr.self:hover{background:rgba(255,215,0,.14)}
+/* Green, so your own team (you + your party) is a quick, consistent scan at a glance - "this is
+   you" still gets its own star badge in the Source column, so this doesn't need a second color. */
+tbody tr.team{background:rgba(63,185,80,.13);box-shadow:inset 3px 0 0 #3fb950}
+tbody tr.team:hover{background:rgba(63,185,80,.2)}
 
 .name{font-weight:600}
 /* Always the last cell of every row regardless of which named column is configured last, and
