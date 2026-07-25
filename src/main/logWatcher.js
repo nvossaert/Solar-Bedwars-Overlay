@@ -45,10 +45,12 @@ class LogWatcher extends EventEmitter {
     super();
     this.path = null;
     this.pos = 0;
+    this.ino = 0;
     this.watcher = null;
     this.timer = null;
     this.buffer = '';
     this.selfNames = [];
+    this._ok = false;
   }
 
   setSelfNames(names) { this.selfNames = (names || []).filter(Boolean).map((n) => n.toLowerCase()); }
@@ -56,11 +58,17 @@ class LogWatcher extends EventEmitter {
   start(logPath) {
     this.stop();
     this.path = logPath;
-    if (!logPath || !fs.existsSync(logPath)) { this.emit('status', { ok: false, msg: 'log not found' }); return; }
-    try { this.pos = fs.statSync(logPath).size; } catch (_) { this.pos = 0; }
-    // Poll (fs.watch is unreliable across clients/OSes). 400ms is plenty and cheap.
+    if (!logPath) { this.emit('status', { ok: false, msg: 'no log path set' }); return; }
+    let st = null;
+    try { st = fs.statSync(logPath); } catch (_) {}
+    this.pos = st ? st.size : 0;
+    this.ino = st ? st.ino : 0;
+    this._ok = !!st;
+    // Poll (fs.watch is unreliable across clients/OSes). 400ms is plenty and cheap. The timer
+    // starts either way - if the file doesn't exist yet (overlay launched before the game), the
+    // poll below just keeps checking until it appears instead of giving up for good.
     this.timer = setInterval(() => this._poll(), 400);
-    this.emit('status', { ok: true, msg: 'watching ' + logPath });
+    this.emit('status', { ok: this._ok, msg: this._ok ? ('watching ' + logPath) : 'log not found yet - waiting for it to appear' });
   }
 
   stop() {
@@ -70,8 +78,23 @@ class LogWatcher extends EventEmitter {
 
   _poll() {
     let st;
-    try { st = fs.statSync(this.path); } catch (_) { return; }
-    if (st.size < this.pos) this.pos = 0; // rotated / truncated
+    try { st = fs.statSync(this.path); } catch (_) { return; } // not there yet (or again) - keep waiting
+    // The file didn't exist a moment ago and just appeared (first-ever launch, or the overlay
+    // started before the game created it) - read it from byte 0, since there's no stale prior
+    // session in it to skip past, unlike the already-existed-at-start() case below.
+    if (!this._ok) { this._ok = true; this.pos = 0; this.ino = st.ino; this.emit('status', { ok: true, msg: 'watching ' + this.path }); return; }
+    // A real Minecraft (re)launch rolls latest.log over to a brand new file - its file-index
+    // number (ino) changing is the reliable signal for that. birthtime looks like it should work
+    // too but doesn't: Windows/NTFS "tunneling" preserves the old creation time (and short name)
+    // for a file recreated at the same path shortly after the old one is removed, even across a
+    // rename-away-then-recreate rollover - verified empirically, it never changes here. ino does.
+    // Relying only on "size got smaller" (below) misses rotation whenever the new session's
+    // startup logging outgrows our old, stale `pos` before the next 400ms poll, which otherwise
+    // leaves us reading from a garbage mid-file offset in a different game session entirely -
+    // silently skipping the early who/party lines that seed the roster.
+    if (this.ino && st.ino && st.ino !== this.ino) this.pos = 0;
+    this.ino = st.ino;
+    if (st.size < this.pos) this.pos = 0; // truncated in place (belt-and-suspenders, e.g. same ino somehow)
     if (st.size === this.pos) return;
     const stream = fs.createReadStream(this.path, { start: this.pos, end: st.size });
     let chunk = '';
