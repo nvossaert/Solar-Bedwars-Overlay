@@ -176,6 +176,7 @@ function panelLog(p) {
   p.appendChild(fieldRow('Log file path', 'e.g. Lunar 1.8: .lunarclient/profiles/1.8/logs/latest.log', row));
   p.appendChild(fieldRow('Clear list on server change', 'Wipe the list when you leave/join a game.', toggle('clearOnServerChange')));
   p.appendChild(fieldRow('Clear on lobby join', '', toggle('clearOnLobbyJoin')));
+  p.appendChild(fieldRow('Track anyone who talks in chat', 'Add any player who speaks in public chat to the list, not just detected join/party/who events. Off by default - it can’t tell your Bedwars pre-game lobby apart from the main hub, so it adds hub chatter too.', toggle('trackChatSpeakers')));
 }
 
 function panelTriggers(p) {

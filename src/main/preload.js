@@ -42,4 +42,5 @@ contextBridge.exposeInMainWorld('solarBridge', {
   // events
   onToast: (cb) => on('toast', cb),
   onLogStatus: (cb) => on('log:status', cb),
+  getLogStatus: () => invoke('log:getStatus'),
 });

@@ -92,6 +92,11 @@ function defaults() {
     logPath: guessLogPath(),
     clearOnServerChange: true,
     clearOnLobbyJoin: true,
+    // Off by default: it's just as happy to add someone chatting in the main hub lobby (before
+    // you've even queued) as someone in your actual Bedwars pre-game lobby, since both look like
+    // ordinary public chat from the log's point of view - not everyone wants random hub chatter
+    // showing up in their list.
+    trackChatSpeakers: false,
 
     // ---- Auto-blacklist / watchlist triggers ----
     // On by default — this is the whole point of the overlay (auto-track anyone who

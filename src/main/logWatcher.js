@@ -118,6 +118,14 @@ class LogWatcher extends EventEmitter {
     if (!rawLine) return;
     const msg = chatOf(rawLine);
     if (!msg) return;
+    // chatOf()'s fallback (no explicit [CHAT] tag) is deliberately permissive so lobby/party/who
+    // system lines that don't always carry the tag still get through - but that same tolerance
+    // means plain, unrelated "Label: value" log lines (e.g. OptiFine's startup dump - "Capabilities:
+    // ...", "OpenGL: ...", "Renderer: ...", "Build: ...") pass through chatOf() unchanged too, since
+    // they have no "]: " or "[CHAT]" of their own to strip. Real chat is only trustworthy as chat
+    // when the line was actually tagged - restrict the "someone said something" detection below
+    // (chatSpeaker/mention) to that, without narrowing chatOf() itself for everything else.
+    const isChatLine = /\[CHAT\]/.test(stripColors(rawLine));
 
     // ---- /who or auto-who: "ONLINE: a, b, c" ----
     let m = msg.match(/^ONLINE:\s*(.+)$/);
@@ -208,10 +216,13 @@ class LogWatcher extends EventEmitter {
     // Officer/Co-op/Alliance chat is excluded from that, though - those channels reach people
     // anywhere on the network, not just your current lobby, so treating a guildmate chatting from
     // some other server as "here" would be actively wrong. Party chat specifically is redundant
-    // with it anyway, since party members already get added via partyList/partyJoin. ----
+    // with it anyway, since party members already get added via partyList/partyJoin. Requires a
+    // real [CHAT] tag (see isChatLine above) so startup diagnostic dumps that just happen to look
+    // like "Label: value" (OptiFine's "Capabilities:"/"OpenGL:"/"Renderer:"/... block, none of
+    // which are ever chat-tagged) can't be mistaken for someone named "OpenGL" talking. ----
     const hasChannelPrefix = CHANNEL_PREFIX.test(msg);
     const body = msg.replace(CHANNEL_PREFIX, '');
-    const cm = body.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')(?:\\s*\\[[^\\]]+\\])*\\s*:\\s*(.*)$'));
+    const cm = isChatLine && body.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')(?:\\s*\\[[^\\]]+\\])*\\s*:\\s*(.*)$'));
     if (cm) {
       if (!hasChannelPrefix) this.emit('chatSpeaker', cm[1]);
       if (this.selfNames.length) {

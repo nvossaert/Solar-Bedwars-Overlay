@@ -474,6 +474,11 @@ async function init(){
   api.onConfigChanged((c)=>{ cfg=c; applyAll(); });
   api.onToast(toast);
   api.onLogStatus((s)=> $('#logdot').classList.toggle('ok', !!s.ok));
+  // The log watcher's first status event fires as soon as startWatcher() runs at boot - often
+  // before this script has even finished loading and reached the onLogStatus call above, so that
+  // first push is missed entirely and the dot would otherwise show "disconnected" forever even
+  // though it's actually fine. Pull the current status once directly to cover that gap.
+  api.getLogStatus().then((s)=> $('#logdot').classList.toggle('ok', !!s.ok));
 
   $('#btnSettings').onclick=()=>api.openSettings();
   $('#btnBlacklist').onclick=()=>api.openBlacklist();

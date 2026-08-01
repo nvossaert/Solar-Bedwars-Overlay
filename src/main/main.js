@@ -10,6 +10,7 @@ const { LogWatcher } = require('./logWatcher');
 let overlayWin = null, settingsWin = null, blacklistWin = null, splashWin = null, tray = null;
 let hypixel, urchin, roster, watcher;
 let refreshTimer = null;
+let lastLogStatus = { ok: false, msg: 'not started' };
 
 const getConfig = () => config.load();
 
@@ -133,10 +134,11 @@ function wireWatcher() {
   // safety net for when serverChange's own detection doesn't fire first.
   watcher.on('who', (names) => { if (getConfig().clearOnLobbyJoin) roster.clear(); roster.addNames(names, 'GAME'); });
   watcher.on('lobbyJoin', (n) => roster.addNames([n], 'GAME'));
-  // Anyone actually talking is obviously in the lobby with you - a broader, more reliable presence
-  // signal than any one join-message format, which (as lobbyJoin's real Bedwars pattern above
-  // found out the hard way) doesn't always match what a given server/client actually sends.
-  watcher.on('chatSpeaker', (n) => roster.addNames([n], 'GAME'));
+  // Opt-in (see trackChatSpeakers in Settings) - anyone talking is obviously in the lobby with
+  // you, a broader signal than any one join-message format, but it can't distinguish the main hub
+  // lobby from an actual Bedwars pre-game lobby, so it's off by default rather than flooding the
+  // list with unrelated hub chatter.
+  watcher.on('chatSpeaker', (n) => { if (getConfig().trackChatSpeakers) roster.addNames([n], 'GAME'); });
   watcher.on('partyList', (names) => roster.addNames(names, 'PARTY'));
   watcher.on('quit', (n) => { /* keep in list; optional removal */ });
   // Housing fires its own serverChange twice in a row - once for the housing lobby, once more
@@ -189,7 +191,12 @@ function wireWatcher() {
     roster.setDenickHint(killer, { count, candidates, ts: Date.now() });
     if (candidates.length === 1) toast(`Possible nick: ${killer} -> ${candidates[0].name}?`, 'warn');
   });
-  watcher.on('status', (s) => broadcast('log:status', s));
+  // Cached so a renderer that (re)loads after this has already fired at least once - which is
+  // the usual case, since the overlay's own script takes a moment to load and register its
+  // onLogStatus listener after createOverlay() kicks off startWatcher() - can still ask for the
+  // current status instead of being stuck showing whatever the logdot's default markup was until
+  // the next actual change (which might be a long time, or never).
+  watcher.on('status', (s) => { lastLogStatus = s; broadcast('log:status', s); });
 }
 
 // ---------------- refresh loop ----------------
@@ -262,6 +269,7 @@ function registerIpc() {
   });
 
   ipcMain.handle('link:open', (_e, url) => shell.openExternal(url));
+  ipcMain.handle('log:getStatus', () => lastLogStatus);
 }
 
 function applySelf() { const cfg = getConfig(); roster.setSelf(cfg.selfName, cfg.hideSelf); }
