@@ -200,12 +200,26 @@ class LogWatcher extends EventEmitter {
     if (m) { this.emit('finalKillCount', { victim: m[1], killer: m[2], count: parseInt(m[3], 10) }); }
 
     // ---- server / game change -> clear ----
-    // Some clients (Lunar included) drop a raw status blob straight into chat on every server
-    // switch, e.g. {"server":"dynamiclobby39C","gametype":"BEDWARS","lobbyname":"..."} — far more
-    // reliable than the prose messages below, which vary by client and don't always show up.
-    if (/"server"\s*:\s*"[^"]+"/.test(msg) && /"gametype"\s*:\s*"[^"]+"/.test(msg)) { this.emit('serverChange'); return; }
-    if (/^Sending you to /.test(msg) || /^ +Bed Wars$/i.test(msg) || /^\s*1st Killer/.test(msg) || /^You are now in /.test(msg)) {
-      this.emit('serverChange');
+    // Lunar (and maybe other clients with a similar "server info" feature - unconfirmed) drops a
+    // raw status blob straight into chat on every server switch, e.g.
+    // {"server":"dynamiclobby39C","gametype":"BEDWARS","lobbyname":"..."} for a Bedwars lobby/game,
+    // or just {"server":"limbo"} with no gametype at all for the hub - verified against a real
+    // captured log, including that the hub genuinely never carries a gametype. That makes it the
+    // one reliable signal for "am I actually in Bedwars right now, or just standing in the hub,"
+    // which chatSpeaker/lobbyJoin need (see main.js) to avoid picking up random hub chatter.
+    m = msg.match(/"server"\s*:\s*"[^"]+"/);
+    if (m) {
+      const gt = msg.match(/"gametype"\s*:\s*"([^"]+)"/);
+      this.emit('serverChange', { gametype: gt ? gt[1] : null });
+      return;
+    }
+    // The "Bed Wars" banner line some clients were assumed to print never actually showed up in a
+    // real captured log (same lesson as lobbyJoin's old pattern) - dropped rather than left in as
+    // dead, unverified weight. "Sending you to X!"/"1st Killer"/"You are now in" are genuine
+    // Hypixel-sent text (confirmed real, just don't carry a gametype), kept as a fallback for
+    // whenever the JSON blob above isn't present.
+    if (/^Sending you to /.test(msg) || /^\s*1st Killer/.test(msg) || /^You are now in /.test(msg)) {
+      this.emit('serverChange', { gametype: undefined }); // undefined = "changed, but gametype unknown" (see main.js)
       // don't return; a game-over line could still mention you
     }
 

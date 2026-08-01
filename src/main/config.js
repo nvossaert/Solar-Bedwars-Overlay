@@ -31,6 +31,16 @@ function guessLogPath() {
     }
   } catch (_) {}
 
+  // Modrinth App keeps one log dir per instance too, under an arbitrary instance name -
+  // e.g. %APPDATA%\ModrinthApp\profiles\<name>\logs\latest.log - same scan idea as Lunar above.
+  try {
+    const modrinthProfiles = path.join(process.env.APPDATA || home, 'ModrinthApp', 'profiles');
+    for (const name of fs.readdirSync(modrinthProfiles)) {
+      const p = path.join(modrinthProfiles, name, 'logs', 'latest.log');
+      try { if (fs.existsSync(p)) return p; } catch (_) {}
+    }
+  } catch (_) {}
+
   const candidates = [
     path.join(lunarProfiles, '1.8', 'logs', 'latest.log'),
     // Vanilla / MultiMC-style

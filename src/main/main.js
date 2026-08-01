@@ -11,6 +11,10 @@ let overlayWin = null, settingsWin = null, blacklistWin = null, splashWin = null
 let hypixel, urchin, roster, watcher;
 let refreshTimer = null;
 let lastLogStatus = { ok: false, msg: 'not started' };
+// null = confirmed not in Bedwars (hub/limbo/another minigame), 'BEDWARS' = confirmed in a Bedwars
+// lobby or match, undefined = unknown yet (nothing observed this launch). Only ever set from a
+// serverChange payload that actually carries a real answer - see wireWatcher().
+let currentGameType;
 
 const getConfig = () => config.load();
 
@@ -133,12 +137,13 @@ function wireWatcher() {
   // clearOnLobbyJoin wipes stale entries right before repopulating from that fresh list, a
   // safety net for when serverChange's own detection doesn't fire first.
   watcher.on('who', (names) => { if (getConfig().clearOnLobbyJoin) roster.clear(); roster.addNames(names, 'GAME'); });
-  watcher.on('lobbyJoin', (n) => roster.addNames([n], 'GAME'));
-  // Opt-in (see trackChatSpeakers in Settings) - anyone talking is obviously in the lobby with
-  // you, a broader signal than any one join-message format, but it can't distinguish the main hub
-  // lobby from an actual Bedwars pre-game lobby, so it's off by default rather than flooding the
-  // list with unrelated hub chatter.
-  watcher.on('chatSpeaker', (n) => { if (getConfig().trackChatSpeakers) roster.addNames([n], 'GAME'); });
+  // Both of these are passive background noise-pickers, not a deliberate action like /who - so
+  // both require currentGameType to be confirmed BEDWARS (via serverChange below), not just
+  // "unknown"/hub, or every hub join/chat would flood the list same as before this existed.
+  watcher.on('lobbyJoin', (n) => { if (currentGameType === 'BEDWARS') roster.addNames([n], 'GAME'); });
+  // Opt-in (see trackChatSpeakers in Settings) on top of that - some people still don't want
+  // random Bedwars-lobby chatter added even once scoped correctly.
+  watcher.on('chatSpeaker', (n) => { if (getConfig().trackChatSpeakers && currentGameType === 'BEDWARS') roster.addNames([n], 'GAME'); });
   watcher.on('partyList', (names) => roster.addNames(names, 'PARTY'));
   watcher.on('quit', (n) => { /* keep in list; optional removal */ });
   // Housing fires its own serverChange twice in a row - once for the housing lobby, once more
@@ -151,7 +156,11 @@ function wireWatcher() {
     pendingHouseOwner = owner; pendingHouseOwnerTs = Date.now();
     roster.addNames([owner], 'house');
   });
-  watcher.on('serverChange', () => {
+  watcher.on('serverChange', (info) => {
+    // undefined means "changed servers, but we don't actually know the gametype" (the plain-text
+    // fallback patterns can't tell) - leave whatever currentGameType already was alone rather than
+    // guessing. null/'BEDWARS' are real answers (from the JSON status blob) and always overwrite it.
+    if (info && info.gametype !== undefined) currentGameType = info.gametype;
     if (getConfig().clearOnServerChange) roster.clear();
     if (pendingHouseOwner && Date.now() - pendingHouseOwnerTs < 8000) roster.addNames([pendingHouseOwner], 'house');
     pendingHouseOwner = null;
