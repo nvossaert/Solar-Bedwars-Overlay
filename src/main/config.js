@@ -102,11 +102,12 @@ function defaults() {
     logPath: guessLogPath(),
     clearOnServerChange: true,
     clearOnLobbyJoin: true,
-    // Off by default: it's just as happy to add someone chatting in the main hub lobby (before
-    // you've even queued) as someone in your actual Bedwars pre-game lobby, since both look like
-    // ordinary public chat from the log's point of view - not everyone wants random hub chatter
-    // showing up in their list.
-    trackChatSpeakers: false,
+    // On by default - this used to be opt-in because it couldn't tell the main hub (or Bedwars'
+    // own shared matchmaking queue) apart from your actual match, so it added random unrelated
+    // chatter right along with real lobby-mates. It's now scoped to your actual match instance
+    // specifically (see inBedwarsMatch() in main.js), which is exactly the "who's actually in my
+    // game" signal the rest of this app is built around - same reasoning as the triggers below.
+    trackChatSpeakers: true,
 
     // ---- Auto-blacklist / watchlist triggers ----
     // On by default — this is the whole point of the overlay (auto-track anyone who
