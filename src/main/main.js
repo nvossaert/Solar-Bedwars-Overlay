@@ -133,6 +133,10 @@ function wireWatcher() {
   // safety net for when serverChange's own detection doesn't fire first.
   watcher.on('who', (names) => { if (getConfig().clearOnLobbyJoin) roster.clear(); roster.addNames(names, 'GAME'); });
   watcher.on('lobbyJoin', (n) => roster.addNames([n], 'GAME'));
+  // Anyone actually talking is obviously in the lobby with you - a broader, more reliable presence
+  // signal than any one join-message format, which (as lobbyJoin's real Bedwars pattern above
+  // found out the hard way) doesn't always match what a given server/client actually sends.
+  watcher.on('chatSpeaker', (n) => roster.addNames([n], 'GAME'));
   watcher.on('partyList', (names) => roster.addNames(names, 'PARTY'));
   watcher.on('quit', (n) => { /* keep in list; optional removal */ });
   // Housing fires its own serverChange twice in a row - once for the housing lobby, once more

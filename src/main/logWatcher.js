@@ -5,7 +5,9 @@
 //
 // What it emits:
 //   who(names[])        - /who or accumulated pre-game lobby
-//   lobbyJoin(name)     - "X has joined (n/m)!"
+//   lobbyJoin(name)     - "X has joined (n/m)!" or the real Bedwars "X joined the lobby!"
+//   chatSpeaker(name)   - whoever just said anything in normal chat - a catch-all presence signal
+//                         independent of the exact join-message wording above
 //   quit(name)          - "X has quit!"
 //   partyJoin(names[])  - joined your party
 //   partyList(names[])  - full party list
@@ -125,8 +127,16 @@ class LogWatcher extends EventEmitter {
       return;
     }
 
-    // ---- pre-game lobby fill: "Name has joined (1/16)!" ----
+    // ---- pre-game lobby fill: "Name has joined (1/16)!" (seen on some other lobby types) ----
     m = msg.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ') has joined \\(\\d+\\/\\d+\\)!'));
+    if (m) { this.emit('lobbyJoin', m[1]); return; }
+
+    // ---- Bedwars pre-game lobby fill, real captured format: ">>> [rank] Name joined the lobby! <<<"
+    // for boosted/high-rank players, or just "[rank] Name joined the lobby!" (no arrows) for everyone
+    // else - NOT the "(n/m)" form above, which never actually appears here. Verified against a real
+    // captured log; this was the actual reason join detection silently caught nobody in the pre-game
+    // lobby before. ----
+    m = msg.match(new RegExp('^(?:>>>\\s*)?(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')\\s+joined the lobby!'));
     if (m) { this.emit('lobbyJoin', m[1]); return; }
 
     // ---- quit: "Name has quit!" ----
@@ -191,11 +201,20 @@ class LogWatcher extends EventEmitter {
       // don't return; a game-over line could still mention you
     }
 
-    // ---- your name said in normal chat ("Rank Name: text" / "Rank Name [Guild tag]: text") ----
-    if (this.selfNames.length) {
-      const body = msg.replace(CHANNEL_PREFIX, '');
-      const cm = body.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')(?:\\s*\\[[^\\]]+\\])*\\s*:\\s*(.*)$'));
-      if (cm) {
+    // ---- normal chat ("Rank Name: text" / "Rank Name [Guild tag]: text") - whoever's talking in
+    // PUBLIC chat is obviously actually in the lobby/game with you, just as good a signal as a
+    // who/join line (whose exact wording varies more than you'd hope - see the two lobbyJoin
+    // patterns above) and not dependent on matching one particular message format. Guild/Party/
+    // Officer/Co-op/Alliance chat is excluded from that, though - those channels reach people
+    // anywhere on the network, not just your current lobby, so treating a guildmate chatting from
+    // some other server as "here" would be actively wrong. Party chat specifically is redundant
+    // with it anyway, since party members already get added via partyList/partyJoin. ----
+    const hasChannelPrefix = CHANNEL_PREFIX.test(msg);
+    const body = msg.replace(CHANNEL_PREFIX, '');
+    const cm = body.match(new RegExp('^(?:\\[[^\\]]+\\]\\s*)*(' + NAME + ')(?:\\s*\\[[^\\]]+\\])*\\s*:\\s*(.*)$'));
+    if (cm) {
+      if (!hasChannelPrefix) this.emit('chatSpeaker', cm[1]);
+      if (this.selfNames.length) {
         const speaker = cm[1].toLowerCase();
         const text = cm[2].toLowerCase();
         if (!this.selfNames.includes(speaker) && this.selfNames.some((n) => text.includes(n))) {
